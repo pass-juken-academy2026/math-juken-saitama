@@ -227,7 +227,11 @@ $("#runSelfTest").onclick=()=>{
   if(answerBtn)answerBtn.click();
   check("解答クリック→正誤フィードバック",!!answerBtn&&sessions.quiz.answered&&$("#quizFeedback").classList.contains("show"));
   check("解答後に次へボタンが有効",!$("#quizNext").disabled);
-  check("全47都道府県の公式リンク生成",PREFS.every(p=>/^https:\/\//.test(officialUrl(p))));
+  check("全47都道府県の公式情報リンク生成",PREFS.every(p=>/^https:\/\//.test(officialUrl(p))));
+  check("全難易度で演習問題を生成可能",["all","基礎","標準","応用"].every(level=>BANK.some(q=>level==="all"||q.level===level)));
+  const a=shuffled(BANK.filter(q=>q.level==="基礎"),seedFor("prefecture-practice-v2|北海道|2026-10-09|基礎")).slice(0,10).map(q=>q.id).join(",");
+  const b=shuffled(BANK.filter(q=>q.level==="基礎"),seedFor("prefecture-practice-v2|沖縄県|2026-10-09|基礎")).slice(0,10).map(q=>q.id).join(",");
+  check("県別に異なる演習セットを生成",a!==b,"北海道と沖縄県の基礎セットを比較");
  }catch(e){check("テスト実行中の例外",false,String(e))}
  finally{
   state=originalState;sessions=originalSessions;
@@ -241,9 +245,20 @@ $("#runSelfTest").onclick=()=>{
 $("#resetStats").onclick=()=>{if(confirm("学習記録を削除しますか？復習リストは残ります。")){state.history=[];save();renderProgress()}};
 function fillPrefs(){const s=$("#prefSelect");s.innerHTML=PREFS.map(p=>'<option>'+p+'</option>').join("");s.value=PREFS.includes(state.lastPref)?state.lastPref:"埼玉県";updatePrefNote()}
 function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/nyushi/r9nyushijyoho.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/ability_test/problem_and_answer/release20260221_n01","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen/gakuryokukensa/mondai.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/nyuushi/koukou/r8/index.html","宮城県":"https://www.pref.miyagi.jp/soshiki/koukyou/kakomon-ko-nyushi-r8.html","秋田県":"https://www.pref.akita.lg.jp/pages/archive/94329"};return map[pref]||("https://www.google.com/search?q="+encodeURIComponent(pref+" 公立高校 入試 数学 教育委員会 公式"))}
-function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県を選ぶと問題の出題順が変わります。県別の傾向を確認できているのは、画面に明記した公式資料の範囲です。未調査の県については出題傾向を確認済みとは表示しません。問題は中学数学の範囲に沿ったオリジナル問題で、県の過去問そのものではありません。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";if(p==="神奈川県")detail="神奈川県向け：県公式ページに令和8年度の共通選抜学力検査問題・正答表・マークシート解答用紙が公開されています。公式資料を見て形式を確認してください。このサイトの問題はオリジナル問題です。";if(p==="千葉県")detail="千葉県向け：県教育委員会の入試情報ページから実施方針・過去の情報を確認できます。県の数学出題方針は基礎的技能に加え、論理的な考察や表現力も重視すると公表されています。このサイトの問題はオリジナル問題です。";if(p==="宮城県")detail="宮城県向け：県教育委員会の令和8年度入試ページに数学の問題・解答用紙・正答表と出題方針が公開されています。演習はその形式を確認する参考にしつつ、問題自体はオリジナルです。";if(p==="秋田県")detail="秋田県向け：県公式ページで令和8年度数学の学力検査問題・解答用紙・採点基準を確認できます。演習問題は本サイト独自のオリジナル問題です。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の公式入試情報を探す」を利用してください。</span>"}
+function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県専用の演習セットを生成します。都道府県・日付・難易度に応じて問題の組み合わせと順序が変わります。公式傾向を個別確認できている県以外は、実際の出題傾向を再現したものではありません。問題は中学数学の範囲に沿ったオリジナル問題です。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";if(p==="神奈川県")detail="神奈川県向け：県公式ページに令和8年度の共通選抜学力検査問題・正答表・マークシート解答用紙が公開されています。公式資料を見て形式を確認してください。このサイトの問題はオリジナル問題です。";if(p==="千葉県")detail="千葉県向け：県教育委員会の入試情報ページから実施方針・過去の情報を確認できます。県の数学出題方針は基礎的技能に加え、論理的な考察や表現力も重視すると公表されています。このサイトの問題はオリジナル問題です。";if(p==="宮城県")detail="宮城県向け：県教育委員会の令和8年度入試ページに数学の問題・解答用紙・正答表と出題方針が公開されています。演習はその形式を確認する参考にしつつ、問題自体はオリジナルです。";if(p==="秋田県")detail="秋田県向け：県公式ページで令和8年度数学の学力検査問題・解答用紙・採点基準を確認できます。演習問題は本サイト独自のオリジナル問題です。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の公式入試情報を探す」を利用してください。</span>"}
 fillPrefs();$("#prefSelect").addEventListener("change",updatePrefNote);$("#officialLink").onclick=()=>window.open(officialUrl($("#prefSelect").value),"_blank","noopener");
-function startPractice(){const p=$("#prefSelect").value,level=$("#practiceLevel").value,count=Number($("#practiceCount").value);state.lastPref=p;save();let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,seedFor(p+new Date().toDateString()+level)).slice(0,count);makeSession("practice",arr)}
+function startPractice(){
+ const p=$("#prefSelect").value,level=$("#practiceLevel").value,count=Number($("#practiceCount").value);
+ state.lastPref=p;save();
+ const eligible=BANK.filter(q=>level==="all"||q.level===level);
+ // Stable, prefecture-specific selection: each prefecture gets its own question combination,
+ // while remaining transparent that this is not a claim about unverified local exam trends.
+ const seed=seedFor("prefecture-practice-v2|"+p+"|"+new Date().toDateString()+"|"+level);
+ const arr=shuffled(eligible,seed).slice(0,Math.min(count,eligible.length));
+ makeSession("practice",arr);
+ const root=$("#practiceCard");
+ if(root.querySelector(".qtop")) root.insertAdjacentHTML("afterbegin",'<div class="notice"><b>'+p+' 専用セット</b>：'+arr.length+'問。県別に問題の組み合わせを変えています。公式傾向の再現を確認できていない県では、一般的な入試対策問題として利用してください。</div>');
+}
 $("#practiceStart").onclick=startPractice;
 function startMock(){let level=$("#mockLevel").value,count=Number($("#mockCount").value);let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,Date.now()).slice(0,count);makeSession("mock",arr)}
 $("#mockStart").onclick=startMock;
