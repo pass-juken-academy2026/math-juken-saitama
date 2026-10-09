@@ -208,7 +208,7 @@ function renderProgress(){updateHeader();const hist=state.history;let topics=UNI
 // Browser smoke tests: run from the visible progress screen.
 $("#runSelfTest").onclick=()=>{
  const out=$("#selfTestResults"),lines=[];const check=(name,ok,detail="")=>lines.push({name,ok,detail});
- const originalPage=$(".page").find(x=>x.classList.contains("active"))?.id.replace("page-","")||"home";
+ const originalPage=$$(".page").find(x=>x.classList.contains("active"))?.id.replace("page-","")||"home";
  const originalState=JSON.parse(JSON.stringify(state)),originalSessions=JSON.parse(JSON.stringify(sessions));
  const savedCards={quiz:$("#quizCard").innerHTML,practice:$("#practiceCard").innerHTML,mock:$("#mockCard").innerHTML};
  const savedReview=$("#reviewList").innerHTML;
