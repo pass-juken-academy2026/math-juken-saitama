@@ -1,7 +1,7 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "updatedAt": "2026-10-09",
-  "purpose": "総合ポータルが参照する科目カタログの初期台帳。公開URLは確認後にのみ設定する。",
+  "purpose": "総合ポータル用の科目カタログ。高校は教科を親カテゴリにし、各科目を選択肢としてその下に配置する。公開URLは確認後にのみ設定する。",
   "policy": {
     "information2": "将来拡張候補。今回の必須対象外。",
     "socialStudies": [
@@ -13,7 +13,8 @@
       "日本史探究",
       "世界史探究"
     ],
-    "unverifiedUrlsMustRemainNull": true
+    "unverifiedUrlsMustRemainNull": true,
+    "portalStructure": "高校ホームでは「国語・数学・理科・社会・情報」を教科として表示し、科目名は各教科内の選択肢として表示する。高校科目を教科と同列に並べない。"
   },
   "existingAssets": [
     {
@@ -72,7 +73,9 @@
       "category": "中学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "junior",
+      "subjectGroup": "中学"
     },
     {
       "repository": "junior-science",
@@ -80,7 +83,9 @@
       "category": "中学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "junior",
+      "subjectGroup": "中学"
     },
     {
       "repository": "junior-social-studies",
@@ -88,7 +93,9 @@
       "category": "中学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "junior",
+      "subjectGroup": "中学"
     },
     {
       "repository": "highschool-modern-japanese",
@@ -96,7 +103,9 @@
       "category": "高校・国語",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "国語"
     },
     {
       "repository": "highschool-logical-japanese",
@@ -104,7 +113,9 @@
       "category": "高校・国語",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "国語"
     },
     {
       "repository": "highschool-math-1",
@@ -112,7 +123,9 @@
       "category": "高校・数学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "数学"
     },
     {
       "repository": "highschool-math-a",
@@ -120,7 +133,9 @@
       "category": "高校・数学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "数学"
     },
     {
       "repository": "highschool-math-2",
@@ -128,7 +143,9 @@
       "category": "高校・数学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "数学"
     },
     {
       "repository": "highschool-math-b",
@@ -136,7 +153,9 @@
       "category": "高校・数学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "数学"
     },
     {
       "repository": "highschool-math-3",
@@ -144,7 +163,9 @@
       "category": "高校・数学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "数学"
     },
     {
       "repository": "highschool-math-c",
@@ -152,7 +173,9 @@
       "category": "高校・数学",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "数学"
     },
     {
       "repository": "highschool-biology-basic",
@@ -160,7 +183,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-biology",
@@ -168,7 +193,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-chemistry-basic",
@@ -176,7 +203,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-chemistry",
@@ -184,7 +213,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-physics-basic",
@@ -192,7 +223,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-physics",
@@ -200,7 +233,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-earth-science-basic",
@@ -208,7 +243,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-earth-science",
@@ -216,7 +253,9 @@
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "理科"
     },
     {
       "repository": "highschool-geography-general",
@@ -224,7 +263,9 @@
       "category": "高校・社会",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
     },
     {
       "repository": "highschool-geography",
@@ -232,7 +273,9 @@
       "category": "高校・社会",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
     },
     {
       "repository": "highschool-history-general",
@@ -240,7 +283,9 @@
       "category": "高校・社会",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
     },
     {
       "repository": "highschool-information-1",
@@ -248,7 +293,94 @@
       "category": "高校・情報",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "情報"
+    }
+  ],
+  "portalNavigation": [
+    {
+      "id": "junior",
+      "label": "中学",
+      "groups": [
+        {
+          "id": "junior-japanese",
+          "label": "国語",
+          "subjects": [
+            "junior-japanese"
+          ]
+        },
+        {
+          "id": "junior-science",
+          "label": "理科",
+          "subjects": [
+            "junior-science"
+          ]
+        },
+        {
+          "id": "junior-social-studies",
+          "label": "社会",
+          "subjects": [
+            "junior-social-studies"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "highschool",
+      "label": "高校",
+      "groups": [
+        {
+          "id": "highschool-japanese",
+          "label": "国語",
+          "subjects": [
+            "highschool-modern-japanese",
+            "highschool-logical-japanese"
+          ]
+        },
+        {
+          "id": "highschool-math",
+          "label": "数学",
+          "subjects": [
+            "highschool-math-1",
+            "highschool-math-a",
+            "highschool-math-2",
+            "highschool-math-b",
+            "highschool-math-3",
+            "highschool-math-c"
+          ]
+        },
+        {
+          "id": "highschool-science",
+          "label": "理科",
+          "subjects": [
+            "highschool-biology-basic",
+            "highschool-biology",
+            "highschool-chemistry-basic",
+            "highschool-chemistry",
+            "highschool-physics-basic",
+            "highschool-physics",
+            "highschool-earth-science-basic",
+            "highschool-earth-science"
+          ]
+        },
+        {
+          "id": "highschool-social-studies",
+          "label": "社会",
+          "subjects": [
+            "highschool-geography-general",
+            "highschool-geography",
+            "highschool-history-general"
+          ]
+        },
+        {
+          "id": "highschool-information",
+          "label": "情報",
+          "subjects": [
+            "highschool-information-1"
+          ]
+        }
+      ]
     }
   ]
 }
