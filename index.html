@@ -1,1 +1,162 @@
-
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#173b72">
+<title>高校入試 数学攻略室</title>
+<style>
+:root{--navy:#173b72;--blue:#2463eb;--sky:#eef5ff;--ink:#172033;--muted:#64748b;--line:#dbe4f0;--bg:#f5f7fb;--green:#087f5b;--orange:#b45309;--card:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}button,input,select,textarea{font:inherit}button{cursor:pointer}.topbar{background:var(--navy);color:#fff;padding:12px max(14px,calc((100vw - 1280px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #10264b22}.brand{font-weight:900;display:flex;align-items:center;gap:9px}.brand-mark{background:white;color:var(--navy);border-radius:8px;padding:2px 8px}.top-actions{display:flex;gap:7px}.top-actions button{background:#ffffff15;color:white;border:1px solid #ffffff55;border-radius:9px;padding:7px 10px}.layout{display:grid;grid-template-columns:245px minmax(0,1fr);max-width:1440px;margin:auto}.sidebar{background:white;border-right:1px solid var(--line);padding:16px 12px;position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto}.nav-label{font-size:11px;letter-spacing:.12em;font-weight:900;color:#8996a9;padding:12px 11px 5px}.navbtn{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:transparent;color:#40516b;border-radius:10px;padding:10px 11px;margin:3px 0;font-weight:700}.navbtn:hover{background:#f1f5fb}.navbtn.active{background:var(--sky);color:var(--blue);box-shadow:inset 3px 0 var(--blue)}.main{padding:25px;min-width:0}.page{display:none}.page.active{display:block;animation:fade .16s ease}@keyframes fade{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}.hero{background:linear-gradient(120deg,#173b72,#2463eb);color:white;border-radius:21px;padding:30px;position:relative;overflow:hidden}.hero:after{content:"∑";position:absolute;right:25px;top:-42px;font-size:190px;font-weight:900;color:#ffffff10;pointer-events:none}.eyebrow{font-size:11px;letter-spacing:.12em;font-weight:900;opacity:.8}.hero h1{font-size:clamp(27px,4vw,42px);line-height:1.25;margin:8px 0}.hero p{max-width:700px;color:#e5edff}.hero-actions{display:flex;gap:9px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:17px 0 25px}.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:17px;box-shadow:0 3px 10px #1a315008}.stat small{display:block;color:var(--muted)}.stat strong{font-size:26px;color:var(--navy)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:25px 0 12px}.section-head h2{margin:0;font-size:21px}.section-head p{margin:2px 0 0;color:var(--muted);font-size:13px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.unit-card{cursor:pointer;transition:.15s}.unit-card:hover{border-color:#9ab7f8;transform:translateY(-2px)}.unit-card h3{margin:7px 0}.tag{display:inline-block;background:var(--sky);color:var(--blue);font-size:11px;font-weight:850;padding:3px 8px;border-radius:999px}.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:800;background:var(--blue);color:white}.btn:hover{filter:brightness(.96)}.btn.white{background:white;color:var(--navy)}.btn.light{background:#eaf1ff;color:var(--blue)}.btn.outline{background:white;border:1px solid var(--line);color:var(--ink)}.btn:disabled{opacity:.4;cursor:not-allowed}.page-title{margin:0;font-size:29px}.lead{color:var(--muted);margin:5px 0 18px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:end;margin:14px 0}.field{display:grid;gap:5px;font-size:13px;font-weight:800;flex:1;min-width:180px}.field input,.field select,.search,.answer-input{width:100%;padding:11px 12px;border:1px solid #cbd5e1;border-radius:10px;background:white;color:var(--ink)}.formula{font-size:20px;font-weight:900;color:var(--navy);background:#f1f6ff;border-radius:10px;padding:12px;margin:10px 0;overflow-wrap:anywhere}.item{border-top:1px solid var(--line);padding:15px 0}.item:first-child{border-top:0}.item h3{margin:0 0 5px}.muted{color:var(--muted)}.notice{padding:12px;border-radius:11px;background:#fff7e6;border:1px solid #f3dfb8;color:#79501b;margin:12px 0;font-size:13px}.qtop{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px;font-weight:800}.progress{height:8px;background:#e4eaf3;border-radius:99px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;background:var(--blue);width:0;transition:width .2s}.question{font-size:21px;font-weight:850;margin:20px 0;white-space:pre-wrap}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{background:white;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left;color:var(--ink)}.choice:hover{border-color:var(--blue);background:var(--sky)}.choice:disabled{cursor:default}.feedback{display:none;padding:14px;border-radius:11px;margin-top:14px}.feedback.show{display:block;background:#effaf5;border:1px solid #a7e1c5}.answerline{display:flex;gap:8px;flex-wrap:wrap}.answerline input{flex:1;min-width:170px}.answer-input{font-size:17px}.small{font-size:12px}.empty{padding:25px;text-align:center;color:var(--muted)}.checkline{display:flex;gap:8px;align-items:center;margin:10px 0}.pillrow{display:flex;gap:7px;flex-wrap:wrap}.pillrow button{border:1px solid var(--line);background:white;border-radius:99px;padding:6px 11px}.pillrow button.active{background:var(--navy);color:white}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.hide{display:none!important}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{display:none;position:fixed;left:0;top:60px;bottom:0;height:auto;width:270px;z-index:30;box-shadow:8px 0 30px #0002}.sidebar.open{display:block}.main{padding:17px}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.mobile-menu{display:inline-block!important}}
+@media(max-width:560px){.topbar{padding:10px}.brand{font-size:13px}.top-actions button{font-size:12px;padding:7px}.main{padding:12px}.hero{padding:22px 18px}.hero:after{right:-12px;font-size:130px}.stats{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}.grid2,.grid3,.two{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.page-title{font-size:25px}.choices{grid-template-columns:1fr}.question{font-size:19px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="brand-mark">∑</span><span>高校入試 数学攻略室</span></div><div class="top-actions"><button id="menuToggle" class="mobile-menu" style="display:none">☰ メニュー</button><button data-go="review">☆ 復習 <span id="reviewCount">0</span></button></div></header>
+<div class="layout">
+<aside class="sidebar" id="sidebar"><div class="nav-label">学習メニュー</div>
+<button class="navbtn active" data-page="home">⌂　ホーム</button><button class="navbtn" data-page="units">▦　単元別学習</button><button class="navbtn" data-page="formulas">∑　公式・解法図鑑</button><button class="navbtn" data-page="quiz">✎　一問一答</button><button class="navbtn" data-page="practice">▤　都道府県別入試演習</button><button class="navbtn" data-page="mock">◷　総合模擬試験</button><button class="navbtn" data-page="review">☆　復習リスト</button><button class="navbtn" data-page="progress">☑　学習記録</button>
+<div class="notice"><b>学習のコツ</b><br>公式は「使える条件・解き方・注意点」までセットで確認しよう。</div></aside>
+<main class="main">
+<section class="page active" id="page-home"><div class="hero"><div class="eyebrow">JUNIOR HIGH SCHOOL MATH · ENTRANCE EXAM</div><h1>数学を、得点源にしよう。</h1><p>単元学習・公式検索・一問一答・都道府県別演習・模擬試験をひとつに。解説と復習を繰り返して、入試で使える力をつけよう。</p><div class="hero-actions"><button class="btn white" data-go="units">学習を始める →</button><button class="btn" data-go="practice">都道府県別演習 →</button><button class="btn light" data-go="quiz">一問解いてみる</button></div></div>
+<div class="stats"><div class="stat"><small>学習分野</small><strong>8分野</strong><small>中学数学を横断</small></div><div class="stat"><small>演習問題</small><strong id="statQuestions">100+</strong><small>生成問題を含む</small></div><div class="stat"><small>解答済み</small><strong id="statAnswered">0</strong><small>この端末に保存</small></div></div>
+<div class="section-head"><div><h2>どこから勉強する？</h2><p>英語学習サイトのように、分野を選んで練習・復習できる構成。</p></div><button class="btn light" data-go="units">全分野 →</button></div><div class="grid3" id="homeUnits"></div>
+<div class="section-head"><div><h2>今日のおすすめ</h2><p>苦手分野を見つけて、解説まで確認しよう。</p></div></div><div class="grid2"><article class="card"><h3>🧭 都道府県別 入試演習</h3><p class="muted">地域とレベルを選び、専用の演習セットに挑戦。</p><button class="btn light" data-go="practice">演習を選ぶ</button></article><article class="card"><h3>📈 学習記録</h3><p class="muted">解答数・正答率・復習リストをチェック。</p><button class="btn light" data-go="progress">記録を見る</button></article></div>
+<div class="notice">大切なお知らせ：このサイトの問題はオリジナル練習問題です。都道府県別の出題傾向を完全再現したり、公式過去問そのものを掲載したりするものではありません。各県の公式情報を確認するリンクも用意しています。</div></section>
+<section class="page" id="page-units"><h1 class="page-title">単元別学習</h1><p class="lead">分野を選んで、要点を確認してから問題を解こう。</p><input id="unitSearch" class="search" placeholder="単元を検索（例：相似、確率）"><div class="grid3" id="unitGrid"></div><div id="unitDetail"></div></section>
+<section class="page" id="page-formulas"><h1 class="page-title">公式・解法図鑑</h1><p class="lead">公式、使える条件、考え方、注意点、例をまとめて検索できます。</p><div class="toolbar"><input id="formulaSearch" class="search" placeholder="公式・キーワードを検索"><select id="formulaFilter" class="answer-input"><option value="all">すべての分野</option></select></div><div id="formulaList"></div></section>
+<section class="page" id="page-quiz"><h1 class="page-title">一問一答</h1><p class="lead">分野・難易度を選択。正誤判定のあとに根拠と解説が表示されます。</p><div class="card"><div class="toolbar"><label class="field">分野<select id="quizTopic"><option value="all">すべて</option></select></label><label class="field">難易度<select id="quizLevel"><option value="all">すべて</option><option>基礎</option><option>標準</option><option>応用</option></select></label><label class="field">問題数<select id="quizCount"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></label><button class="btn" id="quizStart">演習開始</button></div></div><div class="card" id="quizCard"><div class="empty">条件を選んで「演習開始」を押してね。</div></div></section>
+<section class="page" id="page-practice"><h1 class="page-title">都道府県別 入試演習</h1><p class="lead">都道府県とレベルを選ぶと、その選択に応じた問題セットを作成します。</p><div class="card"><div class="toolbar"><label class="field">都道府県<select id="prefSelect"></select></label><label class="field">難易度<select id="practiceLevel"><option value="all">総合（基礎〜応用）</option><option>基礎</option><option>標準</option><option>応用</option></select></label><label class="field">問題数<select id="practiceCount"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></label></div><div class="toolbar"><button class="btn" id="practiceStart">この条件で演習開始</button><button class="btn outline" id="officialLink">県の入試情報を確認 ↗</button></div><div id="prefNote" class="notice"></div></div><div class="card" id="practiceCard"><div class="empty">都道府県を選択し、「この条件で演習開始」を押してね。</div></div></section>
+<section class="page" id="page-mock"><h1 class="page-title">総合模擬試験</h1><p class="lead">分野を横断した問題に挑戦。途中式を紙に書き、答えだけでなく考え方も確認しよう。</p><div class="card"><div class="toolbar"><label class="field">問題数<select id="mockCount"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></label><label class="field">難易度<select id="mockLevel"><option value="all">総合</option><option>基礎</option><option>標準</option><option>応用</option></select></label><button class="btn" id="mockStart">模擬試験を開始</button></div></div><div class="card" id="mockCard"><div class="empty">設定を選んで模擬試験を始めよう。</div></div></section>
+<section class="page" id="page-review"><h1 class="page-title">復習リスト</h1><p class="lead">あとで解き直したい問題を保存。理解できたらリストから外せます。</p><div class="toolbar"><button class="btn outline" id="clearReview">復習リストを空にする</button></div><div id="reviewList"></div></section>
+<section class="page" id="page-progress"><h1 class="page-title">学習記録</h1><p class="lead">このブラウザ内に保存された解答履歴です。</p><div class="stats"><div class="stat"><small>解答数</small><strong id="pAnswered">0</strong></div><div class="stat"><small>正答数</small><strong id="pCorrect">0</strong></div><div class="stat"><small>正答率</small><strong id="pRate">0%</strong></div></div><div class="card"><h2>分野別の記録</h2><div id="topicStats"></div></div><div class="card"><button class="btn outline" id="resetStats">学習記録をリセット</button></div></section>
+</main></div>
+<script>
+"use strict";
+const PREFS=["北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"];
+const UNITS=[
+{id:"numbers",name:"数と式",icon:"➗",level:"基礎",desc:"正負の数、文字式、展開・因数分解、平方根"},
+{id:"equations",name:"方程式",icon:"🧮",level:"基礎",desc:"一次方程式、連立方程式、二次方程式、文章題"},
+{id:"functions",name:"関数・グラフ",icon:"📈",level:"重要",desc:"比例・反比例、一次関数、二次関数"},
+{id:"geometry",name:"図形・証明",icon:"📐",level:"重要",desc:"角度、合同・相似、円、三平方の定理"},
+{id:"solids",name:"空間図形",icon:"🧊",level:"標準",desc:"体積・表面積、立体の切断、最短距離"},
+{id:"probability",name:"確率・場合の数",icon:"🎲",level:"標準",desc:"樹形図、確率、規則性"},
+{id:"data",name:"データの活用",icon:"📊",level:"標準",desc:"平均値、中央値、四分位数、箱ひげ図"},
+{id:"applications",name:"文章題・総合",icon:"✍️",level:"応用",desc:"速さ、割合、整数、複合問題"}
+];
+const FORMULAS=[
+["numbers","分配法則","a(b+c)=ab+ac","かっこの外の数や式を中の各項に掛けるとき。","中の各項に一つずつ掛け、同類項をまとめる。","符号に注意。−a(b+c)=−ab−ac。","3(x+4)=3x+12"],
+["numbers","和の平方","(a+b)²=a²+2ab+b²","和を2乗するとき。","前の項の2乗＋2項の積＋後ろの項の2乗。","真ん中の2abを忘れない。","(x+3)²=x²+6x+9"],
+["numbers","差の平方","(a−b)²=a²−2ab+b²","差を2乗するとき。","真ん中は−2ab、最後はプラス。","最後の項はb²なので正。","(x−5)²=x²−10x+25"],
+["numbers","和と差の積","(a+b)(a−b)=a²−b²","同じ2項の和と差を掛けるとき。","それぞれの2乗の差になる。","a²+b²ではない。","(x+4)(x−4)=x²−16"],
+["numbers","平方根の積","√a×√b=√(ab)","a,bが0以上のとき。","根号の中を掛け合わせて整理。","√a+√b=√(a+b)とは一般にできない。","√3×√12=√36=6"],
+["numbers","平方根の整理","√(a²b)=a√b（a≥0）","根号内に平方数の因数があるとき。","平方数を根号の外へ出す。","平方数の因数を見落とさない。","√72=√(36×2)=6√2"],
+["equations","一次方程式","ax+b=c → x=(c−b)/a","a≠0。xの係数が0ではないとき。","移項して定数をまとめ、係数で割る。","移項すると符号が変わる。","3x+5=17 → x=4"],
+["equations","連立方程式・加減法","同じ文字の係数をそろえて足す／引く","一方の文字を消去できるとき。","係数をそろえ、加減して一文字の式にする。","式全体を同じ数倍する。","x+y=7, x−y=1 → x=4,y=3"],
+["equations","積が0になる条件","AB=0 → A=0 または B=0","積の形が0に等しいとき。","因数分解して、それぞれの因数を0とおく。","A+B=0からA=0,B=0とはできない。","x(x−3)=0 → x=0,3"],
+["functions","比例","y=ax","原点を通り、xとyが比例するとき。","点を代入して比例定数aを求める。","x≠0の点を使う。","(2,6)を通るならy=3x"],
+["functions","一次関数","y=ax+b","グラフが直線で表される関係。","aは傾き、bは切片。2点から傾きを求める。","差の順序を分子・分母でそろえる。","(1,3),(3,7)ならa=2,b=1"],
+["functions","変化の割合","(yの増加量)/(xの増加量)","xの増加量が0でない2点間。","終わり−始まりで差を計算。","二次関数では区間により変わる。","xが1から4、yが2から20なら6"],
+["functions","二次関数","y=ax²","中学範囲の基本形でa≠0。","点の座標を代入してaを求める。","xを2倍にするとyは4倍。","(2,8)を通るならa=2"],
+["geometry","三角形の内角の和","A+B+C=180°","平面上の三角形。","分かっている2角を180°から引く。","外角は離れた2内角の和。","50°と60°なら残り70°"],
+["geometry","多角形の内角の和","180°×(n−2)","n角形の内角の和。","一つの頂点から三角形n−2個に分ける。","正多角形の1内角は和をnで割る。","五角形は540°"],
+["geometry","相似比と面積比","長さa:b → 面積a²:b²","2図形が相似のとき。","長さの比を2乗する。","体積比は3乗。","相似比2:3なら面積比4:9"],
+["geometry","三平方の定理","a²+b²=c²","直角三角形でcは斜辺。","直角をはさむ2辺の2乗の和を取る。","直角三角形以外には使えない。","辺3,4なら斜辺5"],
+["solids","柱体の体積","底面積×高さ","角柱・円柱など。","底面積に垂直な高さを掛ける。","斜めの辺の長さではない。","底面積12、高さ5なら60"],
+["probability","確率","有利な場合の数÷全場合の数","各結果が同じ確からしさで起こるとき。","全結果を漏れなく数えて比を取る。","同様に確からしいことが条件。","公平なさいころで偶数は1/2"],
+["data","平均値","データの合計÷個数","すべてのデータが分かるとき。","合計をデータ数で割る。","中央値・最頻値とは別。","2,4,6の平均は4"],
+["data","範囲","最大値−最小値","データの散らばりの幅を求めるとき。","最大値から最小値を引く。","平均との差ではない。","2,5,9の範囲は7"],
+["applications","速さ・距離・時間","距離=速さ×時間","速さが一定のとき。","単位をそろえて式に代入。","分と時間、mとkmを混ぜない。","時速60kmで2時間なら120km"]
+].map((x,i)=>({id:"f"+i,unit:x[0],title:x[1],formula:x[2],condition:x[3],how:x[4],caution:x[5],example:x[6]}));
+const BANK=[
+["numbers","基礎","−8+13 の値は？","5",["−21","−5","5","21"],"異符号の加減では絶対値の差を取り、絶対値の大きい数の符号をつける。"],
+["numbers","基礎","−4−(−9) の値は？","5",["−13","−5","5","13"],"負の数を引くことは、その反対の数を足すこと。−4+9=5。"],
+["numbers","基礎","3(2x−5)を展開すると？","6x−15",["6x−5","5x−15","6x−15","6x+15"],"3をかっこの中の両方に掛ける。"],
+["numbers","標準","(x+4)²を展開すると？","x²+8x+16",["x²+16","x²+4x+16","x²+8x+16","x²−8x+16"],"(a+b)²=a²+2ab+b²を使う。"],
+["numbers","標準","x²−25を因数分解すると？","(x+5)(x−5)",["(x−5)²","(x+5)(x−5)","(x+25)(x−1)","因数分解できない"],"平方の差a²−b²=(a+b)(a−b)。"],
+["numbers","標準","√50を簡単にすると？","5√2",["25√2","5√2","10√5","√25"],"50=25×2なので、√50=5√2。"],
+["numbers","標準","(2a²b)×(3ab³)を簡単にすると？","6a³b⁴",["5a³b⁴","6a²b³","6a³b⁴","6a⁴b³"],"係数を掛け、同じ底の指数を足す。"],
+["numbers","応用","x+y=7、xy=10のとき、x²+y²は？","29",["19","39","29","49"],"x²+y²=(x+y)²−2xy=49−20=29。"],
+["equations","基礎","4x−7=13 の解は？","5",["4","5","6","−5"],"両辺に7を足して4x=20、4で割る。"],
+["equations","基礎","2(x−4)=10 の解は？","9",["1","5","9","14"],"両辺を2で割ってx−4=5。"],
+["equations","標準","x+y=9、x−y=3 のときxは？","6",["3","4","6","9"],"2式を足すと2x=12。"],
+["equations","標準","x²−7x+12=0の解の組は？","3, 4",["2, 6","3, 4","−3, −4","1, 12"],"(x−3)(x−4)=0よりx=3または4。"],
+["equations","標準","2x+3y=12、x+y=5のときxは？","3",["1","2","3","4"],"2つ目を2倍して引くとy=2、よってx=3。"],
+["equations","応用","連続する2つの整数の和が41。小さい整数は？","20",["19","20","21","22"],"小さい数をnとするとn+(n+1)=41、2n=40。"],
+["functions","基礎","y=−2x+5の傾きは？","−2",["5","2","−2","−5"],"一次関数y=ax+bの傾きはxの係数a。"],
+["functions","基礎","y=3x−1でx=2のときyは？","5",["4","5","6","7"],"xに2を代入し3×2−1=5。"],
+["functions","標準","(1,2),(3,8)を通る直線の傾きは？","3",["2","3","4","6"],"(8−2)/(3−1)=6/2=3。"],
+["functions","標準","y=ax²が(2,12)を通るときaは？","3",["2","3","4","6"],"12=4aなのでa=3。"],
+["functions","応用","y=2x+1とy=−x+7の交点のx座標は？","2",["1","2","3","4"],"2x+1=−x+7より3x=6、x=2。"],
+["functions","応用","y=x²でxが1から3に増えるとき、変化の割合は？","4",["2","3","4","8"],"(9−1)/(3−1)=8/2=4。"],
+["geometry","基礎","三角形の2角が45°と65°。残りの角は？","70°",["60°","70°","80°","90°"],"三角形の内角の和は180°。180−45−65=70。"],
+["geometry","基礎","五角形の内角の和は？","540°",["360°","450°","540°","720°"],"180°×(5−2)=540°。"],
+["geometry","標準","相似比2:5の面積比は？","4:25",["2:5","4:25","8:125","5:2"],"面積比は長さの比の2乗。"],
+["geometry","標準","直角をはさむ辺が6と8の直角三角形。斜辺は？","10",["12","14","10","7"],"斜辺²=36+64=100なので10。"],
+["geometry","標準","平行四辺形の一つの角が68°。隣の角は？","112°",["68°","102°","112°","122°"],"隣り合う角の和は180°。"],
+["geometry","応用","相似比3:4の立体の体積比は？","27:64",["3:4","9:16","27:64","81:256"],"体積比は相似比の3乗。"],
+["geometry","応用","円周角が35°のとき、同じ弧に対する中心角は？","70°",["35°","55°","70°","105°"],"同じ弧に対する中心角は円周角の2倍。"],
+["solids","基礎","底面積8cm²、高さ7cmの柱体の体積は？","56cm³",["15cm³","49cm³","56cm³","64cm³"],"柱体の体積=底面積×高さ=8×7。"],
+["solids","標準","半径3cm、高さ5cmの円柱の体積は？（πを使う）","45πcm³",["15πcm³","30πcm³","45πcm³","90πcm³"],"πr²h=π×3²×5=45π。"],
+["solids","応用","1辺4cmの立方体の対角線の長さは？","4√3cm",["4√2cm","4√3cm","8cm","12cm"],"空間対角線の2乗は4²+4²+4²=48。"],
+["probability","基礎","公平なさいころで3以下が出る確率は？","1/2",["1/3","1/2","2/3","1/6"],"1,2,3の3通り/全6通り=1/2。"],
+["probability","基礎","硬貨を2回投げるとき、結果は全部で何通り？","4通り",["2通り","3通り","4通り","6通り"],"表表・表裏・裏表・裏裏の4通り。"],
+["probability","標準","赤玉3個、白玉2個から1個を無作為に取る。赤の確率は？","3/5",["2/5","1/2","3/5","2/3"],"全5個のうち赤が3個。"],
+["probability","標準","1,2,3のカードから2枚を順に戻さず引く。順序を区別した結果は？","6通り",["3通り","4通り","6通り","9通り"],"1枚目3通り、2枚目2通りで3×2=6。"],
+["probability","応用","2個のさいころを投げるとき、目の和が7となる確率は？","1/6",["1/12","1/6","1/4","1/3"],"有利な組は(1,6)から(6,1)の6通り、全36通り。"],
+["data","基礎","2,4,9の中央値は？","4",["2","4","5","9"],"小さい順に並んだ3個の真ん中は4。"],
+["data","基礎","2,4,6,8の平均は？","5",["4","5","6","20"],"合計20を4個で割る。"],
+["data","標準","データ1,2,2,3,7の最頻値は？","2",["1","2","3","7"],"最も多く出現する値は2。"],
+["data","標準","データ3,5,8,10の範囲は？","7",["5","7","8","13"],"最大値10−最小値3=7。"],
+["data","応用","データ2,4,6,8,10の第1四分位数は？","3",["2","3","4","6"],"中央値6を除いた下半分2,4の中央値は(2+4)/2=3。"],
+["applications","基礎","時速60kmで2.5時間進む距離は？","150km",["24km","120km","150km","180km"],"距離=速さ×時間=60×2.5。"],
+["applications","基礎","定価2000円の商品を15%引きで買う。代金は？","1700円",["300円","1500円","1700円","1850円"],"割引額300円、2000−300=1700円。"],
+["applications","標準","Aは1人で6時間、Bは1人で3時間で仕事を終える。2人で行うと何時間？","2時間",["1時間","2時間","3時間","4.5時間"],"1時間にAは1/6、Bは1/3。合計1/2なので2時間。"],
+["applications","標準","ある数の3倍から8を引くと16。ある数は？","8",["6","8","10","12"],"3x−8=16、3x=24、x=8。"],
+["applications","応用","大人2人と子ども3人で合計2600円。大人は子どもより300円高い。子ども1人の料金は？","400円",["300円","400円","500円","600円"],"子どもをx円とすると2(x+300)+3x=2600。5x=2000でx=400。"],
+["applications","応用","1からnまでの整数の和が55。nは？","10",["9","10","11","12"],"1+…+n=n(n+1)/2=55。n=10。"]
+].map((x,i)=>({id:"q"+i,unit:x[0],level:x[1],q:x[2],answer:x[3],choices:x[4],explain:x[5]}));
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const KEY="mathAcademySingleIndexV2";
+let state={review:[],history:[],road:[],lastPref:"埼玉県"};
+try{state={...state,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){};updateHeader()}
+function updateHeader(){$("#reviewCount").textContent=state.review.length;$("#statAnswered").textContent=state.history.length;$("#pAnswered")&&($("#pAnswered").textContent=state.history.length);$("#pCorrect")&&($("#pCorrect").textContent=state.history.filter(x=>x.ok).length);$("#pRate")&&($("#pRate").textContent=(state.history.length?Math.round(state.history.filter(x=>x.ok).length/state.history.length*100):0)+"%")}
+function go(page){const el=$("#page-"+page);if(!el)return;$$(".page").forEach(x=>x.classList.remove("active"));el.classList.add("active");$$(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===page));$("#sidebar").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"});if(page==="review")renderReview();if(page==="progress")renderProgress();if(page==="units")renderUnits()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-page],[data-go]");if(b){e.preventDefault();go(b.dataset.page||b.dataset.go)}});
+$("#menuToggle").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
+function unitName(id){return UNITS.find(x=>x.id===id)?.name||id}
+function renderHomeUnits(){ $("#homeUnits").innerHTML=UNITS.slice(0,6).map(u=>'<article class="card unit-card" data-unit="'+u.id+'"><div class="tag">'+u.level+'</div><h3>'+u.icon+' '+u.name+'</h3><p class="muted">'+u.desc+'</p><button class="btn light" data-open-unit="'+u.id+'">学習する →</button></article>').join("");}
+function renderUnits(){let q=($("#unitSearch")?.value||"").trim().toLowerCase();$("#unitGrid").innerHTML=UNITS.filter(u=>(u.name+u.desc).toLowerCase().includes(q)).map(u=>'<article class="card unit-card" data-open-unit="'+u.id+'"><div class="tag">'+u.level+'</div><h3>'+u.icon+' '+u.name+'</h3><p class="muted">'+u.desc+'</p><p><b>'+BANK.filter(x=>x.unit===u.id).length+'問以上の基本問題</b></p><button class="btn light" data-open-unit="'+u.id+'">内容を見る →</button></article>').join("");}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-open-unit]");if(!b)return;const id=b.dataset.openUnit;const u=UNITS.find(x=>x.id===id);go("units");$("#unitDetail").innerHTML='<div class="card"><div class="tag">'+u.level+'</div><h2>'+u.icon+' '+u.name+'</h2><p>'+u.desc+'</p><h3>この分野のポイント</h3><p>まず公式・解法図鑑で使える条件を確認し、次に一問一答で定着度を確認しよう。間違えた問題は復習リストに登録できます。</p><button class="btn" data-filter-quiz="'+id+'">この分野を演習 →</button> <button class="btn light" data-filter-formula="'+id+'">公式を確認 →</button></div><div class="card"><h3>この分野の公式</h3>'+FORMULAS.filter(f=>f.unit===id).map(f=>'<div class="item"><h3>'+f.title+'</h3><div class="formula">'+f.formula+'</div><p>'+f.condition+'</p><p class="muted">'+f.example+'</p></div>').join("")+'</div>'}
+);
+document.addEventListener("click",e=>{let b=e.target.closest("[data-filter-quiz],[data-filter-formula]");if(!b)return;if(b.dataset.filterQuiz){go("quiz");$("#quizTopic").value=b.dataset.filterQuiz;startQuiz()}else{go("formulas");$("#formulaFilter").value=b.dataset.filterFormula;renderFormulas()}});
+function renderFormulas(){const q=($("#formulaSearch").value||"").toLowerCase(),f=$("#formulaFilter").value;const arr=FORMULAS.filter(x=>(f==="all"||x.unit===f)&&JSON.stringify(x).toLowerCase().includes(q));$("#formulaList").innerHTML=arr.map(x=>'<article class="card"><div class="tag">'+unitName(x.unit)+'</div><h3>'+x.title+'</h3><div class="formula">'+x.formula+'</div><p><b>使える条件：</b>'+x.condition+'</p><p><b>使い方：</b>'+x.how+'</p><p><b>注意：</b>'+x.caution+'</p><p class="muted"><b>例：</b>'+x.example+'</p></article>').join("")||'<div class="empty">該当する公式はありません。</div>'}
+UNITS.forEach(u=>{$("#quizTopic").insertAdjacentHTML("beforeend",'<option value="'+u.id+'">'+u.name+'</option>');$("#formulaFilter").insertAdjacentHTML("beforeend",'<option value="'+u.id+'">'+u.name+'</option>')});
+$("#formulaSearch").addEventListener("input",renderFormulas);$("#formulaFilter").addEventListener("change",renderFormulas);$("#unitSearch").addEventListener("input",renderUnits);
+function shuffled(arr,seed){let a=arr.slice(),n=seed>>>0;for(let i=a.length-1;i>0;i--){n=(n*1664525+1013904223)>>>0;let j=n%(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+function seedFor(s){let n=2166136261;for(let i=0;i<s.length;i++)n=Math.imul(n^s.charCodeAt(i),16777619);return n>>>0}
+let sessions={quiz:null,practice:null,mock:null};
+function makeSession(kind,arr){sessions[kind]={items:arr,index:0,correct:0,answered:false,results:[]};renderQuestion(kind)}
+function startQuiz(){let unit=$("#quizTopic").value,level=$("#quizLevel").value,count=Number($("#quizCount").value);let arr=BANK.filter(q=>(unit==="all"||q.unit===unit)&&(level==="all"||q.level===level));arr=shuffled(arr,Date.now()).slice(0,count);makeSession("quiz",arr)}
+$("#quizStart").onclick=startQuiz;
+function renderQuestion(kind){let s=sessions[kind],root=$("#"+(kind==="quiz"?"quizCard":kind==="practice"?"practiceCard":"mockCard"));if(!s||!s.items.length){root.innerHTML='<div class="empty">この条件の問題はありません。難易度を変更してください。</div>';return}
+if(s.index>=s.items.length){root.innerHTML='<div class="qtop"><span>演習終了</span><span>結果</span></div><h2>おつかれさま！</h2><div class="formula">'+s.correct+' / '+s.items.length+' 問正解（'+Math.round(s.correct/s.items.length*100)+'%）</div><p>'+(s.correct/s.items.length>=.8?'よくできました。応用問題にも挑戦しよう。':s.correct/s.items.length>=.5?'間違えた問題の解説を見直して再挑戦しよう。':'公式・解法図鑑で基礎を確認してから再挑戦しよう。')+'</p><button class="btn" data-restart="'+kind+'">同じ条件でもう一度</button> <button class="btn light" data-go="review">復習リストを見る</button>';return}
+const q=s.items[s.index];s.answered=false;root.innerHTML='<div class="qtop"><span>'+unitName(q.unit)+' · '+q.level+'</span><span>問題 '+(s.index+1)+' / '+s.items.length+'</span></div><div class="progress"><span style="width:'+Math.round(s.index/s.items.length*100)+'%"></span></div><div class="question">'+q.q+'</div><div class="choices">'+shuffled(q.choices,seedFor(q.id+kind+s.index)).map(c=>'<button class="choice" data-answer="'+encodeURIComponent(c)+'">'+c+'</button>').join("")+'</div><div class="feedback" id="'+kind+'Feedback"></div><div class="toolbar"><button class="btn outline" data-save-q="'+q.id+'" data-kind="'+kind+'">☆ 復習に追加</button><button class="btn" id="'+kind+'Next" disabled>次の問題 →</button></div><p class="muted small">正解を選ぶと解説が表示されます。選択肢の並び順は演習ごとに変わります。</p>';
+root.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>answerQuestion(kind,decodeURIComponent(b.dataset.answer))));$("#"+kind+"Next").onclick=()=>{s.index++;renderQuestion(kind)}}
+function answerQuestion(kind,value){const s=sessions[kind];if(!s||s.answered)return;s.answered=true;const q=s.items[s.index],ok=value===q.answer;if(ok)s.correct++;s.results.push({id:q.id,ok});state.history.push({id:q.id,unit:q.unit,ok,at:Date.now(),kind});save();const fb=$("#"+kind+"Feedback");fb.className="feedback show";fb.innerHTML='<b>'+(ok?'正解！':'不正解。正解は「'+q.answer+'」')+'</b><p>'+q.explain+'</p><p class="small muted">分野：'+unitName(q.unit)+' ／ '+q.level+'</p>';$("#"+kind+"Next").disabled=false;$$('#'+(kind==="quiz"?"quizCard":kind==="practice"?"practiceCard":"mockCard")+' [data-answer]').forEach(b=>{b.disabled=true;if(decodeURIComponent(b.dataset.answer)===q.answer)b.style.borderColor="var(--green)"});updateHeader();renderProgress()}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-save-q]");if(b){const id=b.dataset.saveQ;if(!state.review.includes(id)){state.review.push(id);save()}b.textContent="✓ 復習に保存";b.disabled=true;renderReview()}const r=e.target.closest("[data-restart]");if(r){const k=r.dataset.restart;if(k==="quiz")startQuiz();if(k==="practice")startPractice();if(k==="mock")startMock()}});
+function renderReview(){let arr=state.review.map(id=>BANK.find(q=>q.id===id)).filter(Boolean);$("#reviewList").innerHTML=arr.length?arr.map(q=>'<article class="card"><div class="tag">'+unitName(q.unit)+' · '+q.level+'</div><h3>'+q.q+'</h3><p><b>答え：</b>'+q.answer+'</p><p>'+q.explain+'</p><button class="btn light" data-remove-review="'+q.id+'">復習から外す</button></article>').join(""):'<div class="card empty">まだ復習問題はありません。演習中に「復習に追加」を押すとここに保存されます。</div>'}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-remove-review]");if(b){state.review=state.review.filter(x=>x!==b.dataset.removeReview);save();renderReview()}});
+$("#clearReview").onclick=()=>{if(confirm("復習リストを空にしますか？")){state.review=[];save();renderReview()}};
+function renderProgress(){updateHeader();const hist=state.history;let topics=UNITS.map(u=>{let a=hist.filter(x=>x.unit===u.id);return {...u,total:a.length,correct:a.filter(x=>x.ok).length}}).filter(x=>x.total);$("#topicStats").innerHTML=topics.length?topics.map(x=>'<div class="item"><b>'+x.name+'</b><p class="muted small">'+x.correct+' / '+x.total+' 問正解</p><div class="progress"><span style="width:'+(x.total?x.correct/x.total*100:0)+'%"></span></div></div>').join(""):'<div class="empty">まだ解答履歴がありません。まずは一問解いてみよう。</div>'}
+$("#resetStats").onclick=()=>{if(confirm("学習記録を削除しますか？復習リストは残ります。")){state.history=[];save();renderProgress()}};
+function fillPrefs(){const s=$("#prefSelect");s.innerHTML=PREFS.map(p=>'<option>'+p+'</option>').join("");s.value=PREFS.includes(state.lastPref)?state.lastPref:"埼玉県";updatePrefNote()}
+function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/nyuushi/kakomon.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/exam/past_questions","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/press/2024/koukou/nyuushi.html"};return map[pref]||"https://resemom.jp/pages/public-highschool-exam/index.html"}
+function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();$("#prefNote").innerHTML='<b>'+p+' の演習セット</b><br>この県を選んだ状態で、問題の分野構成・出題順・セットを切り替えます。問題は入試範囲を意識したオリジナル問題です。県固有の最新出題傾向を公式資料で確認できていない部分は、傾向を再現したと断定しません。<br><span class="small">公式過去問を確認する場合は「県の入試情報を確認」を利用してください。</span>'}
+fillPrefs();$("#prefSelect").addEventListener("change",updatePrefNote);$("#officialLink").onclick=()=>window.open(officialUrl($("#prefSelect").value),"_blank","noopener");
+function startPractice(){const p=$("#prefSelect").value,level=$("#practiceLevel").value,count=Number($("#practiceCount").value);state.lastPref=p;save();let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,seedFor(p+new Date().toDateString()+level)).slice(0,count);makeSession("practice",arr)}
+$("#practiceStart").onclick=startPractice;
+function startMock(){let level=$("#mockLevel").value,count=Number($("#mockCount").value);let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,Date.now()).slice(0,count);makeSession("mock",arr)}
+$("#mockStart").onclick=startMock;
+renderHomeUnits();renderUnits();renderFormulas();updateHeader();renderProgress();
+</script></body></html>
