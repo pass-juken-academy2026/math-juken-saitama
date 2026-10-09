@@ -21,7 +21,7 @@
 <div class="stats"><div class="stat"><small>学習分野</small><strong>8分野</strong><small>中学数学を横断</small></div><div class="stat"><small>演習問題</small><strong id="statQuestions">46問</strong><small>生成問題を含む</small></div><div class="stat"><small>解答済み</small><strong id="statAnswered">0</strong><small>この端末に保存</small></div></div>
 <div class="section-head"><div><h2>どこから勉強する？</h2><p>英語学習サイトのように、分野を選んで練習・復習できる構成。</p></div><button class="btn light" data-go="units">全分野 →</button></div><div class="grid3" id="homeUnits"></div>
 <div class="section-head"><div><h2>今日のおすすめ</h2><p>苦手分野を見つけて、解説まで確認しよう。</p></div></div><div class="grid2"><article class="card"><h3>🧭 都道府県別 入試演習</h3><p class="muted">地域とレベルを選び、専用の演習セットに挑戦。</p><button class="btn light" data-go="practice">演習を選ぶ</button></article><article class="card"><h3>📈 学習記録</h3><p class="muted">解答数・正答率・復習リストをチェック。</p><button class="btn light" data-go="progress">記録を見る</button></article></div>
-<div class="notice">大切なお知らせ：このサイトの問題はオリジナル練習問題です。都道府県別の出題傾向を完全再現したり、公式過去問そのものを掲載したりするものではありません。各県の公式情報を確認するリンクも用意しています。</div></section>
+<div class="notice"><b>運営・著作権について</b><br>本サイトは個人制作の学習支援サイトであり、都道府県・教育委員会・学校などの公的機関とは関係ありません。公式に認定・監修されたサイトではありません。<br>掲載問題は学習用のオリジナル練習問題として作成しています。公式過去問そのものを転載することを目的としていません。問題・解説・図表などについて権利上の疑義が見つかった場合は、公開を停止・修正します。公式の問題・正答・出題方針を確認するときは、各自治体の公式ページを参照してください。<br><span class="small">学習履歴・復習リストは、このブラウザの保存領域に保存されます。本サイトから外部サーバーへ送信する機能は実装していません。ブラウザのデータ消去などにより記録が失われる場合があります。</span></div></section>
 <section class="page" id="page-units"><h1 class="page-title">単元別学習</h1><p class="lead">分野を選んで、要点を確認してから問題を解こう。</p><input id="unitSearch" class="search" placeholder="単元を検索（例：相似、確率）"><div class="grid3" id="unitGrid"></div><div id="unitDetail"></div></section>
 <section class="page" id="page-formulas"><h1 class="page-title">公式・解法図鑑</h1><p class="lead">公式、使える条件、考え方、注意点、例をまとめて検索できます。</p><div class="toolbar"><input id="formulaSearch" class="search" placeholder="公式・キーワードを検索"><select id="formulaFilter" class="answer-input"><option value="all">すべての分野</option></select></div><div id="formulaList"></div></section>
 <section class="page" id="page-quiz"><h1 class="page-title">一問一答</h1><p class="lead">分野・難易度を選択。正誤判定のあとに根拠と解説が表示されます。</p><div class="card"><div class="toolbar"><label class="field">分野<select id="quizTopic"><option value="all">すべて</option></select></label><label class="field">難易度<select id="quizLevel"><option value="all">すべて</option><option>基礎</option><option>標準</option><option>応用</option></select></label><label class="field">問題数<select id="quizCount"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></label><button class="btn" id="quizStart">演習開始</button></div></div><div class="card" id="quizCard"><div class="empty">条件を選んで「演習開始」を押してね。</div></div></section>
@@ -244,7 +244,36 @@ $("#runSelfTest").onclick=()=>{
 };
 $("#resetStats").onclick=()=>{if(confirm("学習記録を削除しますか？復習リストは残ります。")){state.history=[];save();renderProgress()}};
 function fillPrefs(){const s=$("#prefSelect");s.innerHTML=PREFS.map(p=>'<option>'+p+'</option>').join("");s.value=PREFS.includes(state.lastPref)?state.lastPref:"埼玉県";updatePrefNote()}
-function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/nyushi/r9nyushijyoho.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/ability_test/problem_and_answer/release20260221_n01","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen/gakuryokukensa/mondai.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/nyuushi/koukou/r8/index.html","宮城県":"https://www.pref.miyagi.jp/soshiki/koukyou/kakomon-ko-nyushi-r8.html","秋田県":"https://www.pref.akita.lg.jp/pages/archive/94329"};return map[pref]||("https://www.google.com/search?q="+encodeURIComponent(pref+" 公立高校 入試 数学 教育委員会 公式"))}
+function officialUrl(pref){
+ const map={
+ "北海道":"https://www.koukou.hokkaido-c.ed.jp/gakuryokukensa/gakuryoku.html",
+ "埼玉県":"https://www.pref.saitama.lg.jp/f2208/r8nyuushi-jouhou.html",
+ "東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/ability_test/problem_and_answer/release20260221_n01",
+ "神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen/gakuryokukensa/r8.html",
+ "千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/nyuushi/koukou/r8/r8honken1seikai.html",
+ "宮城県":"https://www.pref.miyagi.jp/soshiki/koukyou/kakomon-ko-nyushi-r8.html",
+ "秋田県":"https://www.pref.akita.lg.jp/pages/archive/94329",
+ "長野県":"https://www.pref.nagano.lg.jp/kyoiku/kyogaku/saiyo-nyuushi/shiken/ko/r8koukigakuryokukensa.html",
+ "岐阜県":"https://www.pref.gifu.lg.jp/site/edu/379617.html",
+ "愛知県":"https://www.pref.aichi.jp/soshiki/kotogakko/r08nyuushimonndai.html"
+ };
+ const domains={
+ "青森県":"pref.aomori.lg.jp","岩手県":"pref.iwate.jp","山形県":"pref.yamagata.jp","福島県":"pref.fukushima.lg.jp",
+ "茨城県":"pref.ibaraki.jp","栃木県":"pref.tochigi.lg.jp","群馬県":"pref.gunma.jp","新潟県":"pref.niigata.lg.jp",
+ "富山県":"pref.toyama.jp","石川県":"pref.ishikawa.lg.jp","福井県":"pref.fukui.lg.jp","山梨県":"pref.yamanashi.jp",
+ "静岡県":"pref.shizuoka.jp","三重県":"pref.mie.lg.jp","滋賀県":"pref.shiga.lg.jp","京都府":"pref.kyoto.jp",
+ "大阪府":"pref.osaka.lg.jp","兵庫県":"pref.hyogo.lg.jp","奈良県":"pref.nara.jp","和歌山県":"pref.wakayama.lg.jp",
+ "鳥取県":"pref.tottori.lg.jp","島根県":"pref.shimane.lg.jp","岡山県":"pref.okayama.jp","広島県":"pref.hiroshima.lg.jp",
+ "山口県":"pref.yamaguchi.lg.jp","徳島県":"pref.tokushima.lg.jp","香川県":"pref.kagawa.lg.jp","愛媛県":"pref.ehime.jp",
+ "高知県":"pref.kochi.lg.jp","福岡県":"pref.fukuoka.lg.jp","佐賀県":"pref.saga.lg.jp","長崎県":"pref.nagasaki.jp",
+ "熊本県":"pref.kumamoto.jp","大分県":"pref.oita.jp","宮崎県":"pref.miyazaki.lg.jp","鹿児島県":"pref.kagoshima.jp",
+ "沖縄県":"pref.okinawa.jp"
+ };
+ if(map[pref])return map[pref];
+ const domain=domains[pref];
+ const query=domain?pref+" 公立高校 入試 数学 site:"+domain:pref+" 公立高校 入試 数学 教育委員会 公式";
+ return "https://www.google.com/search?q="+encodeURIComponent(query)
+}
 function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県専用の演習セットを生成します。都道府県・日付・難易度に応じて問題の組み合わせと順序が変わります。公式傾向を個別確認できている県以外は、実際の出題傾向を再現したものではありません。問題は中学数学の範囲に沿ったオリジナル問題です。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";if(p==="神奈川県")detail="神奈川県向け：県公式ページに令和8年度の共通選抜学力検査問題・正答表・マークシート解答用紙が公開されています。公式資料を見て形式を確認してください。このサイトの問題はオリジナル問題です。";if(p==="千葉県")detail="千葉県向け：県教育委員会の入試情報ページから実施方針・過去の情報を確認できます。県の数学出題方針は基礎的技能に加え、論理的な考察や表現力も重視すると公表されています。このサイトの問題はオリジナル問題です。";if(p==="宮城県")detail="宮城県向け：県教育委員会の令和8年度入試ページに数学の問題・解答用紙・正答表と出題方針が公開されています。演習はその形式を確認する参考にしつつ、問題自体はオリジナルです。";if(p==="秋田県")detail="秋田県向け：県公式ページで令和8年度数学の学力検査問題・解答用紙・採点基準を確認できます。演習問題は本サイト独自のオリジナル問題です。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の公式入試情報を探す」を利用してください。</span>"}
 fillPrefs();$("#prefSelect").addEventListener("change",updatePrefNote);$("#officialLink").onclick=()=>window.open(officialUrl($("#prefSelect").value),"_blank","noopener");
 function startPractice(){
