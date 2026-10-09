@@ -55,9 +55,9 @@ footer{text-align:center;color:var(--muted);font-size:.84rem;padding:20px}
 <div class="card"><span class="pill">5分で練習</span><h3>一問一答</h3><p>ランダム問題を解いて、解き方を確認しよう。</p><button class="primary" data-go="mixed">問題を解く</button></div>
 <div class="card"><span class="pill">苦手を克服</span><h3>範囲を選んで演習</h3><p>方程式、関数、確率など、練習したい分野に集中。</p><button data-go="range">分野を選ぶ</button></div>
 <div class="card"><span class="pill">入試対策</span><h3>入試形式・ミニ模試</h3><p>基礎から応用まで、時間を意識して取り組もう。</p><button data-go="exam">入試形式へ</button></div>
-</div><div class="formula"><strong>学習記録</strong><div id="dashboardStats">正解数：0　/　復習待ち：0</div><div class="progress"><div id="homeProgress"></div></div><small class="muted">記録はこの端末・ブラウザ内に保存。別の端末とは同期されません。</small></div><p class="muted">※このサイトの問題は学習用に作成したオリジナル問題です。埼玉県の過去問そのものではありません。</p></section>
+</div><div class="formula"><strong>学習記録</strong><div id="dashboardStats">正解数：0　/　復習待ち：0</div><div class="progress"><div id="homeProgress"></div></div><small class="muted">記録はこの端末・ブラウザ内に保存。別の端末とは同期されません。</small></div><div class="formula"><strong>利用前の注意・免責事項</strong><ul><li>このサイトは個人制作の学習補助教材です。埼玉県教育委員会・学校・出版社などの公式サイトではなく、公式機関との提携・監修を示すものではありません。</li><li>掲載問題は学習用のオリジナル問題として作成しています。実際の入試問題や特定の教科書の転載ではありません。誤りや既存教材との類似に気づいた場合は、利用を中止して確認し、必要に応じて修正します。</li><li>公式・解法は中学校数学の一般的な学習内容に基づきます。式や図形の条件（例：直角三角形、x≠0、同様に確からしい場合、相似な図形）を満たす場合に限り使えるものがあります。各説明の条件を確認してください。</li><li>計算結果・解説には誤りが含まれる可能性があります。学校の教科書・先生の説明などと照合し、重要な判断ではこのサイトだけを根拠にしないでください。</li><li>学習記録は、対応ブラウザで利用できる場合に限り、この端末のブラウザ内に保存されます。別端末とは同期されず、ブラウザのデータ削除で消えることがあります。保存機能が無効な環境では記録が保存されない場合があります。</li><li>本サイトは広告・会員登録・支払い機能を備えていません。今後機能を追加する場合は、個人情報や利用条件に関する説明も更新します。</li><li>本サイトの利用によって生じた学習上の不利益などについて、制作者が法律上負う責任を一律に免除する趣旨ではありません。</li></ul></div><p class="muted">※このサイトの問題は学習用のオリジナル問題です。埼玉県の過去問そのものではありません。</p></section>
 
-<section class="panel page hidden" id="page-formulas"><div class="eyebrow">REFERENCE</div><h2 class="section-title">公式一覧</h2><p class="sub">まず公式の形を覚え、次に数字を入れて使う練習をしよう。</p><label for="formulaFilter">分野で絞り込む</label><select id="formulaFilter"><option value="all">すべて</option><option>計算・展開</option><option>方程式</option><option>関数</option><option>図形</option><option>確率・データ</option></select><div id="formulaList"></div></section>
+<section class="panel page hidden" id="page-formulas"><div class="eyebrow">REFERENCE</div><h2 class="section-title">公式一覧</h2><p class="sub">まず公式の形を覚え、次に数字を入れて使う練習をしよう。</p><label for="formulaFilter">分野で絞り込む</label><select id="formulaFilter"><option value="all">すべて</option><option>計算・展開</option><option>方程式</option><option>関数</option><option>図形</option><option>確率・データ</option></select><div id="formulaList"></div><h3 class="section-title" style="margin-top:28px">公式の次に確認！裏技・時短テク一覧</h3><p class="sub">裏技は条件がそろうときだけ使える近道。条件を満たさない問題では、基本の解き方に戻ろう。</p><div id="trickList"></div></section>
 
 <section class="panel page hidden" id="page-substitution"><div class="eyebrow">PRACTICE</div><h2 class="section-title">公式代入練習</h2><p class="sub">式に数を代入する練習。答えを入力してチェックしよう。</p><div id="subQuestion"></div><div class="actions"><button class="primary" id="checkSub">答え合わせ</button><button id="nextSub">次の問題</button></div><div id="subFeedback" class="feedback" aria-live="polite"></div></section>
 
@@ -82,7 +82,7 @@ footer{text-align:center;color:var(--muted);font-size:.84rem;padding:20px}
 <section class="panel page hidden" id="page-review"><div class="eyebrow">REVIEW</div><h2 class="section-title">間違い復習</h2><p class="sub">間違えた問題をもう一度確認しよう。</p><div id="reviewList"></div><div class="actions"><button id="clearReview">復習リストをクリア</button></div></section>
 
 <section class="panel page hidden" id="page-advanced"><div class="eyebrow">CHALLENGE</div><h2 class="section-title">発展問題</h2><p class="sub">標準問題が解けるようになったら挑戦。途中式を書きながら考えよう。</p><div class="question"><p class="qtext">ある一次関数は点 (2, 7) と (−1, −2) を通る。傾き a は？</p><div class="options"><button class="option" data-adv="0">2</button><button class="option" data-adv="1">3</button><button class="option" data-adv="2">4</button></div><div id="advFeedback" class="feedback"></div></div><div class="question"><p class="qtext">x² − 5x + 6 を因数分解すると？</p><div class="options"><button class="option" data-fact="0">(x−1)(x−6)</button><button class="option" data-fact="1">(x−2)(x−3)</button><button class="option" data-fact="2">(x+2)(x+3)</button></div><div id="factFeedback" class="feedback"></div></div></section>
-</div></div></main><footer>埼玉高校入試 数学トレーニング · 学習用オリジナル教材</footer>
+</div></div></main><footer>埼玉高校入試 数学トレーニング · 学習用オリジナル教材<br>非公式の学習補助サイトです。掲載内容の正確性・最新性を完全に保証するものではありません。<br><a href="#home" style="color:inherit">注意事項・免責事項はホーム内をご確認ください</a></footer>
 <script>
 const formulas=[
 {cat:"計算・展開",name:"分配法則",expr:"a(b+c)=ab+ac",note:"かっこの外の数を中の各項にかける。"},
@@ -103,7 +103,50 @@ const formulas=[
 {cat:"確率・データ",name:"確率",expr:"起こる場合の数÷すべての場合の数",note:"同様に確からしい場合。"},
 {cat:"確率・データ",name:"平均値",expr:"データの合計÷データの個数",note:"外れ値の影響を受けることがある。"},
 {cat:"確率・データ",name:"範囲",expr:"最大値−最小値",note:"データの散らばりの簡単な指標。"}
+
+,{cat:"計算・展開",name:"平方根の積",expr:"√a × √b = √(ab)",note:"a≧0、b≧0 のとき。平方根の基本性質。"}
+,{cat:"計算・展開",name:"平方根の商",expr:"√a ÷ √b = √(a/b)",note:"a≧0、b＞0 のとき。分母が0にならないこと。"}
+,{cat:"計算・展開",name:"平方根の有理化",expr:"1/√a = √a/a",note:"a＞0 のとき。分母・分子に√aをかける。"}
+,{cat:"計算・展開",name:"因数分解①",expr:"x²+(p+q)x+pq=(x+p)(x+q)",note:"p+q が x の係数、pq が定数項になる組を探す。"}
+,{cat:"計算・展開",name:"因数分解②",expr:"x²−a²=(x+a)(x−a)",note:"差の平方。和と差の積の逆向き。"}
+,{cat:"方程式",name:"連立方程式",expr:"x+y=p、x−y=q → x=(p+q)/2、y=(p−q)/2",note:"この形のとき。一般には加減法・代入法を使う。"}
+,{cat:"方程式",name:"二次方程式（平方完成）",expr:"x²=a → x=±√a",note:"実数解を考えるとき a≧0 が必要。a＜0 なら実数解はない。"}
+,{cat:"関数",name:"比例の変化の割合",expr:"y=ax の変化の割合=a",note:"比例の式 y=ax で、x の増加量が0でない区間。"}
+,{cat:"関数",name:"一次関数の変化の割合",expr:"(yの増加量)/(xの増加量)=a",note:"y=ax+b で x の増加量が0でないとき。傾き a と等しい。"}
+,{cat:"関数",name:"二乗に比例する関数",expr:"y=ax²",note:"中学範囲で扱う基本形。aは0でない定数として考えることが多い。"}
+,{cat:"関数",name:"二乗に比例する関数の変化",expr:"y=ax² で x が m→n：Δy=a(n²−m²)",note:"xの増加量 n−m そのものではない。値を代入して差を取る。"}
+,{cat:"図形",name:"平行四辺形の面積",expr:"底辺×高さ",note:"高さは底辺に垂直な距離。斜辺の長さではない。"}
+,{cat:"図形",name:"台形の面積",expr:"(上底+下底)×高さ÷2",note:"上底・下底は平行な2辺。高さは垂直な距離。"}
+,{cat:"図形",name:"円すいの体積",expr:"底面積×高さ÷3",note:"高さは頂点から底面へ垂直に下ろした長さ。母線ではない。"}
+,{cat:"図形",name:"球の体積",expr:"4/3 × πr³",note:"rは半径。単位は体積なので cm³ など。"}
+,{cat:"図形",name:"球の表面積",expr:"4πr²",note:"rは半径。円の面積 πr² とは係数が違う。"}
+,{cat:"図形",name:"扇形の弧の長さ",expr:"2πr × 中心角/360°",note:"中心角を度数法で表したとき。"}
+,{cat:"図形",name:"扇形の面積",expr:"πr² × 中心角/360°",note:"中心角を度数法で表したとき。"}
+,{cat:"図形",name:"相似比と面積比",expr:"相似比 m:n → 面積比 m²:n²",note:"対応する辺の比が m:n の相似な図形。"}
+,{cat:"図形",name:"相似比と体積比",expr:"相似比 m:n → 体積比 m³:n³",note:"相似な立体で、対応する長さの比が m:n。"}
+,{cat:"図形",name:"円周角の定理",expr:"同じ弧に対する円周角は等しい",note:"同じ弧を見込む円周角どうしを比べる。中心角は円周角の2倍。"}
+,{cat:"確率・データ",name:"中央値",expr:"データを小さい順に並べた中央の値",note:"個数が偶数なら中央2つの平均。並べ替えてから求める。"}
+,{cat:"確率・データ",name:"相対度数",expr:"その階級の度数÷全体の度数",note:"各階級の相対度数の合計は1（百分率なら100%）。"}
+,{cat:"確率・データ",name:"確率の余事象",expr:"P(Aでない)=1−P(A)",note:"AとAでない場合が全体を重複なく分けるとき。"}
 ];
+
+const tricks=[
+{title:"計算の工夫：10や100に近づける",method:"例：99×7=(100−1)×7=700−7=693",condition:"分配法則で正確に展開できるとき。暗算で済ませても、符号ミスをしないよう式を残す。"},
+{title:"平方の公式を逆向きに使う",method:"x²−25=(x−5)(x+5)",condition:"差が2つの平方数の差になっているとき。x²+25 はこの形にできない。"},
+{title:"因数分解は『和と積』で探す",method:"x²+7x+12 → 和が7、積が12の3と4 → (x+3)(x+4)",condition:"x²の係数が1で、整数の範囲で因数分解できる形のとき。いつでも整数の組が見つかるとは限らない。"},
+{title:"分母を払う",method:"x/3+2=7 → 両辺を3倍して x+6=21",condition:"方程式の両辺全体に同じ0でない数をかける。分数の一部だけにかけない。"},
+{title:"連立方程式で係数をそろえる",method:"2x+y=7、x−y=2 → 2式を足す前にyの係数が逆符号か確認",condition:"加減法では、消したい文字の係数が同じ大きさで符号が反対ならそのまま足せる。そうでなければ式を何倍かする。"},
+{title:"一次関数は2点から傾きを出す",method:"傾き=(yの差)/(xの差)",condition:"2点のx座標が異なること。xの差が0ならこの割り算はできない。差の順序はyもxもそろえる。"},
+{title:"x軸との交点は y=0",method:"y=2x−6 と x軸の交点：0=2x−6 → x=3",condition:"x軸上の点はy座標が0。y軸との交点を求めるときはx=0。"},
+{title:"反比例は積を使う",method:"y=a/x なら xy=a。点(2,6)を通ると a=12",condition:"x≠0。反比例の式であることが分かっているときだけ使う。"},
+{title:"確率は『余事象』で引く",method:"少なくとも1回表が出る確率=1−2回とも裏の確率",condition:"全体が『求める事象』と『その反対』に重複なく分かれるとき。各結果が同様に確からしいか確認。"},
+{title:"図形の面積比は相似比を2乗",method:"辺の比2:3なら面積比4:9",condition:"図形が相似で、対応する辺の比が2:3のとき。相似でない図形には使えない。"},
+{title:"相似な立体の体積比は3乗",method:"辺の比2:3なら体積比8:27",condition:"立体が相似であること。表面積比は2乗、体積比は3乗。混同しない。"},
+{title:"三平方は斜辺を確認してから",method:"直角をはさむ辺が6,8なら斜辺は√(36+64)=10",condition:"直角三角形でのみ使える。cは必ず斜辺（直角の向かい側）。斜辺が不明なときは最長辺を確認。"},
+{title:"平均は『合計÷個数』を逆に使う",method:"平均6、データ5個なら合計は6×5=30",condition:"平均値とデータ個数が分かっているとき。度数や個数の数え間違いに注意。"},
+{title:"割合は基準量を1と考える",method:"20%引きの支払額は定価の80%=0.8倍",condition:"何を基準にした割合かを必ず言葉で確認。割引率をそのまま支払率と取り違えない。"}
+];
+function renderTricks(){const el=document.getElementById("trickList");if(!el)return;el.innerHTML=tricks.map(t=>'<div class="formula"><strong>'+t.title+'</strong><div class="math">'+t.method+'</div><div><b>使える条件：</b>'+t.condition+'</div></div>').join("")}
 const bank=[
 {cat:"calc",label:"計算・展開",q:"3(2x−4) を展開すると？",opts:["6x−4","6x−12","5x−12"],ans:1,why:"3を2xと−4の両方にかけるので、6x−12。"},
 {cat:"calc",label:"計算・展開",q:"(x+3)(x−3) を展開すると？",opts:["x²−9","x²+9","x²−6x+9"],ans:0,why:"和と差の積は x²−3²=x²−9。"},
@@ -115,14 +158,82 @@ const bank=[
 {cat:"geometry",label:"図形",q:"直角三角形の2辺が3cmと4cm。斜辺は？",opts:["5cm","6cm","7cm"],ans:0,why:"3²+4²=9+16=25。斜辺は5cm。"},
 {cat:"probability",label:"確率・データ",q:"袋に赤玉2個、白玉3個。同じ確率で1個取り出すとき赤玉の確率は？",opts:["2/3","2/5","3/5"],ans:1,why:"全部で5個、そのうち赤は2個なので2/5。"},
 {cat:"probability",label:"確率・データ",q:"4, 6, 8, 10 の平均値は？",opts:["6","7","8"],ans:1,why:"合計28を4個で割ると7。"}
+
+,{cat:"calc",label:"計算・展開",q:"−3(2x−5) を展開すると？",opts:["−6x−15","−6x+15","6x−15"],ans:1,why:"−3を両方にかける。−3×2x=−6x、−3×(−5)=+15。符号に注意。"}
+,{cat:"calc",label:"計算・展開",q:"(x+4)² を展開すると？",opts:["x²+16","x²+8x+16","x²+4x+16"],ans:1,why:"(a+b)²=a²+2ab+b²。真ん中は2×x×4=8x。"}
+,{cat:"calc",label:"計算・展開",q:"(2x−3)(2x+3) を展開すると？",opts:["4x²−9","4x²+9","4x²−12x+9"],ans:0,why:"(a−b)(a+b)=a²−b²。ここではa=2x、b=3。"}
+,{cat:"calc",label:"計算・展開",q:"x²+7x+12 を因数分解すると？",opts:["(x+2)(x+6)","(x+3)(x+4)","(x−3)(x−4)"],ans:1,why:"和が7、積が12になる3と4を使う。"}
+,{cat:"calc",label:"計算・展開",q:"√50 を簡単にすると？",opts:["5√2","25√2","2√5"],ans:0,why:"50=25×2 なので √50=√25×√2=5√2。"}
+,{cat:"calc",label:"計算・展開",q:"√12 × √3 は？",opts:["3","6","6√3"],ans:1,why:"√12×√3=√36=6。平方根の積の性質を使う（被開平数は0以上）。"}
+,{cat:"calc",label:"計算・展開",q:"2³×2² は？",opts:["2⁵=32","2⁶=64","4⁵=1024"],ans:0,why:"同じ底の累乗の積は指数を足す。2³×2²=2⁵。"}
+,{cat:"calc",label:"計算・展開",q:"(−2)⁴ は？",opts:["−16","−8","16"],ans:2,why:"かっこ全体を4乗するので (−2)×(−2)×(−2)×(−2)=16。"}
+,{cat:"calc",label:"計算・展開",q:"3/4−1/6 は？",opts:["7/12","2/10","1/2"],ans:0,why:"通分して9/12−2/12=7/12。"}
+,{cat:"calc",label:"計算・展開",q:"比例式 3:5=x:20 の x は？",opts:["12","15","8"],ans:0,why:"3/5=x/20 より5x=60、x=12。比の対応順をそろえる。"}
+,{cat:"equation",label:"方程式",q:"5x−7=18 の x は？",opts:["5","11/5","25"],ans:0,why:"5x=25 なので x=5。"}
+,{cat:"equation",label:"方程式",q:"x/3+2=7 の x は？",opts:["9","15","21"],ans:1,why:"x/3=5、両辺に3をかけてx=15。"}
+,{cat:"equation",label:"方程式",q:"2x+3y=12、x=3 のとき y は？",opts:["1","2","3"],ans:0,why:"6+3y=12 → 3y=6 → y=2。"}
+,{cat:"equation",label:"方程式",q:"x+y=11、x−y=3 のとき (x,y) は？",opts:["(7,4)","(4,7)","(8,3)"],ans:0,why:"2式を足して2x=14、x=7。x+y=11よりy=4。"}
+,{cat:"equation",label:"方程式",q:"2(x+4)=3x−1 の x は？",opts:["7","9","−9"],ans:1,why:"2x+8=3x−1 → x=9。"}
+,{cat:"equation",label:"方程式",q:"x²−9=0 の実数解は？",opts:["x=3のみ","x=−3のみ","x=±3"],ans:2,why:"(x−3)(x+3)=0 なので x=3 または−3。"}
+,{cat:"equation",label:"方程式",q:"x²−5x+6=0 の解は？",opts:["x=1,6","x=2,3","x=−2,−3"],ans:1,why:"(x−2)(x−3)=0 より x=2,3。"}
+,{cat:"equation",label:"方程式",q:"連立方程式 x+y=9、x−y=1 の x は？",opts:["4","5","8"],ans:1,why:"2式を足すと2x=10なのでx=5。"}
+,{cat:"equation",label:"方程式",q:"商品を定価の20%引きで買い、支払額が1,200円。定価は？",opts:["1,400円","1,500円","1,600円"],ans:1,why:"支払額は定価の80%。0.8x=1200よりx=1500。割引後の割合に注意。"}
+,{cat:"equation",label:"方程式",q:"連続する2つの整数の和が41。小さい方は？",opts:["19","20","21"],ans:1,why:"n+(n+1)=41 → 2n=40 → n=20。"}
+,{cat:"function",label:"関数",q:"y=4x−7 の切片は？",opts:["4","−7","7"],ans:1,why:"y=ax+b の b が切片。x=0のときy=b。"}
+,{cat:"function",label:"関数",q:"y=−3x+2 で x が2増えると y はどう変わる？",opts:["6増える","6減る","3減る"],ans:1,why:"傾き−3なので、xの増加量2に対してyの増加量は−3×2=−6。"}
+,{cat:"function",label:"関数",q:"点 (1,4)、(3,10) を通る直線の傾きは？",opts:["2","3","6"],ans:1,why:"(10−4)/(3−1)=6/2=3。xの差が0でない2点を使う。"}
+,{cat:"function",label:"関数",q:"y=2x+1 と y=−x+7 の交点の x 座標は？",opts:["1","2","3"],ans:1,why:"2x+1=−x+7 → 3x=6 → x=2。"}
+,{cat:"function",label:"関数",q:"y=12/x で x=−3 のとき y は？",opts:["−4","4","−36"],ans:0,why:"y=12÷(−3)=−4。反比例ではx≠0。"}
+,{cat:"function",label:"関数",q:"y=ax² が点 (2,12) を通る。a は？",opts:["2","3","6"],ans:1,why:"12=a×2²=4aなのでa=3。"}
+,{cat:"function",label:"関数",q:"y=−2x+6 のグラフが x 軸と交わる点の x 座標は？",opts:["2","3","6"],ans:1,why:"x軸上ではy=0。0=−2x+6よりx=3。"}
+,{cat:"function",label:"関数",q:"一次関数 y=ax+b が右上がりになる条件は？",opts:["a>0","a<0","b>0"],ans:0,why:"傾きaが正ならxが増えるとyも増える。bの符号だけでは決まらない。"}
+,{cat:"function",label:"関数",q:"比例 y=−5x で x=−2 のとき y は？",opts:["−10","−7","10"],ans:2,why:"y=−5×(−2)=10。負×負は正。"}
+,{cat:"function",label:"関数",q:"一次関数 y=3x+b が点 (2,1) を通る。b は？",opts:["−5","−2","5"],ans:0,why:"1=3×2+bよりb=−5。"}
+,{cat:"function",label:"関数",q:"xが2から5へ増え、yが7から16へ増えた。変化の割合は？",opts:["2","3","9"],ans:1,why:"(16−7)/(5−2)=9/3=3。xの増加量で割る。"}
+,{cat:"geometry",label:"図形",q:"底辺10cm、高さ6cmの三角形の面積は？",opts:["30cm²","60cm²","16cm²"],ans:0,why:"10×6÷2=30cm²。高さは底辺に垂直な長さ。"}
+,{cat:"geometry",label:"図形",q:"平行四辺形の底辺8cm、高さ5cm。面積は？",opts:["13cm²","20cm²","40cm²"],ans:2,why:"底辺×高さ=8×5=40cm²。"}
+,{cat:"geometry",label:"図形",q:"上底4cm、下底10cm、高さ3cmの台形の面積は？",opts:["21cm²","42cm²","17cm²"],ans:0,why:"(4+10)×3÷2=21cm²。"}
+,{cat:"geometry",label:"図形",q:"半径4cmの円の円周は？",opts:["4πcm","8πcm","16πcm"],ans:1,why:"2πr=2π×4=8πcm。"}
+,{cat:"geometry",label:"図形",q:"半径2cm、高さ7cmの円柱の体積は？",opts:["14πcm³","28πcm³","56πcm³"],ans:2,why:"底面積π×2²=4π。4π×7=28πcm³。"}
+,{cat:"geometry",label:"図形",q:"半径3cm、高さ4cmの円すいの体積は？",opts:["12πcm³","36πcm³","9πcm³"],ans:0,why:"πr²h÷3=π×9×4÷3=12πcm³。高さは垂直な距離。"}
+,{cat:"geometry",label:"図形",q:"直角三角形の斜辺が13cm、他の辺が5cm。残る辺は？",opts:["8cm","12cm","18cm"],ans:1,why:"残る辺²=13²−5²=169−25=144なので12cm。斜辺が最長。"}
+,{cat:"geometry",label:"図形",q:"相似な図形の辺の比が2:3。面積比は？",opts:["2:3","4:9","8:27"],ans:1,why:"面積比は辺の比を2乗して4:9。相似な図形の場合。"}
+,{cat:"geometry",label:"図形",q:"中心角90°、半径4cmの扇形の面積は？",opts:["2πcm²","4πcm²","8πcm²"],ans:1,why:"円全体の1/4なのでπ×4²×90/360=4πcm²。"}
+,{cat:"geometry",label:"図形",q:"円周角が35°のとき、同じ弧に対する中心角は？",opts:["17.5°","35°","70°"],ans:2,why:"同じ弧に対する中心角は円周角の2倍。"}
+,{cat:"geometry",label:"図形",q:"三角形の内角が45°、65°。残りの角は？",opts:["60°","70°","80°"],ans:1,why:"内角の和は180°なので180−45−65=70°。"}
+,{cat:"geometry",label:"図形",q:"半径5cmの球の表面積は？",opts:["25πcm²","100πcm²","125πcm²"],ans:1,why:"球の表面積は4πr²=4π×25=100πcm²。"}
+,{cat:"geometry",label:"図形",q:"半径3cmの球の体積は？",opts:["12πcm³","36πcm³","27πcm³"],ans:1,why:"4/3πr³=4/3×π×27=36πcm³。"}
+,{cat:"geometry",label:"図形",q:"三角形の合同条件に含まれるものは？",opts:["3組の辺がそれぞれ等しい","3つの角がそれぞれ等しいだけ","周の長さが等しいだけ"],ans:0,why:"3組の辺がそれぞれ等しい、などが合同条件。角だけが等しいと相似までは言えても合同とは限らない。"}
+,{cat:"geometry",label:"図形",q:"平行な2直線に1本の直線が交わるとき、錯角は？",opts:["等しい","和が90°","必ず補角"],ans:0,why:"2直線が平行であることが条件なら、錯角は等しい。平行でないと一般には言えない。"}
+,{cat:"probability",label:"確率・データ",q:"さいころを1回投げる。4以上が出る確率は？",opts:["1/2","1/3","2/3"],ans:0,why:"4,5,6の3通り/全6通り=3/6=1/2。公平なさいころを仮定。"}
+,{cat:"probability",label:"確率・データ",q:"硬貨を2回投げる。表がちょうど1回出る確率は？",opts:["1/4","1/2","3/4"],ans:1,why:"結果は表表、表裏、裏表、裏裏の4通り。同様に確からしいとき2/4=1/2。"}
+,{cat:"probability",label:"確率・データ",q:"データ 2, 4, 5, 9, 10 の中央値は？",opts:["4","5","6"],ans:1,why:"小さい順に並んでいて、5個の中央の3番目は5。"}
+,{cat:"probability",label:"確率・データ",q:"データ 3, 7, 8, 10 の中央値は？",opts:["7","7.5","8"],ans:1,why:"個数が偶数なので中央の2値7と8の平均：(7+8)÷2=7.5。"}
+,{cat:"probability",label:"確率・データ",q:"度数が4、全体の度数が20の階級の相対度数は？",opts:["0.2","0.4","5"],ans:0,why:"相対度数=4÷20=0.2。"}
+,{cat:"probability",label:"確率・データ",q:"赤玉3個、青玉2個から1個を取り出す。青玉でない確率は？",opts:["2/5","3/5","1/5"],ans:1,why:"青玉でないのは赤玉3個なので3/5。各玉を同様に確からしいとする。"}
+,{cat:"probability",label:"確率・データ",q:"平均が6の5個のデータの合計は？",opts:["11","30","36"],ans:1,why:"平均=合計÷個数なので合計=平均×個数=6×5=30。"}
+,{cat:"probability",label:"確率・データ",q:"データ 4, 9, 12, 15 の範囲は？",opts:["11","12","15"],ans:0,why:"範囲=最大値−最小値=15−4=11。"}
+,{cat:"probability",label:"確率・データ",q:"同じ条件で起こる6通りのうち、事象Aが2通り。Aの確率は？",opts:["1/6","1/3","1/2"],ans:1,why:"2/6=1/3。同様に確からしい6通りという条件が必要。"}
+,{cat:"calc",label:"計算・展開",q:"5a−2a+7 を簡単にすると？",opts:["3a+7","7a+7","3a+5"],ans:0,why:"同類項の5aと−2aをまとめて3a。定数7はそのまま。"}
+,{cat:"calc",label:"計算・展開",q:"2(x−3)+4 を簡単にすると？",opts:["2x−2","2x−6","2x+1"],ans:0,why:"2x−6+4=2x−2。分配してから定数項をまとめる。"}
+,{cat:"equation",label:"方程式",q:"3x−4=2x+9 の x は？",opts:["5","13","−13"],ans:1,why:"両辺から2xを引き、両辺に4を足すとx=13。"}
+,{cat:"function",label:"関数",q:"y=5x のグラフは原点を通る？",opts:["必ず通る","a>0のときだけ通る","通らない"],ans:0,why:"比例 y=ax のグラフは (0,0) を通る。"}
+,{cat:"geometry",label:"図形",q:"底辺と高さが同じ三角形と平行四辺形。面積の比は？",opts:["1:1","1:2","2:1"],ans:1,why:"三角形は底辺×高さ÷2、平行四辺形は底辺×高さなので1:2。"}
+,{cat:"probability",label:"確率・データ",q:"さいころを1回投げ、奇数が出る確率は？",opts:["1/6","1/3","1/2"],ans:2,why:"奇数は1,3,5の3通り。公平なさいころなら3/6=1/2。"}
+,{cat:"equation",label:"方程式",q:"ある数xの3倍から4を引くと17。x は？",opts:["7","9","21"],ans:0,why:"3x−4=17 → 3x=21 → x=7。"}
+,{cat:"function",label:"関数",q:"一次関数 y=−x+4 のグラフの y切片は？",opts:["−1","4","−4"],ans:1,why:"y=ax+b の切片はb。ここでは4。"}
+,{cat:"geometry",label:"図形",q:"直角三角形で、2つの直角をはさむ辺が6cmと8cm。斜辺は？",opts:["10cm","12cm","14cm"],ans:0,why:"斜辺²=6²+8²=36+64=100なので10cm。直角三角形でのみ使う。"}
+,{cat:"probability",label:"確率・データ",q:"データ 2, 2, 3, 5, 8 の最頻値は？",opts:["2","3","4"],ans:0,why:"最も多く出る値は2。複数の値が同じ最大回数なら最頻値が複数になることもある。"}
 ];
-let stats=JSON.parse(localStorage.getItem("mathSaitamaStats")||'{"correct":0,"attempts":0,"review":[]}');
-function save(){localStorage.setItem("mathSaitamaStats",JSON.stringify(stats));renderStats()}
+let stats;
+try { stats=JSON.parse(window.localStorage.getItem("mathSaitamaStats")||'{"correct":0,"attempts":0,"review":[]}'); } catch(e) { stats={correct:0,attempts:0,review:[]}; }
+if(!stats || typeof stats!=="object" || !Array.isArray(stats.review)) stats={correct:0,attempts:0,review:[]};
+function save(){try{window.localStorage.setItem("mathSaitamaStats",JSON.stringify(stats));}catch(e){/* 保存不可の環境では画面上だけで学習を続ける */}renderStats()}
 function renderStats(){const el=document.getElementById("dashboardStats");if(el)el.textContent="正解数："+stats.correct+"　/　回答数："+stats.attempts+"　/　復習待ち："+stats.review.length;const p=document.getElementById("homeProgress");if(p)p.style.width=(stats.attempts?Math.round(stats.correct/stats.attempts*100):0)+"%"}
-function page(id){document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x.id!=="page-"+id));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.page)));document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));
+function page(id,updateHash=true){const target=document.getElementById("page-"+id);if(!target)return;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x!==target));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();if(updateHash && location.hash!=="#"+id)history.pushState(null,"","#"+id);window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("[data-page]").forEach(b=>{b.setAttribute("aria-controls","page-"+b.dataset.page);b.addEventListener("click",()=>page(b.dataset.page));});document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));window.addEventListener("popstate",()=>page((location.hash||"#home").slice(1),false));window.addEventListener("hashchange",()=>page((location.hash||"#home").slice(1),false));
 function renderFormulas(){const filter=document.getElementById("formulaFilter").value;document.getElementById("formulaList").innerHTML=formulas.filter(f=>filter==="all"||f.cat===filter).map(f=>'<div class="formula"><strong>'+f.cat+'｜'+f.name+'</strong><div class="math">'+f.expr+'</div><div class="muted">'+f.note+'</div></div>').join("")}
-document.getElementById("formulaFilter").addEventListener("change",renderFormulas);renderFormulas();
+document.getElementById("formulaFilter").addEventListener("change",renderFormulas);renderFormulas();renderTricks();
 let subCurrent=null;
 function newSub(){const n=Math.floor(Math.random()*8)+2;const m=Math.floor(Math.random()*8)+1;const mode=Math.floor(Math.random()*3);if(mode===0)subCurrent={q:"y=3x+2 で x="+n+" のとき、y は？",answer:3*n+2,why:"y=3×"+n+"+2="+(3*n+2)};else if(mode===1)subCurrent={q:"a="+n+"、b="+m のとき、2a+b は？",answer:2*n+m,why:"2×"+n+"+"+m+"="+(2*n+m)};else subCurrent={q:"長方形の縦が"+n+"cm、横が"+m+"cm。面積は？（cm²）",answer:n*m,why:n+"×"+m+"="+(n*m)+" cm²"};document.getElementById("subQuestion").innerHTML='<div class="question"><p class="qtext">'+subCurrent.q+'</p><label for="subAnswer">答え</label><input id="subAnswer" type="number" placeholder="数字を入力"></div>';document.getElementById("subFeedback").textContent=""}
 document.getElementById("nextSub").onclick=newSub;document.getElementById("checkSub").onclick=()=>{if(!subCurrent)return;const v=Number(document.getElementById("subAnswer").value);if(document.getElementById("subAnswer").value===""){document.getElementById("subFeedback").textContent="答えを入力してね。";return}const ok=v===subCurrent.answer;stats.attempts++;if(ok)stats.correct++;else addReview(subCurrent.q,subCurrent.answer,subCurrent.why);save();document.getElementById("subFeedback").innerHTML='<span class="'+(ok?"good":"bad")+'">'+(ok?"正解！":"もう一度確認しよう。")+'</span> '+subCurrent.why};newSub();
@@ -147,4 +258,7 @@ let mockQuestions=[],mockIndex=0,mockScore=0;
 document.getElementById("startMock").onclick=()=>{mockQuestions=[...bank].sort(()=>Math.random()-.5).slice(0,5);mockIndex=0;mockScore=0;showMockQ()};
 function showMockQ(){const area=document.getElementById("mockArea");if(mockIndex>=mockQuestions.length){area.innerHTML='<h3>結果：'+mockScore+' / 5 問正解</h3><p>'+(mockScore===5?"全問正解！すばらしい！":"間違えた問題は復習リストで解き直そう。")+'</p><button class="primary" id="restartMock">もう一度挑戦</button>';document.getElementById("restartMock").onclick=()=>document.getElementById("startMock").click();return}const item=mockQuestions[mockIndex];area.innerHTML='<div class="progress"><div style="width:'+mockIndex/5*100+'%"></div></div><p class="muted">第 '+(mockIndex+1)+' 問 / 5問</p><div class="question"><p class="qtext">'+item.q+'</p><div class="options">'+item.opts.map((o,i)=>'<button class="option" data-mock="'+i+'">'+o+'</button>').join("")+'</div><div class="feedback"></div></div>';area.querySelectorAll("[data-mock]").forEach(b=>b.onclick=()=>{area.querySelectorAll("[data-mock]").forEach(x=>x.disabled=true);const ok=Number(b.dataset.mock)===item.ans;if(ok){mockScore++;stats.correct++}else{addReview(item.q,item.opts[item.ans],item.why);b.classList.add("wrong")}stats.attempts++;save();area.querySelectorAll("[data-mock]")[item.ans].classList.add("correct");area.querySelector(".feedback").innerHTML=(ok?'<span class="good">正解！</span> ':'<span class="bad">不正解。</span> ')+item.why+'<div class="actions"><button class="primary" id="mockNext">次へ</button></div>';document.getElementById("mockNext").onclick=()=>{mockIndex++;showMockQ()}})}
 renderStats();
+const allowedPages=new Set([...document.querySelectorAll(".page")].map(el=>el.id.replace("page-","")));
+const requestedPage=(location.hash||"#home").slice(1).replace(/^page-/,"");
+page(allowedPages.has(requestedPage)?requestedPage:"home",false);
 </script></body></html>
