@@ -99,31 +99,6 @@ footer{text-align:center;color:var(--muted);font-size:.84rem;padding:20px}
 <section class="panel page hidden" id="page-advanced"><div class="eyebrow">CHALLENGE</div><h2 class="section-title">発展問題</h2><p class="sub">標準問題が解けるようになったら挑戦。途中式を書きながら考えよう。</p><div class="question"><p class="qtext">ある一次関数は点 (2, 7) と (−1, −2) を通る。傾き a は？</p><div class="options"><button class="option" data-adv="0">2</button><button class="option" data-adv="1">3</button><button class="option" data-adv="2">4</button></div><div id="advFeedback" class="feedback"></div></div><div class="question"><p class="qtext">x² − 5x + 6 を因数分解すると？</p><div class="options"><button class="option" data-fact="0">(x−1)(x−6)</button><button class="option" data-fact="1">(x−2)(x−3)</button><button class="option" data-fact="2">(x+2)(x+3)</button></div><div id="factFeedback" class="feedback"></div></div></section>
 </div></div></main><footer>埼玉高校入試 数学トレーニング · 学習用オリジナル教材<br>非公式の学習補助サイトです。掲載内容の正確性・最新性を完全に保証するものではありません。<br><a href="#home" style="color:inherit">注意事項・免責事項はホーム内をご確認ください</a></footer>
 <script>
-/* 独立した画面切替処理：メインの学習スクリプトにエラーがあっても、メニューとホームボタンを動かす */
-(function(){
-  function showPage(id, updateHash){
-    var target=document.getElementById("page-"+id);
-    if(!target){return false;}
-    document.querySelectorAll(".page").forEach(function(el){el.classList.toggle("hidden",el!==target);});
-    document.querySelectorAll(".navbtn").forEach(function(el){el.classList.toggle("active",el.getAttribute("data-page")===id);});
-    if(id==="review" && typeof window.renderReview==="function"){window.renderReview();}
-    if(updateHash && location.hash!=="#"+id){history.pushState(null,"","#"+id);}
-    window.scrollTo({top:0,behavior:"smooth"});
-    return true;
-  }
-  document.addEventListener("click",function(event){
-    var nav=event.target.closest("[data-page]");
-    var go=event.target.closest("[data-go]");
-    if(nav){event.preventDefault();showPage(nav.getAttribute("data-page"),true);}
-    else if(go){event.preventDefault();showPage(go.getAttribute("data-go"),true);}
-  });
-  function route(){var id=(location.hash||"#home").slice(1).replace(/^page-/,"");showPage(id,false)||showPage("home",false);}
-  window.addEventListener("popstate",route);
-  window.addEventListener("hashchange",route);
-  if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",route);}else{route();}
-})();
-</script>
-<script>
 const formulas=[
 {cat:"計算・展開",name:"分配法則",expr:"a(b+c)=ab+ac",note:"かっこの外の数を中の各項にかける。"},
 {cat:"計算・展開",name:"平方の公式①",expr:"(a+b)²=a²+2ab+b²",note:"真ん中の項は +2ab。"},
@@ -359,7 +334,19 @@ if(!stats || typeof stats!=="object" || !Array.isArray(stats.review)) stats={cor
 function save(){try{window.localStorage.setItem("mathSaitamaStats",JSON.stringify(stats));}catch(e){/* 保存不可の環境では画面上だけで学習を続ける */}renderStats()}
 function renderStats(){const el=document.getElementById("dashboardStats");if(el)el.textContent="正解数："+stats.correct+"　/　回答数："+stats.attempts+"　/　復習待ち："+stats.review.length;const p=document.getElementById("homeProgress");if(p)p.style.width=(stats.attempts?Math.round(stats.correct/stats.attempts*100):0)+"%"}
 function page(id,updateHash=true){const target=document.getElementById("page-"+id);if(!target)return;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x!==target));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();if(updateHash && location.hash!=="#"+id)history.pushState(null,"","#"+id);window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-page]").forEach(b=>{b.setAttribute("aria-controls","page-"+b.dataset.page);b.addEventListener("click",()=>page(b.dataset.page));});document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));const routeFromHash=()=>{const key=(location.hash||"#home").slice(1).replace(/^page-/,"");page(key,false)};window.addEventListener("popstate",routeFromHash);window.addEventListener("hashchange",routeFromHash);routeFromHash();
+document.querySelectorAll("[data-page]").forEach(b=>b.setAttribute("aria-controls","page-"+b.dataset.page));
+document.addEventListener("click",event=>{
+  const control=event.target.closest("[data-page], [data-go]");
+  if(!control)return;
+  const id=control.dataset.page||control.dataset.go;
+  if(!id || !document.getElementById("page-"+id))return;
+  event.preventDefault();
+  page(id,true);
+});
+const routeFromHash=()=>{const key=(location.hash||"#home").slice(1).replace(/^page-/,"");if(!page(key,false))page("home",false)};
+window.addEventListener("popstate",routeFromHash);
+window.addEventListener("hashchange",routeFromHash);
+routeFromHash();
 function renderFormulas(){const filter=document.getElementById("formulaFilter").value;document.getElementById("formulaList").innerHTML=formulas.filter(f=>filter==="all"||f.cat===filter).map(f=>'<div class="formula"><strong>'+f.cat+'｜'+f.name+'</strong><div class="math">'+f.expr+'</div><div class="muted">'+f.note+'</div></div>').join("")}
 document.getElementById("formulaFilter").addEventListener("change",renderFormulas);renderFormulas();renderTricks();
 let subCurrent=null;
