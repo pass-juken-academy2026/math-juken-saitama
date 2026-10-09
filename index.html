@@ -268,19 +268,73 @@ function officialUrl(pref){
  if(map[pref])return map[pref];
  return "https://resemom.jp/pages/public-highschool-exam/"+archive[pref]+"/index.html"
 }
-function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県専用の演習セットを生成します。都道府県・日付・難易度に応じて問題の組み合わせと順序が変わります。公式傾向を個別確認できている県以外は、実際の出題傾向を再現したものではありません。問題は中学数学の範囲に沿ったオリジナル問題です。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";if(p==="神奈川県")detail="神奈川県向け：県公式ページに令和8年度の共通選抜学力検査問題・正答表・マークシート解答用紙が公開されています。公式資料を見て形式を確認してください。このサイトの問題はオリジナル問題です。";if(p==="千葉県")detail="千葉県向け：県教育委員会の入試情報ページから実施方針・過去の情報を確認できます。県の数学出題方針は基礎的技能に加え、論理的な考察や表現力も重視すると公表されています。このサイトの問題はオリジナル問題です。";if(p==="宮城県")detail="宮城県向け：県教育委員会の令和8年度入試ページに数学の問題・解答用紙・正答表と出題方針が公開されています。演習はその形式を確認する参考にしつつ、問題自体はオリジナルです。";if(p==="秋田県")detail="秋田県向け：県公式ページで令和8年度数学の学力検査問題・解答用紙・採点基準を確認できます。演習問題は本サイト独自のオリジナル問題です。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式資料と過去問一覧を確認する場合は「県別の過去問・入試情報を見る」を利用してください。</span>"}
+// 2026年度公開資料・問題構成の調査メモをもとにした演習重点。
+// 「確認済み」は年度の公開問題/出題方針/結果分析で具体的な構成を確認できた県。
+// 「共通重点」は公式資料で県独自の詳細を確定できていないため、全国共通の中学数学領域を重点化する設定。
+const PREF_TRENDS={
+"北海道":{status:"共通重点",topics:["numbers","equations","functions","geometry","probability","data"],note:"小問集合を固め、関数・図形・確率/データを幅広く演習。"},
+"青森県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability"],note:"計算・方程式から、関数と平面/空間図形までをバランスよく演習。"},
+"岩手県":{status:"共通重点",topics:["numbers","equations","functions","geometry","probability","data"],note:"基礎計算に加え、関数・図形・確率と資料の読み取りを重点化。"},
+"宮城県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"県教育委員会の令和8年度「出題の基本方針とねらい」および問題・正答表を確認。全領域の基礎に加え、条件を読み取って考察する練習を重視。"},
+"秋田県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"県公式の令和8年度問題・解答用紙・採点基準を確認。基礎小問に加えて、複数領域を組み合わせる問題を練習。"},
+"山形県":{status:"確認済み",topics:["numbers","equations","functions","geometry","applications"],note:"令和8年度の公式成績概況を基に、基礎計算、文字式・方程式の活用、グラフの考察、証明・記述を重点化。"},
+"福島県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"令和8年度の公式出題内容分析を基に、データ/確率の説明、連立方程式の利用、証明、関数と図形、空間図形を重点化。"},
+"茨城県":{status:"確認済み",topics:["numbers","functions","geometry","solids","probability","data"],note:"令和8年度の公式実施状況報告を基に、文字式の活用、関数、データ/確率、平面・空間図形を重点化。特に図形の後半問題に対応。"},
+"栃木県":{status:"確認済み",topics:["numbers","equations","geometry","solids","probability","data","functions"],note:"令和8年度問題構成を確認。文字式を使った説明、作図・空間図形・証明、標本調査/確率、関数の融合問題を重点化。"},
+"群馬県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"県教育委員会の令和8年度出題方針を確認。全領域の知識技能に加え、身近な事象を数学的に捉え、考察・表現する総合問題を重点化。"},
+"埼玉県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"県の入試案内を確認。学校選択問題の有無など受検校の方式を別途確認し、標準問題では全領域、発展対策では関数・図形・記述を追加演習。"},
+"千葉県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"県教育委員会の入試資料・出題方針を確認。基礎技能だけでなく、論理的な考察・表現も練習。"},
+"東京都":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"都教育委員会の学力検査問題・正答表の公開を確認。小問集合の正確さと、関数・図形・資料活用を幅広く演習。"},
+"神奈川県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"県公式の令和8年度問題・正答表・マークシート解答用紙を確認。問題形式を意識しつつ、全領域の正確さと複合問題を演習。"},
+"新潟県":{status:"確認済み",topics:["numbers","equations","functions","geometry","probability","data"],note:"令和8年度の公式結果分析を基に、前半の基礎小問に加え、一次関数、整数の性質の考察、円・図形の証明と計算を重点化。"},
+"富山県":{status:"確認済み",topics:["numbers","functions","geometry","solids","data","applications"],note:"令和8年度の公開問題・正答例の構成を確認。関数と図形、データ活用、三角柱上の点、回転体・最短経路、整数の性質、証明を重点化。"},
+"石川県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"計算・方程式の基礎から、関数、図形、確率/データの複合問題まで演習。"},
+"福井県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","applications"],note:"基礎小問と、関数・図形・日常場面の文章題を組み合わせて演習。"},
+"山梨県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability"],note:"令和8年度一般選抜の問題構成を確認。小問集合、確率と方程式の文章題、関数の融合問題、空間図形を重点化。"},
+"長野県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"基礎問題の取りこぼしを減らし、関数・図形・確率とデータ活用を演習。"},
+"岐阜県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"県公式の令和8年度入試資料を確認。基礎から複合問題まで全領域を演習し、関数・図形の条件整理を重視。"},
+"静岡県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"令和8年度の公式問題・正答・採点基準を基に、計算/作図/確率、文章題、空間図形、資料活用、関数、平面図形の証明を重点化。"},
+"愛知県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"県公式の令和8年度入試問題を確認。小問の正確さに加え、関数・図形・確率/データを広く演習。受検方式・年度の案内も確認。"},
+"三重県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"計算・方程式の基礎、関数、平面/空間図形、確率・データの総合演習。"},
+"滋賀県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"基礎小問の精度と、関数・図形・データ活用の条件整理を重点化。"},
+"京都府":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","applications"],note:"計算・方程式から関数、図形の証明、文章題までを段階的に演習。"},
+"大阪府":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"志望校・選抜方式の確認を前提に、基礎小問と関数・図形・確率/資料の応用を演習。"},
+"兵庫県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"令和8年度一般選抜の問題構成を確認。小問集合、関数、確率とデータ、平面図形、関数と図形、規則性を重点化。"},
+"奈良県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"基礎計算を固めたうえで、関数・図形の複合問題と資料/確率を演習。"},
+"和歌山県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","applications"],note:"基礎技能に加え、関数・図形・文章題を組み合わせた問題に対応。"},
+"鳥取県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"全領域の基礎小問、関数、図形、確率・データ活用をバランスよく演習。"},
+"島根県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","applications"],note:"計算・方程式の正確さと、関数・図形・日常場面の文章題を重点化。"},
+"岡山県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"令和8年度の公開問題・正答例の構成を確認。小問集合、データ活用、関数と図形、空間図形、規則性を重点化。"},
+"広島県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"令和8年度の公式問題・採点基準を基に、小問集合、整数の証明、箱ひげ図の説明、関数、円周角を使った合同証明を重点化。"},
+"山口県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"令和8年度の問題構成を確認。計算・小問集合、関数、連立方程式の文章題、確率、三角形の証明、資料活用、空間図形を重点化。"},
+"徳島県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"基礎小問から、関数・図形・確率/資料の活用までを段階的に演習。"},
+"香川県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","applications"],note:"計算と方程式の基礎に加え、関数・図形・文章題の条件整理を重点化。"},
+"愛媛県":{status:"確認済み",topics:["numbers","probability","functions","geometry"],note:"令和8年度の公開問題・正答を確認。計算、小問集合、カードゲームの確率、点の移動と面積、円と相似の証明を重点化。"},
+"高知県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"県公式の令和8年度A日程の問題・正答例・出題方針を確認。B日程もあるため受検方式を確認し、全領域を演習。"},
+"福岡県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"基礎計算から関数・図形・確率/データまで幅広く演習。受検年度の公式問題と正答を必ず照合。"},
+"佐賀県":{status:"確認済み",topics:["numbers","equations","functions","geometry","probability","applications"],note:"令和8年度一般選抜の問題構成を確認。小問集合、トンネル通過と割引の文章題、関数と図形、円と相似の証明、確率と規則性を重点化。"},
+"長崎県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"基礎小問、データと確率、関数と図形、円・空間図形の総合演習。問題区分がある場合は志望校の方式を確認。"},
+"熊本県":{status:"共通重点",topics:["numbers","equations","functions","geometry","solids","probability","data"],note:"計算・方程式の精度と、関数・図形・データ/確率の複合問題を重点化。"},
+"大分県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"令和8年度第一次選抜の問題構成を確認。小問集合、関数と正方形、確率と箱ひげ図、速さの文章題、三角柱の切断、折り紙と相似を重点化。"},
+"宮崎県":{status:"確認済み",topics:["numbers","equations","functions","geometry","probability","data"],note:"県教育研修センターの令和8年度結果分析を基に、小問集合、数と式/連立方程式、標本調査、平面図形の証明、関数を重点化。年度により後半の領域が入れ替わる点に注意。"},
+"鹿児島県":{status:"確認済み",topics:["numbers","functions","geometry","solids","data","applications"],note:"令和8年度の問題構成を確認。小問集合、関数と作図、データ活用、放物線と長方形、立体パズルを重点化。"},
+"沖縄県":{status:"確認済み",topics:["numbers","equations","functions","geometry","solids","probability","data","applications"],note:"令和8年度の問題構成を確認。計算・小問集合、ヒストグラム/箱ひげ図、確率、一次関数の利用、作図、関数と図形、円と相似、円すい、規則性を重点化。"}
+};
+function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();const t=PREF_TRENDS[p]||{status:"共通重点",topics:UNITS.map(u=>u.id),note:"全領域をバランスよく演習。"};const status=t.status==="確認済み"?"令和8年度の問題・公式出題方針・結果分析等を確認":"全国共通の学習領域を重点化（県固有の傾向は追加確認が必要）";const extra=p==="埼玉県"?" 令和9年度入試の制度・マークシート方式については、県の最新案内も別途確認してください。":"";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+t.note+extra+"<br><span class=\"small\">調査状態："+status+"。問題はすべて本サイト独自のオリジナル問題で、公式過去問の転載ではありません。問題バンクの領域数には限りがあるため、重点分野の練習を増やす設定であり、実際の出題を完全再現するものではありません。</span><br><span class=\"small\">公式資料・過去問一覧は「県別の過去問・入試情報を見る」から確認できます。</span>"}
 fillPrefs();$("#prefSelect").addEventListener("change",updatePrefNote);$("#officialLink").onclick=()=>window.open(officialUrl($("#prefSelect").value),"_blank","noopener");
 function startPractice(){
  const p=$("#prefSelect").value,level=$("#practiceLevel").value,count=Number($("#practiceCount").value);
  state.lastPref=p;save();
  const eligible=BANK.filter(q=>level==="all"||q.level===level);
- // Stable, prefecture-specific selection: each prefecture gets its own question combination,
- // while remaining transparent that this is not a claim about unverified local exam trends.
- const seed=seedFor("prefecture-practice-v2|"+p+"|"+new Date().toDateString()+"|"+level);
- const arr=shuffled(eligible,seed).slice(0,Math.min(count,eligible.length));
+ const trend=PREF_TRENDS[p]||{topics:UNITS.map(u=>u.id)};
+ // Repeatedly sample with a transparent topic weighting: research-highlighted units
+ // are more likely to appear, while other curriculum areas remain in the pool.
+ const seed=seedFor("prefecture-practice-v3|"+p+"|"+new Date().toDateString()+"|"+level);
+ const ranked=eligible.map((q,i)=>{const topic=trend.topics.includes(q.topic)?3:1;return {q,score:Math.random()};});
+ let arr=shuffled(ranked,seed).sort((a,b)=>{const wa=trend.topics.includes(a.q.topic)?3:1,wb=trend.topics.includes(b.q.topic)?3:1;return (b.score*wb)-(a.score*wa)}).map(x=>x.q).slice(0,Math.min(count,eligible.length));
  makeSession("practice",arr);
  const root=$("#practiceCard");
- if(root.querySelector(".qtop")) root.insertAdjacentHTML("afterbegin",'<div class="notice"><b>'+p+' 専用セット</b>：'+arr.length+'問。県別に問題の組み合わせを変えています。公式傾向の再現を確認できていない県では、一般的な入試対策問題として利用してください。</div>');
+ if(root.querySelector(".qtop")) root.insertAdjacentHTML("afterbegin",'<div class="notice"><b>'+p+' 専用セット</b>：'+arr.length+'問。調査メモに基づき重点領域の出題率を高めています。確認済みの県でも、問題数・種類には限りがあり実際の入試を完全再現するものではありません。</div>');
 }
 $("#practiceStart").onclick=startPractice;
 function startMock(){let level=$("#mockLevel").value,count=Number($("#mockCount").value);let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,Date.now()).slice(0,count);makeSession("mock",arr)}
