@@ -333,7 +333,7 @@ try { stats=JSON.parse(window.localStorage.getItem("mathSaitamaStats")||'{"corre
 if(!stats || typeof stats!=="object" || !Array.isArray(stats.review)) stats={correct:0,attempts:0,review:[]};
 function save(){try{window.localStorage.setItem("mathSaitamaStats",JSON.stringify(stats));}catch(e){/* 保存不可の環境では画面上だけで学習を続ける */}renderStats()}
 function renderStats(){const el=document.getElementById("dashboardStats");if(el)el.textContent="正解数："+stats.correct+"　/　回答数："+stats.attempts+"　/　復習待ち："+stats.review.length;const p=document.getElementById("homeProgress");if(p)p.style.width=(stats.attempts?Math.round(stats.correct/stats.attempts*100):0)+"%"}
-function page(id,updateHash=true){const target=document.getElementById("page-"+id);if(!target)return;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x!==target));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();if(updateHash && location.hash!=="#"+id)history.pushState(null,"","#"+id);window.scrollTo({top:0,behavior:"smooth"})}
+function page(id,updateHash=true){const target=document.getElementById("page-"+id);if(!target)return false;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x!==target));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();if(updateHash && location.hash!=="#"+id)history.pushState(null,"","#"+id);window.scrollTo({top:0,behavior:"smooth"});return true}
 document.querySelectorAll("[data-page]").forEach(b=>b.setAttribute("aria-controls","page-"+b.dataset.page));
 document.addEventListener("click",event=>{
   const control=event.target.closest("[data-page], [data-go]");
