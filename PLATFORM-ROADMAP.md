@@ -1,6 +1,6 @@
 # 総合学習プラットフォーム 開発ロードマップ
 
-> 状態: 教科サイト初期版の実装中。これは進捗の根拠を残すための暫定台帳。
+> 状態: 教科サイト初期版・Pagesデプロイワークフロー追加済み。完全なカリキュラムと本番公開確認は継続中。
 > 最終更新: 2026-10-10
 
 ## 原則
@@ -12,7 +12,7 @@
 - 進捗率は実装・テスト・公開確認の証拠がある範囲のみ計上する。
 
 ## 既存リポジトリ監査（2026-10-09）
-2026-10-10時点で、GitHub連携から既存4件に加えて教科用リポジトリ10件を確認。新規10件に `index.html` 初期版をコミット済み。各サイトに分野別の導入説明・オリジナル確認問題・正誤判定と解説を実装。ページ取得による再確認で少なくとも junior-japanese と highschool-social-studies のHTML、クイズスクリプト、Google確認用metaタグを確認。これは初期版であり、完全なカリキュラムや公開動作の完了を意味しない。
+2026-10-10時点で、GitHub連携から既存4件に加えて教科用リポジトリ10件を確認。新規10件に `index.html` 初期版をコミット済み。各サイトに導入説明・元の確認問題・正誤判定と解説を実装し、各サイトに5問の追加演習バンクを追加（高校数学は4問）。10件すべてに `.github/workflows/pages.yml` を追加してGitHub Pagesデプロイ用ワークフローを用意。少なくとも junior-japanese と highschool-social-studies でHTML、クイズスクリプト、Google確認用metaタグを再取得確認。ワークフローの実行成功、Pages設定、公開URLの応答は未確認。これは初期版であり、完全なカリキュラムや本番公開の完了を意味しない。
 - [math-juken-saitama](https://github.com/pass-juken-academy2026/math-juken-saitama) — `index.html` を確認。埼玉県高校入試数学対策。GitHub Pages URL: https://pass-juken-academy2026.github.io/math-juken-saitama/
 - [english-study](https://github.com/pass-juken-academy2026/english-study) — `index.html` を確認。高校英語受験対策。
 - [World-history](https://github.com/pass-juken-academy2026/World-history) — `index.html` と README を確認。世界史学習サイト。
@@ -78,7 +78,9 @@ GitHub連携でリポジトリ作成操作が利用できないため、空の�
 - [ ] ポータルの科目カタログを作成（URLは公開確認後に有効化）
 - [ ] 既存3学習サイトに共通ナビ・フィードバックを安全に統合
 - [x] 既存の10教科リポジトリに初期版 index.html を複数並行で作成
+- [x] 10教科リポジトリにGitHub Pagesデプロイ用workflowを追加
 - [ ] highschool-information と共通システム3リポジトリを用意し、初期版を実装
+- [ ] GitHub Actions実行結果とGitHub Pages公開URLを各リポジトリで確認
 - [ ] 共通の問題検証テストを追加
 - [ ] フィードバックAPIと管理者受信箱をサーバー側アクセス制御付きで実装
 - [ ] リンク・モバイル・アクセシビリティ・セキュリティを検証
