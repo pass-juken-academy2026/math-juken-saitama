@@ -114,13 +114,37 @@ const BANK=[
 ["applications","標準","ある数の3倍から8を引くと16。ある数は？","8",["6","8","10","12"],"3x−8=16、3x=24、x=8。"],
 ["applications","応用","大人2人と子ども3人で合計2600円。大人は子どもより300円高い。子ども1人の料金は？","400円",["300円","400円","500円","600円"],"子どもをx円とすると2(x+300)+3x=2600。5x=2000でx=400。"],
 ["applications","応用","1からnまでの整数の和が55。nは？","10",["9","10","11","12"],"1+…+n=n(n+1)/2=55。n=10。"]
+["numbers","基礎","−8+3×(−2) の値は？","−14",["−10","−14","−2","14"],"かけ算を先に計算する。3×(−2)=−6、−8+(−6)=−14。"],
+["numbers","標準","6a−2(2a−3) を簡単にすると？","2a+6",["2a−6","2a+6","10a−6","10a+6"],"分配法則で−2(2a−3)=−4a+6。6a−4a+6=2a+6。"],
+["numbers","標準","(x+2)(x−7) を展開すると？","x²−5x−14",["x²−9x−14","x²−5x−14","x²+5x−14","x²−14"],"x²−7x+2x−14=x²−5x−14。"],
+["numbers","応用","√50−√8 を簡単にすると？","3√2",["7√2","3√2","√42","2√2"],"√50=5√2、√8=2√2なので差は3√2。"],
+["numbers","応用","x²−16 を因数分解すると？","(x−4)(x+4)",["(x−8)(x+2)","(x−4)(x+4)","(x−4)²","(x+4)²"],"平方の差 a²−b²=(a−b)(a+b)を使う。"],
+["equations","基礎","5x+4=−11 の解は？","−3",["3","−3","−15","−7"],"両辺から4を引くと5x=−15。よってx=−3。"],
+["equations","標準","3x−2y=7、x+y=5 のとき y は？","8/5",["1","8/5","2","3"],"x=5−yを代入して3(5−y)−2y=7。15−5y=7、y=8/5。"],
+["equations","標準","x²−2x−8=0 の解は？","−2, 4",["−4, 2","−2, 4","−2, −4","2, 4"],"(x−4)(x+2)=0よりx=4または−2。"],
+["equations","応用","2x²−18=0 の正の解は？","3",["−3","3","9","√18"],"2x²=18、x²=9。正の解は3。"],
+["equations","応用","連立方程式 x+y=8、2x−y=7 のとき x は？","5",["3","4","5","6"],"2式を足すと3x=15、x=5。"],
+["functions","基礎","y=−4x のグラフで x=−3 のとき y は？","12",["−12","−7","7","12"],"y=−4×(−3)=12。"],
+["functions","標準","一次関数 y=−2x+7 のグラフの y切片は？","7",["−2","2","7","−7"],"y=ax+bのy切片は定数項b。"],
+["functions","標準","点(2,1)と(6,9)を通る直線の傾きは？","2",["1/2","2","4","8"],"(9−1)/(6−2)=8/4=2。"],
+["functions","応用","y=ax²が点(−3,18)を通るとき a は？","2",["−2","−1","2","6"],"18=9aよりa=2。xが負でもx²は正。"],
+["geometry","基礎","一直線上に並ぶ隣り合う角の一方が127°。もう一方は？","53°",["43°","53°","63°","127°"],"一直線上の角の和は180°。180−127=53°。"],
+["geometry","標準","直角三角形の斜辺が13、1つの直角辺が5。もう一辺は？","12",["8","10","12","18"],"もう一辺²=13²−5²=169−25=144。長さは12。"],
+["solids","標準","半径2cm、高さ6cmの円柱の体積は？","24πcm³",["12πcm³","24πcm³","36πcm³","48πcm³"],"πr²h=π×2²×6=24π。"],
+["solids","標準","半径3cm、高さ4cmの円すいの体積は？","12πcm³",["12πcm³","36πcm³","9πcm³","24πcm³"],"円すいの体積は底面積×高さ÷3。π×9×4÷3=12π。"],
+["probability","基礎","1〜5のカードから1枚選ぶ。偶数を引く確率は？","2/5",["1/5","2/5","3/5","1/2"],"偶数は2と4の2枚、全部で5枚なので2/5。"],
+["probability","標準","2枚の硬貨を同時に投げる。表がちょうど1枚出る確率は？","1/2",["1/4","1/2","3/4","1"],"結果は表表・表裏・裏表・裏裏の4通り。該当は2通り。"],
+["data","標準","データ2, 5, 7, 10, 11の中央値は？","7",["5","6","7","10"],"小さい順に並んだ5個の真ん中、3番目は7。"],
+["applications","基礎","定価3600円の品を25%引きで買う。支払額は？","2700円",["900円","2400円","2700円","3000円"],"支払うのは定価の75%。3600×0.75=2700円。"],
+["applications","標準","ある数xの5倍に3を足すと38。xは？","7",["5","6","7","8"],"5x+3=38より5x=35、x=7。"],
+["applications","応用","連続する3つの整数の和が72。真ん中の整数は？","24",["22","23","24","25"],"真ん中をnとすると(n−1)+n+(n+1)=3n=72。n=24。"],
 ].map((x,i)=>({id:"q"+i,unit:x[0],level:x[1],q:x[2],answer:x[3],choices:x[4],explain:x[5]}));
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const KEY="mathAcademySingleIndexV2";
 let state={review:[],history:[],road:[],lastPref:"埼玉県"};
 try{state={...state,...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){};updateHeader()}
-function updateHeader(){$("#reviewCount").textContent=state.review.length;$("#statAnswered").textContent=state.history.length;$("#pAnswered")&&($("#pAnswered").textContent=state.history.length);$("#pCorrect")&&($("#pCorrect").textContent=state.history.filter(x=>x.ok).length);$("#pRate")&&($("#pRate").textContent=(state.history.length?Math.round(state.history.filter(x=>x.ok).length/state.history.length*100):0)+"%")}
+function updateHeader(){$("#reviewCount").textContent=state.review.length;$("#statAnswered").textContent=state.history.length;$("#statQuestions").textContent=BANK.length+"問";$("#pAnswered")&&($("#pAnswered").textContent=state.history.length);$("#pCorrect")&&($("#pCorrect").textContent=state.history.filter(x=>x.ok).length);$("#pRate")&&($("#pRate").textContent=(state.history.length?Math.round(state.history.filter(x=>x.ok).length/state.history.length*100):0)+"%")}
 function go(page){const el=$("#page-"+page);if(!el)return;$$(".page").forEach(x=>x.classList.remove("active"));el.classList.add("active");$$(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===page));$("#sidebar").classList.remove("open");window.scrollTo({top:0,behavior:"smooth"});if(page==="review")renderReview();if(page==="progress")renderProgress();if(page==="units")renderUnits()}
 document.addEventListener("click",e=>{const b=e.target.closest("[data-page],[data-go]");if(b){e.preventDefault();go(b.dataset.page||b.dataset.go)}});
 $("#menuToggle").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
@@ -151,8 +175,8 @@ $("#clearReview").onclick=()=>{if(confirm("復習リストを空にしますか�
 function renderProgress(){updateHeader();const hist=state.history;let topics=UNITS.map(u=>{let a=hist.filter(x=>x.unit===u.id);return {...u,total:a.length,correct:a.filter(x=>x.ok).length}}).filter(x=>x.total);$("#topicStats").innerHTML=topics.length?topics.map(x=>'<div class="item"><b>'+x.name+'</b><p class="muted small">'+x.correct+' / '+x.total+' 問正解</p><div class="progress"><span style="width:'+(x.total?x.correct/x.total*100:0)+'%"></span></div></div>').join(""):'<div class="empty">まだ解答履歴がありません。まずは一問解いてみよう。</div>'}
 $("#resetStats").onclick=()=>{if(confirm("学習記録を削除しますか？復習リストは残ります。")){state.history=[];save();renderProgress()}};
 function fillPrefs(){const s=$("#prefSelect");s.innerHTML=PREFS.map(p=>'<option>'+p+'</option>').join("");s.value=PREFS.includes(state.lastPref)?state.lastPref:"埼玉県";updatePrefNote()}
-function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/r9nyushijyoho.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/exam/past_questions","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/press/2024/koukou/nyuushi.html"};return map[pref]||"https://resemom.jp/pages/public-highschool-exam/index.html"}
-function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県を選ぶと、問題セットの選び方と出題順が変わります。問題は入試範囲を意識したオリジナル問題です。県固有の出題傾向を公式資料で確認できていない部分は、傾向を再現したと断定しません。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の入試情報を確認」を利用してください。</span>"}
+function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/nyushi/r9nyushijyoho.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/ability_test/problem_and_answer/release20260221_n01","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/press/2024/koukou/nyuushi.html"};return map[pref]||("https://www.google.com/search?q="+encodeURIComponent(pref+" 公立高校 入試 数学 教育委員会 公式"))}
+function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県を選ぶと問題の出題順が変わります。現時点で県固有の公式資料を照合できていない場合、出題傾向を確認済みとは表示しません。演習問題は中学数学の範囲に沿ったオリジナル問題で、県の過去問そのものではありません。公式情報へのリンクから、最新の出題方針や過去問を確認してください。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の入試情報を確認」を利用してください。</span>"}
 fillPrefs();$("#prefSelect").addEventListener("change",updatePrefNote);$("#officialLink").onclick=()=>window.open(officialUrl($("#prefSelect").value),"_blank","noopener");
 function startPractice(){const p=$("#prefSelect").value,level=$("#practiceLevel").value,count=Number($("#practiceCount").value);state.lastPref=p;save();let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,seedFor(p+new Date().toDateString()+level)).slice(0,count);makeSession("practice",arr)}
 $("#practiceStart").onclick=startPractice;
