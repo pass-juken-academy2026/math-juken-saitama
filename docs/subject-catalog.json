@@ -1,7 +1,7 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "updatedAt": "2026-10-09",
-  "purpose": "総合ポータル用の科目カタログ。リポジトリは中学3教科・高校5教科に分離し、高校の科目は各教科リポジトリ内の選択肢として配置する。公開URLは確認後にのみ設定する。",
+  "purpose": "総合ポータル用の科目カタログ。中学は3教科別リポジトリ、高校理科は8科目それぞれ独立リポジトリ、その他の高校科目は国語・数学・社会・情報の教科別リポジトリに配置する。公開URLは確認後にのみ設定する。",
   "policy": {
     "information2": "将来拡張候補。今回の必須対象外。",
     "socialStudies": [
@@ -14,13 +14,13 @@
       "世界史探究"
     ],
     "unverifiedUrlsMustRemainNull": true,
-    "portalStructure": "高校は5つの教科別リポジトリ（国語・数学・理科・社会・情報）を用意し、各教科サイト内で科目を選択する。国語には現代の国語・論理国語・古典を含める。中学は国語・理科・社会の3リポジトリ。",
+    "portalStructure": "高校理科は生物基礎・生物・化学基礎・化学・物理基礎・物理・地学基礎・地学の8科目をそれぞれ独立したリポジトリ・サイトにする。高校国語・数学・社会・情報は教科別リポジトリ内で科目を選択する。中学は国語・理科・社会の3リポジトリ。",
     "repositoryCounts": {
       "junior": 3,
-      "highschool": 5,
-      "subjectRepositoriesTotal": 8,
+      "highschool": 12,
+      "subjectRepositoriesTotal": 15,
       "commonSystems": 3,
-      "totalRepositoriesIncludingCommonSystems": 11
+      "totalRepositoriesIncludingCommonSystems": 18
     }
   },
   "existingAssets": [
@@ -195,82 +195,82 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-biology-basic",
       "name": "生物基礎",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-biology",
       "name": "生物",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-chemistry-basic",
       "name": "化学基礎",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-chemistry",
       "name": "化学",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-physics-basic",
       "name": "物理基礎",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-physics",
       "name": "物理",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-earth-science-basic",
       "name": "地学基礎",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-science",
+      "repository": "highschool-earth-science",
       "name": "地学",
       "category": "高校・理科",
       "status": "未作成確認",
       "publicUrl": null,
-      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
+      "notes": "高校理科の独立科目サイト。リポジトリと公開URLは未確認のため、作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
