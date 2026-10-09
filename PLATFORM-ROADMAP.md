@@ -1,7 +1,7 @@
 # 総合学習プラットフォーム 開発ロードマップ
 
-> 状態: 初期監査・設計中。これは進捗の根拠を残すための暫定台帳であり、専用の進捗管理リポジトリ作成後に移管する。
-> 最終更新: 2026-10-09
+> 状態: 教科サイト初期版の実装中。これは進捗の根拠を残すための暫定台帳。
+> 最終更新: 2026-10-10
 
 ## 原則
 - 対象は中学3科目・高校21科目（古典・情報Iを含む）と共通システム3つ。
@@ -12,29 +12,29 @@
 - 進捗率は実装・テスト・公開確認の証拠がある範囲のみ計上する。
 
 ## 既存リポジトリ監査（2026-10-09）
-GitHub連携で一覧できた既存リポジトリは4件。いずれも `pass-juken-academy2026` 所有、公開リポジトリ、main ブランチで、連携権限に push/admin が表示された。
+2026-10-10時点で、GitHub連携から既存4件に加えて教科用リポジトリ10件を確認。新規10件に `index.html` 初期版をコミット済み。各サイトに分野別の導入説明・オリジナル確認問題・正誤判定と解説を実装。ページ取得による再確認で少なくとも junior-japanese と highschool-social-studies のHTML、クイズスクリプト、Google確認用metaタグを確認。これは初期版であり、完全なカリキュラムや公開動作の完了を意味しない。
 - [math-juken-saitama](https://github.com/pass-juken-academy2026/math-juken-saitama) — `index.html` を確認。埼玉県高校入試数学対策。GitHub Pages URL: https://pass-juken-academy2026.github.io/math-juken-saitama/
 - [english-study](https://github.com/pass-juken-academy2026/english-study) — `index.html` を確認。高校英語受験対策。
 - [World-history](https://github.com/pass-juken-academy2026/World-history) — `index.html` と README を確認。世界史学習サイト。
 - [japanese-history-site](https://github.com/pass-juken-academy2026/japanese-history-site) — `index.html` と README を確認。日本史サイト。今回の高校社会対象には独立科目として追加しない。
 
-この監査でGitHub連携から確認できたのは上記4件。ほかのリポジトリが存在しないとは断定しない。今回のGitHub連携にリポジトリ作成操作が公開されていないため、新規リポジトリの作成は未実施。既存リポジトリの内容・URL・設定を調査しながら、作成可能なドキュメントと検証基盤を先に整備する。
+GitHub連携でリポジトリ作成操作が利用できないため、空のリポジトリ自体をこちらから新規作成することはできない。一方、ユーザーが作成した教科リポジトリへのファイル追加・更新は実施できる。
 
 ## リポジトリ候補と初期状態
 状態の定義: 「未作成確認」は連携でまだ確認できていないだけで不存在を意味しない。「公開済み」は実際のURLと動作確認を別途要する。高校理科は生物・化学・物理・地学の4分野別リポジトリに分け、各サイト内に基礎と発展をまとめる。その他の高校科目は、現時点では教科別リポジトリ内の選択肢とする。
 
 | 分類 | リポジトリ候補 | 含む科目・役割 | 状態 |
 |---|---|---|---|
-| 中学 | junior-japanese | 国語 | 未作成確認 |
-| 中学 | junior-science | 理科 | 未作成確認 |
-| 中学 | junior-social-studies | 社会 | 未作成確認 |
-| 高校 | highschool-japanese | 現代の国語・論理国語・古典（古文・漢文） | 未作成確認 |
-| 高校 | highschool-math | 数学I・A・II・B・III・C | 未作成確認 |
-| 高校・理科 | highschool-biology | 生物基礎・生物 | 未作成確認 |
-| 高校・理科 | highschool-chemistry | 化学基礎・化学 | 未作成確認 |
-| 高校・理科 | highschool-physics | 物理基礎・物理 | 未作成確認 |
-| 高校・理科 | highschool-earth-science | 地学基礎・地学 | 未作成確認 |
-| 高校 | highschool-social-studies | 地理総合・地理・歴史総合 | 未作成確認 |
+| 中学 | junior-japanese | 国語 | 初期版 index.html 作成済み・公開未確認 |
+| 中学 | junior-science | 理科 | 初期版 index.html 作成済み・公開未確認 |
+| 中学 | junior-social-studies | 社会 | 初期版 index.html 作成済み・公開未確認 |
+| 高校 | highschool-japanese | 現代の国語・論理国語・古典（古文・漢文） | 初期版 index.html 作成済み・公開未確認 |
+| 高校 | highschool-math | 数学I・A・II・B・III・C | 初期版 index.html 作成済み・公開未確認 |
+| 高校・理科 | highschool-biology | 生物基礎・生物 | 初期版 index.html 作成済み・公開未確認 |
+| 高校・理科 | highschool-chemistry | 化学基礎・化学 | 初期版 index.html 作成済み・公開未確認 |
+| 高校・理科 | highschool-physics | 物理基礎・物理 | 初期版 index.html 作成済み・公開未確認 |
+| 高校・理科 | highschool-earth-science | 地学基礎・地学 | 初期版 index.html 作成済み・公開未確認 |
+| 高校 | highschool-social-studies | 地理総合・地理・歴史総合 | 初期版 index.html 作成済み・公開未確認 |
 | 高校 | highschool-information | 情報I | 未作成確認 |
 | 共通 | learning-portal | 全科目への入口 | 未作成確認 |
 | 共通 | learning-feedback | 意見・要望の受付 | 未作成確認 |
@@ -77,13 +77,14 @@ GitHub連携で一覧できた既存リポジトリは4件。いずれも `pass-
 - [ ] リポジトリ作成権限とGitHub Pages/Actions設定を確認
 - [ ] ポータルの科目カタログを作成（URLは公開確認後に有効化）
 - [ ] 既存3学習サイトに共通ナビ・フィードバックを安全に統合
-- [ ] 科目サイトの骨組みを複数並行で作成
+- [x] 既存の10教科リポジトリに初期版 index.html を複数並行で作成
+- [ ] highschool-information と共通システム3リポジトリを用意し、初期版を実装
 - [ ] 共通の問題検証テストを追加
 - [ ] フィードバックAPIと管理者受信箱をサーバー側アクセス制御付きで実装
 - [ ] リンク・モバイル・アクセシビリティ・セキュリティを検証
 - [ ] 公開URLとテスト結果を根拠付きで更新
 
 ## 未完了・制約
-- 新規リポジトリ作成用のGitHub操作が現在の連携ツール一覧で確認できていない。
+- 新規リポジトリ作成用のGitHub操作が現在の連携ツール一覧で確認できていないため、未作成の情報I・共通システム4件はリポジトリ作成後に実装する。
 - 管理者専用の受信箱を安全に実装するには、サーバー側実行環境と認証・DBが必要。公開リポジトリに秘密鍵を置く実装はしない。
 - この初期監査だけでは、4サイトの全ファイル・全機能・本番挙動までは検証していない。
