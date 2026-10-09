@@ -31,7 +31,7 @@ footer{text-align:center;color:var(--muted);font-size:.84rem;padding:20px}
 </style>
 </head>
 <body>
-<header><div class="wrap hero"><div class="topline">MIDDLE SCHOOL MATH • SAITAMA ENTRANCE EXAM PREP</div><h1>埼玉高校入試<br>数学トレーニング</h1><p>公式を確認して、解いて、間違いを復習。中学数学を分野別に積み上げよう。</p><div class="stats"><div class="stat">📘 公式・基礎演習</div><div class="stat">✍️ 分野別トレーニング</div><div class="stat">🎯 入試形式のオリジナル問題</div></div></div></header>
+<header><div class="wrap hero"><div class="topline">MIDDLE SCHOOL MATH • SAITAMA ENTRANCE EXAM PREP</div><h1>埼玉高校入試<br>数学トレーニング</h1><p>公式を確認して、解いて、間違いを復習。中学数学を分野別に積み上げよう。</p><div class="stats"><div class="stat">📘 公式・基礎演習</div><div class="stat">🧠 オリジナル問題1,200問以上</div><div class="stat">✍️ 分野別トレーニング</div><div class="stat">🎯 入試形式のオリジナル問題</div></div></div></header>
 <main class="wrap"><div class="layout">
 <aside><div class="aside-title">学習メニュー</div><div class="navgrid" id="nav">
 <button class="navbtn active" data-page="home"><span>⌂</span>ホーム</button>
@@ -92,7 +92,7 @@ footer{text-align:center;color:var(--muted);font-size:.84rem;padding:20px}
 
 <section class="panel page hidden" id="page-exam"><div class="eyebrow">ENTRANCE EXAM STYLE</div><h2 class="section-title">入試形式演習</h2><p class="sub">基礎確認から少し考える問題へ。これは入試対策用のオリジナル問題で、実際の過去問ではありません。</p><div id="examQuiz"></div><div class="actions"><button class="primary" id="nextExam">次の問題</button></div></section>
 
-<section class="panel page hidden" id="page-mock"><div class="eyebrow">MINI MOCK TEST</div><h2 class="section-title">ミニ模試（5問）</h2><p class="sub">5問をまとめて解いて、最後に結果を確認しよう。</p><div id="mockArea"><button class="primary" id="startMock">模試を始める</button></div></section>
+<section class="panel page hidden" id="page-mock"><div class="eyebrow">MINI MOCK TEST</div><h2 class="section-title">ミニ模試（10問）</h2><p class="sub">10問をまとめて解いて、最後に結果を確認しよう。</p><div id="mockArea"><button class="primary" id="startMock">模試を始める</button></div></section>
 
 <section class="panel page hidden" id="page-review"><div class="eyebrow">REVIEW</div><h2 class="section-title">間違い復習</h2><p class="sub">間違えた問題をもう一度確認しよう。</p><div id="reviewList"></div><div class="actions"><button id="clearReview">復習リストをクリア</button></div></section>
 
@@ -307,7 +307,7 @@ const bank=[
  // 方程式（200題以上）
  for(let a=2;a<=11;a++)for(let j=0;j<20;j++){const x=j-10,b=(j*3+a)%13-6,c=a*x+b;pushQ("equation","一次方程式",a+"x "+signed(b)+" = "+c+" のとき x は？",x,x+1,x-1,"両辺から "+b+" を引き、"+a+" で割ると x="+x+"。")}
  for(let a=2;a<=6;a++)for(let j=1;j<=10;j++){const x=j+1,b=j%4+1,c=a*(x-b);pushQ("equation","かっこを含む方程式",a+"(x−"+b+")="+c+" の解は？",x,x+1,x-1,"両辺を "+a+" で割ると x−"+b+"="+(x-b)+"。よって x="+x+"。")}
- for(let a=1;a<=10;a++)for(let b=1;b<=5;b++)pushQ("equation","二次方程式","x²−"+(a+b)+"x+"+a*b+"=0 の解の組は？","x="+a+" または x="+b,"x="+(-a)+" または x="+(-b),"x="+(a+b)+" または x="+a*b,"(x−"+a+")(x−"+b+")=0 なので x="+a+" または x="+b+"。");
+ for(let a=1;a<=10;a++)for(let b=a+1;b<=a+5;b++)pushQ("equation","二次方程式","x²−"+(a+b)+"x+"+a*b+"=0 の解の組は？","x="+a+" または x="+b,"x="+(-a)+" または x="+(-b),"x="+(a+b)+" または x="+a*b,"(x−"+a+")(x−"+b+")=0 なので x="+a+" または x="+b+"。");
  for(let n=1;n<=50;n++){const x=n%17-8,a=n%6+2,b=n%9-4,c=a*x+b;pushQ("equation","一次方程式",a+"x "+signed(b)+" = "+c+" の解は？",x,x+2,x-2,"移項すると "+a+"x="+(c-b)+"。両辺を "+a+" で割って x="+x+"。")}
  // 関数（200題以上）
  for(let j=0;j<100;j++){let a=j%11-5;if(a===0)a=3;const b=j*7%21-10,x=j*3%11-5,y=a*x+b;pushQ("function","一次関数","y="+a+"x "+signed(b)+" で x="+x+" のとき y は？",y,y+1,y-1,"x に "+x+" を代入すると y="+a+"×("+x+")"+(b<0?"− "+(-b):"+ "+b)+"="+y+"。")}
@@ -323,7 +323,7 @@ const bank=[
  for(let j=0;j<45;j++){let a=30+j*7%80,b=30+j*11%80,c=180-a-b;if(c<=0||c>=180){a=40+j%50;b=50+j%40;c=180-a-b}pushQ("geometry","角度","三角形の2つの内角が "+a+"° と "+b+"°。残りの角は？",c+"°",(c+10)+"°",(c-10)+"°","三角形の内角の和は180°。180−"+a+"−"+b+"="+c+"°。")}
  // 確率・データ（200題以上）
  for(let j=0;j<30;j++){const k=j%5+1,p=frac(k,6);pushQ("probability","確率","公平な6面サイコロを1回投げ、1〜"+k+"の目のいずれかが出る確率は？",p,frac(Math.max(1,k-1),6),frac(Math.min(6,k+1),6),"6通りが同様に確からしく、有利な目は "+k+" 通り。確率は "+p+"。")}
- for(let j=0;j<40;j++){const red=j%8+1,white=j*3%9+2,total=red+white,p=frac(red,total);pushQ("probability","確率","赤玉 "+red+" 個、白玉 "+white+" 個から1個を無作為に取り出す。赤玉の確率は？",p,frac(white,total),frac(red,white),"全部で "+total+" 個、赤玉は "+red+" 個。確率は "+red+"/"+total+"="+p+"。")}
+ for(let j=0;j<40;j++){let red=j%8+1,white=j*3%9+2;if(white===red)white++;const total=red+white,p=frac(red,total);pushQ("probability","確率","赤玉 "+red+" 個、白玉 "+white+" 個から1個を無作為に取り出す。赤玉の確率は？",p,frac(white,total),frac(red,white),"全部で "+total+" 個、赤玉は "+red+" 個。確率は "+red+"/"+total+"="+p+"。")}
  for(let j=0;j<50;j++){const n=j%41-20,arr=[n,n+2,n+4,n+6],mean=n+3;pushQ("probability","平均値","データ "+arr.join("、")+" の平均値は？",mean,mean+1,mean-1,"合計は "+arr.reduce((s,x)=>s+x,0)+"。4個で割ると "+mean+"。")}
  for(let j=0;j<40;j++){const n=j-15,arr=[n,n+1,n+4,n+5,n+8],med=n+4;pushQ("probability","中央値","データ "+arr.join("、")+" の中央値は？",med,med+1,med-1,"小さい順に並んだ5個のデータなので、中央の3番目の値 "+med+" が中央値。")}
  for(let j=0;j<40;j++){const n=j-10,g=j%7+1,arr=[n,n+2,n+5,n+5+g],range=5+g;pushQ("probability","範囲","データ "+arr.join("、")+" の範囲（最大値−最小値）は？",range,range+1,range-1,"範囲は最大値−最小値。"+arr[arr.length-1]+"−("+n+")="+range+"。")}
@@ -334,7 +334,7 @@ if(!stats || typeof stats!=="object" || !Array.isArray(stats.review)) stats={cor
 function save(){try{window.localStorage.setItem("mathSaitamaStats",JSON.stringify(stats));}catch(e){/* 保存不可の環境では画面上だけで学習を続ける */}renderStats()}
 function renderStats(){const el=document.getElementById("dashboardStats");if(el)el.textContent="正解数："+stats.correct+"　/　回答数："+stats.attempts+"　/　復習待ち："+stats.review.length;const p=document.getElementById("homeProgress");if(p)p.style.width=(stats.attempts?Math.round(stats.correct/stats.attempts*100):0)+"%"}
 function page(id,updateHash=true){const target=document.getElementById("page-"+id);if(!target)return;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x!==target));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();if(updateHash && location.hash!=="#"+id)history.pushState(null,"","#"+id);window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-page]").forEach(b=>{b.setAttribute("aria-controls","page-"+b.dataset.page);b.addEventListener("click",()=>page(b.dataset.page));});document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));const routeFromHash=()=>{const key=(location.hash||"#home").slice(1).replace(/^page-/,"");page(key,false)};window.addEventListener("popstate",routeFromHash);window.addEventListener("hashchange",routeFromHash);
+document.querySelectorAll("[data-page]").forEach(b=>{b.setAttribute("aria-controls","page-"+b.dataset.page);b.addEventListener("click",()=>page(b.dataset.page));});document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));const routeFromHash=()=>{const key=(location.hash||"#home").slice(1).replace(/^page-/,"");page(key,false)};window.addEventListener("popstate",routeFromHash);window.addEventListener("hashchange",routeFromHash);routeFromHash();
 function renderFormulas(){const filter=document.getElementById("formulaFilter").value;document.getElementById("formulaList").innerHTML=formulas.filter(f=>filter==="all"||f.cat===filter).map(f=>'<div class="formula"><strong>'+f.cat+'｜'+f.name+'</strong><div class="math">'+f.expr+'</div><div class="muted">'+f.note+'</div></div>').join("")}
 document.getElementById("formulaFilter").addEventListener("change",renderFormulas);renderFormulas();renderTricks();
 let subCurrent=null;
