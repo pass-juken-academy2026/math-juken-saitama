@@ -1,0 +1,254 @@
+{
+  "version": "0.1",
+  "updatedAt": "2026-10-09",
+  "purpose": "総合ポータルが参照する科目カタログの初期台帳。公開URLは確認後にのみ設定する。",
+  "policy": {
+    "information2": "将来拡張候補。今回の必須対象外。",
+    "socialStudies": [
+      "地理総合",
+      "地理",
+      "歴史総合"
+    ],
+    "excludedIndependentSites": [
+      "日本史探究",
+      "世界史探究"
+    ],
+    "unverifiedUrlsMustRemainNull": true
+  },
+  "existingAssets": [
+    {
+      "repository": "pass-juken-academy2026/math-juken-saitama",
+      "role": "既存の中学数学/埼玉県高校入試数学対策資産",
+      "repositoryUrl": "https://github.com/pass-juken-academy2026/math-juken-saitama",
+      "publicUrl": "https://pass-juken-academy2026.github.io/math-juken-saitama/",
+      "status": "index.html確認済み"
+    },
+    {
+      "repository": "pass-juken-academy2026/english-study",
+      "role": "既存高校英語学習資産。今回の指定23科目には含まれないが、共通機能の移植対象",
+      "repositoryUrl": "https://github.com/pass-juken-academy2026/english-study",
+      "publicUrl": null,
+      "status": "index.html確認済み、公開URL未確認"
+    },
+    {
+      "repository": "pass-juken-academy2026/World-history",
+      "role": "既存世界史資産。高校社会の独立科目として追加しない",
+      "repositoryUrl": "https://github.com/pass-juken-academy2026/World-history",
+      "publicUrl": null,
+      "status": "index.htmlとREADME確認済み、公開URL未確認"
+    },
+    {
+      "repository": "pass-juken-academy2026/japanese-history-site",
+      "role": "既存日本史資産。高校社会の独立科目として追加しない",
+      "repositoryUrl": "https://github.com/pass-juken-academy2026/japanese-history-site",
+      "publicUrl": null,
+      "status": "index.htmlとREADME確認済み、公開URL未確認"
+    }
+  ],
+  "commonSystems": [
+    {
+      "repository": "learning-portal",
+      "name": "総合ポータル",
+      "status": "未作成確認",
+      "publicUrl": null
+    },
+    {
+      "repository": "learning-feedback",
+      "name": "意見・要望受付と共通仕様",
+      "status": "未作成確認",
+      "publicUrl": null
+    },
+    {
+      "repository": "admin-question-inbox",
+      "name": "管理者専用質問受信サイト",
+      "status": "未作成確認",
+      "publicUrl": null
+    }
+  ],
+  "subjects": [
+    {
+      "repository": "junior-japanese",
+      "name": "中学国語",
+      "category": "中学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "junior-science",
+      "name": "中学理科",
+      "category": "中学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "junior-social-studies",
+      "name": "中学社会",
+      "category": "中学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-modern-japanese",
+      "name": "現代の国語",
+      "category": "高校・国語",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-logical-japanese",
+      "name": "論理国語",
+      "category": "高校・国語",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-math-1",
+      "name": "数学I",
+      "category": "高校・数学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-math-a",
+      "name": "数学A",
+      "category": "高校・数学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-math-2",
+      "name": "数学II",
+      "category": "高校・数学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-math-b",
+      "name": "数学B",
+      "category": "高校・数学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-math-3",
+      "name": "数学III",
+      "category": "高校・数学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-math-c",
+      "name": "数学C",
+      "category": "高校・数学",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-biology-basic",
+      "name": "生物基礎",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-biology",
+      "name": "生物",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-chemistry-basic",
+      "name": "化学基礎",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-chemistry",
+      "name": "化学",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-physics-basic",
+      "name": "物理基礎",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-physics",
+      "name": "物理",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-earth-science-basic",
+      "name": "地学基礎",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-earth-science",
+      "name": "地学",
+      "category": "高校・理科",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-geography-general",
+      "name": "地理総合",
+      "category": "高校・社会",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-geography",
+      "name": "地理",
+      "category": "高校・社会",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-history-general",
+      "name": "歴史総合",
+      "category": "高校・社会",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    },
+    {
+      "repository": "highschool-information-1",
+      "name": "情報I",
+      "category": "高校・情報",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。"
+    }
+  ]
+}
