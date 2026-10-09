@@ -322,7 +322,7 @@ const bank=[
  for(let j=0;j<50;j++){const a=j%8+2,b=j*3%7+2,z=j*5%9+2,v=a*b*z;pushQ("geometry","体積","縦 "+a+"cm、横 "+b+"cm、高さ "+z+"cm の直方体の体積は？",v+" cm³",(v+1)+" cm³",(v-1)+" cm³","直方体の体積は縦×横×高さ="+a+"×"+b+"×"+z+"="+v+" cm³。")}
  for(let j=0;j<45;j++){let a=30+j*7%80,b=30+j*11%80,c=180-a-b;if(c<=0||c>=180){a=40+j%50;b=50+j%40;c=180-a-b}pushQ("geometry","角度","三角形の2つの内角が "+a+"° と "+b+"°。残りの角は？",c+"°",(c+10)+"°",(c-10)+"°","三角形の内角の和は180°。180−"+a+"−"+b+"="+c+"°。")}
  // 確率・データ（200題以上）
- for(let j=0;j<30;j++){const k=j%5+1,p=frac(k,6);pushQ("probability","確率","公平な6面サイコロを1回投げ、1〜"+k+"の目のいずれかが出る確率は？",p,frac(Math.max(1,k-1),6),frac(Math.min(6,k+1),6),"6通りが同様に確からしく、有利な目は "+k+" 通り。確率は "+p+"。")}
+ for(let j=0;j<30;j++){const k=j%5+1,p=frac(k,6),w1=frac(k===1?3:k-1,6),w2=frac(k===5?1:k+1,6);pushQ("probability","確率","公平な6面サイコロを1回投げ、1〜"+k+"の目のいずれかが出る確率は？",p,w1,w2,"6通りが同様に確からしく、有利な目は "+k+" 通り。確率は "+p+"。")}
  for(let j=0;j<40;j++){let red=j%8+1,white=j*3%9+2;if(white===red)white++;const total=red+white,p=frac(red,total);pushQ("probability","確率","赤玉 "+red+" 個、白玉 "+white+" 個から1個を無作為に取り出す。赤玉の確率は？",p,frac(white,total),frac(red,white),"全部で "+total+" 個、赤玉は "+red+" 個。確率は "+red+"/"+total+"="+p+"。")}
  for(let j=0;j<50;j++){const n=j%41-20,arr=[n,n+2,n+4,n+6],mean=n+3;pushQ("probability","平均値","データ "+arr.join("、")+" の平均値は？",mean,mean+1,mean-1,"合計は "+arr.reduce((s,x)=>s+x,0)+"。4個で割ると "+mean+"。")}
  for(let j=0;j<40;j++){const n=j-15,arr=[n,n+1,n+4,n+5,n+8],med=n+4;pushQ("probability","中央値","データ "+arr.join("、")+" の中央値は？",med,med+1,med-1,"小さい順に並んだ5個のデータなので、中央の3番目の値 "+med+" が中央値。")}
