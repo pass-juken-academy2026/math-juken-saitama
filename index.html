@@ -28,7 +28,7 @@
 <section class="page" id="page-practice"><h1 class="page-title">都道府県別 入試演習</h1><p class="lead">都道府県とレベルを選ぶと、その選択に応じた問題セットを作成します。</p><div class="card"><div class="toolbar"><label class="field">都道府県<select id="prefSelect"></select></label><label class="field">難易度<select id="practiceLevel"><option value="all">総合（基礎〜応用）</option><option>基礎</option><option>標準</option><option>応用</option></select></label><label class="field">問題数<select id="practiceCount"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></label></div><div class="toolbar"><button class="btn" id="practiceStart">この条件で演習開始</button><button class="btn outline" id="officialLink">県の公式入試情報を探す ↗</button></div><div id="prefNote" class="notice"></div></div><div class="card" id="practiceCard"><div class="empty">都道府県を選択し、「この条件で演習開始」を押してね。</div></div></section>
 <section class="page" id="page-mock"><h1 class="page-title">総合模擬試験</h1><p class="lead">分野を横断した問題に挑戦。途中式を紙に書き、答えだけでなく考え方も確認しよう。</p><div class="card"><div class="toolbar"><label class="field">問題数<select id="mockCount"><option>10</option><option selected>20</option><option>30</option><option>40</option></select></label><label class="field">難易度<select id="mockLevel"><option value="all">総合</option><option>基礎</option><option>標準</option><option>応用</option></select></label><button class="btn" id="mockStart">模擬試験を開始</button></div></div><div class="card" id="mockCard"><div class="empty">設定を選んで模擬試験を始めよう。</div></div></section>
 <section class="page" id="page-review"><h1 class="page-title">復習リスト</h1><p class="lead">あとで解き直したい問題を保存。理解できたらリストから外せます。</p><div class="toolbar"><button class="btn outline" id="clearReview">復習リストを空にする</button></div><div id="reviewList"></div></section>
-<section class="page" id="page-progress"><h1 class="page-title">学習記録</h1><p class="lead">このブラウザ内に保存された解答履歴です。</p><div class="stats"><div class="stat"><small>解答数</small><strong id="pAnswered">0</strong></div><div class="stat"><small>正答数</small><strong id="pCorrect">0</strong></div><div class="stat"><small>正答率</small><strong id="pRate">0%</strong></div></div><div class="card"><h2>分野別の記録</h2><div id="topicStats"></div></div><div class="card"><button class="btn outline" id="resetStats">学習記録をリセット</button></div></section>
+<section class="page" id="page-progress"><h1 class="page-title">学習記録</h1><p class="lead">このブラウザ内に保存された解答履歴です。</p><div class="stats"><div class="stat"><small>解答数</small><strong id="pAnswered">0</strong></div><div class="stat"><small>正答数</small><strong id="pCorrect">0</strong></div><div class="stat"><small>正答率</small><strong id="pRate">0%</strong></div></div><div class="card"><h2>分野別の記録</h2><div id="topicStats"></div></div><div class="card"><h2>画面動作セルフテスト</h2><p class="muted">メニュー遷移、問題バンク、解答・復習フローをブラウザ上で簡易テストします。テスト用の学習履歴は終了後に元に戻します。</p><button class="btn" id="runSelfTest">動作テストを実行</button><div id="selfTestResults" aria-live="polite"></div></div><div class="card"><button class="btn outline" id="resetStats">学習記録をリセット</button></div></section>
 </main></div>
 <script>
 "use strict";
@@ -138,6 +138,37 @@ const BANK=[
 ["applications","基礎","定価3600円の品を25%引きで買う。支払額は？","2700円",["900円","2400円","2700円","3000円"],"支払うのは定価の75%。3600×0.75=2700円。"],
 ["applications","標準","ある数xの5倍に3を足すと38。xは？","7",["5","6","7","8"],"5x+3=38より5x=35、x=7。"],
 ["applications","応用","連続する3つの整数の和が72。真ん中の整数は？","24",["22","23","24","25"],"真ん中をnとすると(n−1)+n+(n+1)=3n=72。n=24。"],
+["numbers","基礎","−12÷3 の値は？","−4",["−4","−9","4","9"],"負の数を正の数で割ると負。12÷3=4なので−4。"],
+["numbers","標準","(3x−2)−(x+5) を簡単にすると？","2x−7",["2x+3","2x−7","4x+3","4x−7"],"2つ目のかっこを外すと−x−5。3x−2−x−5=2x−7。"],
+["numbers","標準","(x−3)(x+6) を展開すると？","x²+3x−18",["x²+9x−18","x²+3x−18","x²−3x−18","x²+3x+18"],"x²+6x−3x−18=x²+3x−18。"],
+["numbers","応用","√12+√27 を簡単にすると？","5√3",["3√3","5√3","√39","13√3"],"√12=2√3、√27=3√3。合計5√3。"],
+["equations","基礎","7x=−42 の解は？","−6",["−7","−6","6","7"],"両辺を7で割るとx=−6。"],
+["equations","標準","x+y=11、x−y=5 のとき y は？","3",["2","3","5","8"],"2式を引くと2y=6、y=3。"],
+["equations","標準","x²+5x+6=0 の解は？","−3, −2",["2, 3","−3, −2","−6, 1","−2, 3"],"(x+2)(x+3)=0よりx=−2または−3。"],
+["equations","応用","x²−6x+9=0 の解は？","3",["−3","3","±3","9"],"(x−3)²=0なのでx=3。"],
+["functions","基礎","y=5x のとき x=−2 なら y は？","−10",["10","−7","−10","−2"],"y=5×(−2)=−10。"],
+["functions","標準","一次関数 y=3x−4 で y=8 のとき x は？","4",["2","3","4","6"],"8=3x−4より3x=12、x=4。"],
+["functions","標準","点(−1,4)と(3,−4)を通る直線の傾きは？","−2",["−4","−2","2","4"],"傾き=(−4−4)/(3−(−1))=−8/4=−2。"],
+["functions","応用","y=ax²が点(−2,−12)を通るとき a は？","−3",["−6","−3","3","6"],"−12=4aよりa=−3。"],
+["geometry","基礎","三角形の2角が38°と72°。残りの角は？","70°",["60°","70°","80°","90°"],"180−38−72=70°。"],
+["geometry","基礎","正八角形の1つの外角は？","45°",["30°","40°","45°","60°"],"外角の和は360°。360÷8=45°。"],
+["geometry","標準","直角三角形の斜辺が10、1辺が6。もう一辺は？","8",["4","6","8","16"],"もう一辺²=10²−6²=100−36=64なので8。"],
+["geometry","標準","相似な2つの図形の長さの比が3:5。小さい図形の面積が27cm²なら大きい図形は？","75cm²",["45cm²","60cm²","75cm²","125cm²"],"面積比は9:25。27×25/9=75cm²。"],
+["geometry","応用","半径4cmの円の円周は？","8πcm",["4πcm","8πcm","16πcm","32πcm"],"円周=2πr=2π×4=8πcm。"],
+["solids","基礎","1辺5cmの立方体の体積は？","125cm³",["25cm³","75cm³","100cm³","125cm³"],"体積=5×5×5=125cm³。"],
+["solids","標準","半径4cmの球の体積は？","256π/3cm³",["64πcm³","128π/3cm³","256π/3cm³","256πcm³"],"球の体積は4/3πr³。4/3×π×64=256π/3。"],
+["solids","応用","底面積18cm²、高さ10cmの角すいの体積は？","60cm³",["60cm³","90cm³","180cm³","540cm³"],"角すいの体積=底面積×高さ÷3=18×10÷3=60。"],
+["probability","基礎","1〜6のカードから1枚選ぶ。3の倍数を引く確率は？","1/3",["1/6","1/3","1/2","2/3"],"3と6の2枚が該当するので2/6=1/3。"],
+["probability","標準","赤3個、青2個から戻さず2個取る。2個とも青の確率は？","1/10",["1/5","1/10","2/5","1/2"],"1個目が青2/5、次が青1/4。積は1/10。"],
+["probability","応用","さいころ2個の目の和が10になる確率は？","1/12",["1/18","1/12","1/9","1/6"],"該当は(4,6),(5,5),(6,4)の3通り。3/36=1/12。"],
+["data","基礎","データ5, 8, 8, 9, 10の最頻値は？","8",["5","8","9","10"],"最も多く現れる値は8。"],
+["data","標準","データ4, 6, 8, 10の平均値は？","7",["6","7","8","28"],"合計28を4個で割るので7。"],
+["data","応用","データ2, 4, 6, 8, 10, 12の中央値は？","7",["6","7","8","9"],"データ数が偶数なので中央の6と8の平均。(6+8)/2=7。"],
+["applications","基礎","1200円の商品を消費税を考えずに20%引きで買う。代金は？","960円",["240円","900円","960円","1000円"],"支払額は定価の80%。1200×0.8=960円。"],
+["applications","標準","時速72kmは秒速何m？","20m/s",["12m/s","18m/s","20m/s","72m/s"],"72km=72000m、1時間=3600秒。72000÷3600=20。"],
+["applications","標準","濃度8%の食塩水250gに含まれる食塩は？","20g",["8g","16g","20g","32g"],"250×0.08=20g。"],
+["applications","応用","連続する3つの偶数の和が54。真ん中の偶数は？","18",["16","18","20","22"],"真ん中をnとすると(n−2)+n+(n+2)=3n=54、n=18。"],
+
 ].map((x,i)=>({id:"q"+i,unit:x[0],level:x[1],q:x[2],answer:x[3],choices:x[4],explain:x[5]}));
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const KEY="mathAcademySingleIndexV2";
@@ -173,10 +204,44 @@ function renderReview(){let arr=state.review.map(id=>BANK.find(q=>q.id===id)).fi
 document.addEventListener("click",e=>{const b=e.target.closest("[data-remove-review]");if(b){state.review=state.review.filter(x=>x!==b.dataset.removeReview);save();renderReview()}});
 $("#clearReview").onclick=()=>{if(confirm("復習リストを空にしますか？")){state.review=[];save();renderReview()}};
 function renderProgress(){updateHeader();const hist=state.history;let topics=UNITS.map(u=>{let a=hist.filter(x=>x.unit===u.id);return {...u,total:a.length,correct:a.filter(x=>x.ok).length}}).filter(x=>x.total);$("#topicStats").innerHTML=topics.length?topics.map(x=>'<div class="item"><b>'+x.name+'</b><p class="muted small">'+x.correct+' / '+x.total+' 問正解</p><div class="progress"><span style="width:'+(x.total?x.correct/x.total*100:0)+'%"></span></div></div>').join(""):'<div class="empty">まだ解答履歴がありません。まずは一問解いてみよう。</div>'}
+
+// Browser smoke tests: run from the visible progress screen.
+$("#runSelfTest").onclick=()=>{
+ const out=$("#selfTestResults"),lines=[];const check=(name,ok,detail="")=>lines.push({name,ok,detail});
+ const originalPage=$(".page").find(x=>x.classList.contains("active"))?.id.replace("page-","")||"home";
+ const originalState=JSON.parse(JSON.stringify(state)),originalSessions=JSON.parse(JSON.stringify(sessions));
+ const savedCards={quiz:$("#quizCard").innerHTML,practice:$("#practiceCard").innerHTML,mock:$("#mockCard").innerHTML};
+ const savedReview=$("#reviewList").innerHTML;
+ try{
+  const ids=PREFS.length===47&&new Set(PREFS).size===47;
+  check("都道府県データ（47件・重複なし）",ids);
+  check("問題バンク（100問以上）",BANK.length>=100,"現在 "+BANK.length+" 問");
+  check("全問題に選択肢・解説・正解がある",BANK.every(q=>q&&q.choices.length>=2&&q.choices.includes(q.answer)&&q.explain));
+  check("全8画面の表示切替",["home","units","formulas","quiz","practice","mock","review","progress"].every(p=>{go(p);return $("#page-"+p).classList.contains("active")}));
+  check("全問題の単元IDが有効",BANK.every(q=>UNITS.some(u=>u.id===q.unit)));
+  check("公式の単元IDが有効",FORMULAS.every(q=>UNITS.some(u=>u.id===q.unit)));
+  // Exercise the real answer click handler with a temporary one-question session.
+  sessions.quiz={items:[BANK[0]],index:0,correct:0,answered:false,results:[]};
+  renderQuestion("quiz");
+  const answerBtn=[...$("#quizCard").querySelectorAll("[data-answer]")].find(b=>decodeURIComponent(b.dataset.answer)===BANK[0].answer);
+  if(answerBtn)answerBtn.click();
+  check("解答クリック→正誤フィードバック",!!answerBtn&&sessions.quiz.answered&&$("#quizFeedback").classList.contains("show"));
+  check("解答後に次へボタンが有効",!$("#quizNext").disabled);
+  check("全47都道府県の公式リンク生成",PREFS.every(p=>/^https:\/\//.test(officialUrl(p))));
+ }catch(e){check("テスト実行中の例外",false,String(e))}
+ finally{
+  state=originalState;sessions=originalSessions;
+  try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
+  $("#quizCard").innerHTML=savedCards.quiz;$("#practiceCard").innerHTML=savedCards.practice;$("#mockCard").innerHTML=savedCards.mock;$("#reviewList").innerHTML=savedReview;
+  updateHeader();go(originalPage);
+ }
+ const passed=lines.filter(x=>x.ok).length;
+ out.innerHTML='<div class="notice"><b>テスト結果：'+passed+'/'+lines.length+' 合格</b></div>'+lines.map(x=>'<div class="item"><b>'+(x.ok?'✓':'✗')+' '+x.name+'</b>'+(x.detail?'<div class="muted small">'+x.detail+'</div>':'')+'</div>').join("");
+};
 $("#resetStats").onclick=()=>{if(confirm("学習記録を削除しますか？復習リストは残ります。")){state.history=[];save();renderProgress()}};
 function fillPrefs(){const s=$("#prefSelect");s.innerHTML=PREFS.map(p=>'<option>'+p+'</option>').join("");s.value=PREFS.includes(state.lastPref)?state.lastPref:"埼玉県";updatePrefNote()}
-function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/nyushi/r9nyushijyoho.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/ability_test/problem_and_answer/release20260221_n01","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen/gakuryokukensa/mondai.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/nyuushi/koukou/r8/index.html"};return map[pref]||("https://www.google.com/search?q="+encodeURIComponent(pref+" 公立高校 入試 数学 教育委員会 公式"))}
-function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県を選ぶと問題の出題順が変わります。現時点で県固有の公式資料を照合できていない場合、出題傾向を確認済みとは表示しません。演習問題は中学数学の範囲に沿ったオリジナル問題で、県の過去問そのものではありません。公式情報へのリンクから、最新の出題方針や過去問を確認してください。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";if(p==="神奈川県")detail="神奈川県向け：県公式ページに令和8年度の共通選抜学力検査問題・正答表・マークシート解答用紙が公開されています。公式資料を見て形式を確認してください。このサイトの問題はオリジナル問題です。";if(p==="千葉県")detail="千葉県向け：県教育委員会の入試情報ページから実施方針・過去の情報を確認できます。県の数学出題方針は基礎的技能に加え、論理的な考察や表現力も重視すると公表されています。このサイトの問題はオリジナル問題です。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の入試情報を確認」を利用してください。</span>"}
+function officialUrl(pref){const map={"埼玉県":"https://www.pref.saitama.lg.jp/f2208/nyushi/r9nyushijyoho.html","東京都":"https://www.kyoiku.metro.tokyo.lg.jp/admission/high_school/ability_test/problem_and_answer/release20260221_n01","神奈川県":"https://www.pref.kanagawa.jp/docs/dc4/nyusen/nyusen/gakuryokukensa/mondai.html","千葉県":"https://www.pref.chiba.lg.jp/kyouiku/shidou/nyuushi/koukou/r8/index.html","宮城県":"https://www.pref.miyagi.jp/soshiki/koukyou/kakomon-ko-nyushi-r8.html","秋田県":"https://www.pref.akita.lg.jp/pages/archive/94329"};return map[pref]||("https://www.google.com/search?q="+encodeURIComponent(pref+" 公立高校 入試 数学 教育委員会 公式"))}
+function updatePrefNote(){const p=$("#prefSelect").value;state.lastPref=p;save();let detail="この県を選ぶと問題の出題順が変わります。県別の傾向を確認できているのは、画面に明記した公式資料の範囲です。未調査の県については出題傾向を確認済みとは表示しません。問題は中学数学の範囲に沿ったオリジナル問題で、県の過去問そのものではありません。";if(p==="埼玉県")detail="埼玉県向け：令和9年度入試の公式案内を確認できます。数学・英語には学校選択問題があり、令和9年度からマークシート方式が導入されると県が公表しています。このサイトの問題は対策用オリジナル問題で、県の過去問そのものではありません。";if(p==="東京都")detail="東京都向け：都教育委員会が公開する学力検査問題・正答表を確認できます。このサイトの問題は対策用オリジナル問題で、都立入試の過去問そのものではありません。";if(p==="神奈川県")detail="神奈川県向け：県公式ページに令和8年度の共通選抜学力検査問題・正答表・マークシート解答用紙が公開されています。公式資料を見て形式を確認してください。このサイトの問題はオリジナル問題です。";if(p==="千葉県")detail="千葉県向け：県教育委員会の入試情報ページから実施方針・過去の情報を確認できます。県の数学出題方針は基礎的技能に加え、論理的な考察や表現力も重視すると公表されています。このサイトの問題はオリジナル問題です。";if(p==="宮城県")detail="宮城県向け：県教育委員会の令和8年度入試ページに数学の問題・解答用紙・正答表と出題方針が公開されています。演習はその形式を確認する参考にしつつ、問題自体はオリジナルです。";if(p==="秋田県")detail="秋田県向け：県公式ページで令和8年度数学の学力検査問題・解答用紙・採点基準を確認できます。演習問題は本サイト独自のオリジナル問題です。";$("#prefNote").innerHTML="<b>"+p+" の演習セット</b><br>"+detail+"<br><span class=\"small\">公式過去問を確認する場合は「県の公式入試情報を探す」を利用してください。</span>"}
 fillPrefs();$("#prefSelect").addEventListener("change",updatePrefNote);$("#officialLink").onclick=()=>window.open(officialUrl($("#prefSelect").value),"_blank","noopener");
 function startPractice(){const p=$("#prefSelect").value,level=$("#practiceLevel").value,count=Number($("#practiceCount").value);state.lastPref=p;save();let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,seedFor(p+new Date().toDateString()+level)).slice(0,count);makeSession("practice",arr)}
 $("#practiceStart").onclick=startPractice;
