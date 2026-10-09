@@ -345,4 +345,35 @@ $("#practiceStart").onclick=startPractice;
 function startMock(){let level=$("#mockLevel").value,count=Number($("#mockCount").value);let arr=BANK.filter(q=>level==="all"||q.level===level);arr=shuffled(arr,Date.now()).slice(0,count);makeSession("mock",arr)}
 $("#mockStart").onclick=startMock;
 renderHomeUnits();renderUnits();renderFormulas();updateHeader();renderProgress();
-</script></body></html>
+</script>
+<section id="unified-study-cards" style="max-width:1200px;margin:36px auto;padding:24px;font-family:system-ui,sans-serif;color:#18243b">
+<style>
+#unified-study-cards{background:#f3f6fb;border:1px solid #dce4f1;border-radius:22px;box-sizing:border-box}
+#unified-study-cards *{box-sizing:border-box}
+#unified-study-cards .usc-head{margin:0 0 8px;font-size:clamp(22px,3vw,30px)}
+#unified-study-cards .usc-sub{color:#617493;margin:0 0 20px;line-height:1.7}
+#unified-study-cards .usc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+#unified-study-cards .usc-card{background:#fff;border:1px solid #d7e0ef;border-radius:17px;padding:18px;min-height:210px;display:flex;flex-direction:column;box-shadow:0 3px 12px #213b6410}
+#unified-study-cards .usc-tag{display:inline-block;align-self:flex-start;background:#eaf0ff;color:#2453c8;border-radius:20px;padding:4px 10px;font-size:12px;margin-bottom:14px}
+#unified-study-cards h3{font-size:18px;margin:0 0 10px}
+#unified-study-cards p{color:#617493;line-height:1.65;margin:0 0 16px}
+#unified-study-cards label{font-weight:650;display:block;margin:12px 0 6px}
+#unified-study-cards select,#unified-study-cards button{width:100%;padding:12px;border-radius:10px;border:1px solid #cbd6e8;font:inherit}
+#unified-study-cards button{background:#2555d9;color:white;font-weight:750;border:0;cursor:pointer;margin-top:auto}
+#unified-study-cards .usc-work{background:white;border:1px solid #d7e0ef;border-radius:16px;margin-top:18px;padding:18px;line-height:1.75}
+#unified-study-cards .usc-muted{color:#617493;font-size:14px}
+@media(max-width:560px){#unified-study-cards{padding:15px}#unified-study-cards .usc-grid{grid-template-columns:1fr}}
+</style>
+<h2 class="usc-head">分野別 学習メニュー</h2>
+<p class="usc-sub">分野と学習方法を選んで「始める」を押してください。学習内容をカード式に整理しています。</p>
+<div class="usc-grid">
+<div class="usc-card"><span class="usc-tag">分野を選択</span><h3>① 学習する範囲</h3><p>苦手な単元だけを選んで集中して学習。</p><label for="usc-topic">分野</label><select id="usc-topic"></select></div>
+<div class="usc-card"><span class="usc-tag">学習方法を選択</span><h3>② 学び方</h3><p>暗記・基礎問題・四択・実戦演習から選択。</p><label for="usc-mode">学習メニュー</label><select id="usc-mode"></select></div>
+<div class="usc-card"><span class="usc-tag">苦手を発見</span><h3>③ 弱点チェック</h3><p>選んだ分野の問題に取り組み、解説で理解を確認。</p><button type="button" id="usc-start">始める</button></div>
+<div class="usc-card"><span class="usc-tag">受験実戦</span><h3>④ 入試・共通テスト対策</h3><p>入試で必要な知識や資料の読み取りを実戦形式で練習。</p><button type="button" id="usc-exam">演習を選ぶ</button></div>
+</div>
+<div class="usc-work" id="usc-work" aria-live="polite"><strong>ここに学習内容が表示されます。</strong><p class="usc-muted">分野と学習メニューを選んでください。</p></div>
+<script>
+(()=>{const cfg={"title":"中学数学・埼玉入試","topics":["正負の数","文字式","方程式","比例・反比例","一次関数","連立方程式","図形・角度","合同・証明","相似","三平方の定理","確率","資料の活用・データ"],"modes":["公式・解き方を学ぶ","計算のコツ・裏技","正誤問題","基礎問題","応用問題","分野別演習","苦手分野チェックテスト","入試形式演習"]};const root=document.getElementById('unified-study-cards');if(!root||root.dataset.ready)return;root.dataset.ready='1';const topic=root.querySelector('#usc-topic'),mode=root.querySelector('#usc-mode'),work=root.querySelector('#usc-work');const fill=(el,arr)=>arr.forEach((v,i)=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)});fill(topic,cfg.topics);fill(mode,cfg.modes);function draw(){const t=topic.value,m=mode.value;let body='';if(/四択|正誤|問題|演習|テスト/.test(m)){body='<p><b>取り組み方：</b>まず自分で答えを考え、ノートに理由も書きましょう。次に既存の問題エリアで同じ分野の問題を解き、解説を確認してください。</p><p class="usc-muted">※このメニューは分野選択の入口です。問題数や自動採点の対応は、既存の各学習機能により異なります。</p>';}else{body='<p><b>学習ポイント：</b>重要語句・公式・考え方を整理し、「なぜそうなるか」を説明できるか確認しましょう。</p><p class="usc-muted">おすすめ手順：①要点を読む → ②例題を解く → ③間違いを記録 → ④同じ分野を解き直す。</p>';}work.innerHTML='<h3>'+t+'｜'+m+'</h3>'+body;}root.querySelector('#usc-start').addEventListener('click',draw);root.querySelector('#usc-exam').addEventListener('click',()=>{mode.value=cfg.modes.find(x=>/共通テスト|入試形式|模擬|チェックテスト/.test(x))||cfg.modes[cfg.modes.length-1];draw()});topic.addEventListener('change',draw);mode.addEventListener('change',draw);})();
+</script>
+</body></html>
