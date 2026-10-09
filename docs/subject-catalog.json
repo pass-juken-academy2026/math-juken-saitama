@@ -1,7 +1,7 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "updatedAt": "2026-10-09",
-  "purpose": "総合ポータル用の科目カタログ。高校は教科を親カテゴリにし、各科目を選択肢としてその下に配置する。公開URLは確認後にのみ設定する。",
+  "purpose": "総合ポータル用の科目カタログ。リポジトリは中学3教科・高校5教科に分離し、高校の科目は各教科リポジトリ内の選択肢として配置する。公開URLは確認後にのみ設定する。",
   "policy": {
     "information2": "将来拡張候補。今回の必須対象外。",
     "socialStudies": [
@@ -14,7 +14,14 @@
       "世界史探究"
     ],
     "unverifiedUrlsMustRemainNull": true,
-    "portalStructure": "高校ホームでは「国語・数学・理科・社会・情報」を教科として表示し、科目名は各教科内の選択肢として表示する。高校科目を教科と同列に並べない。"
+    "portalStructure": "高校は5つの教科別リポジトリ（国語・数学・理科・社会・情報）を用意し、各教科サイト内で科目を選択する。国語には現代の国語・論理国語・古典を含める。中学は国語・理科・社会の3リポジトリ。",
+    "repositoryCounts": {
+      "junior": 3,
+      "highschool": 5,
+      "subjectRepositoriesTotal": 8,
+      "commonSystems": 3,
+      "totalRepositoriesIncludingCommonSystems": 11
+    }
   },
   "existingAssets": [
     {
@@ -88,6 +95,16 @@
       "subjectGroup": "中学"
     },
     {
+      "repository": "highschool-japanese",
+      "name": "古典",
+      "category": "高校・国語",
+      "status": "未作成確認",
+      "publicUrl": null,
+      "notes": "高校国語リポジトリ内の選択科目。古文・漢文を含む教材構成を想定。",
+      "schoolLevel": "highschool",
+      "subjectGroup": "国語"
+    },
+    {
       "repository": "junior-social-studies",
       "name": "中学社会",
       "category": "中学",
@@ -98,7 +115,7 @@
       "subjectGroup": "中学"
     },
     {
-      "repository": "highschool-modern-japanese",
+      "repository": "highschool-japanese",
       "name": "現代の国語",
       "category": "高校・国語",
       "status": "未作成確認",
@@ -108,7 +125,7 @@
       "subjectGroup": "国語"
     },
     {
-      "repository": "highschool-logical-japanese",
+      "repository": "highschool-japanese",
       "name": "論理国語",
       "category": "高校・国語",
       "status": "未作成確認",
@@ -118,7 +135,7 @@
       "subjectGroup": "国語"
     },
     {
-      "repository": "highschool-math-1",
+      "repository": "highschool-math",
       "name": "数学I",
       "category": "高校・数学",
       "status": "未作成確認",
@@ -128,7 +145,7 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-math-a",
+      "repository": "highschool-math",
       "name": "数学A",
       "category": "高校・数学",
       "status": "未作成確認",
@@ -138,7 +155,7 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-math-2",
+      "repository": "highschool-math",
       "name": "数学II",
       "category": "高校・数学",
       "status": "未作成確認",
@@ -148,7 +165,7 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-math-b",
+      "repository": "highschool-math",
       "name": "数学B",
       "category": "高校・数学",
       "status": "未作成確認",
@@ -158,7 +175,7 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-math-3",
+      "repository": "highschool-math",
       "name": "数学III",
       "category": "高校・数学",
       "status": "未作成確認",
@@ -168,7 +185,7 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-math-c",
+      "repository": "highschool-math",
       "name": "数学C",
       "category": "高校・数学",
       "status": "未作成確認",
@@ -178,7 +195,7 @@
       "subjectGroup": "数学"
     },
     {
-      "repository": "highschool-biology-basic",
+      "repository": "highschool-science",
       "name": "生物基礎",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -188,7 +205,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-biology",
+      "repository": "highschool-science",
       "name": "生物",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -198,7 +215,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-chemistry-basic",
+      "repository": "highschool-science",
       "name": "化学基礎",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -208,7 +225,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-chemistry",
+      "repository": "highschool-science",
       "name": "化学",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -218,7 +235,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-physics-basic",
+      "repository": "highschool-science",
       "name": "物理基礎",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -228,7 +245,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-physics",
+      "repository": "highschool-science",
       "name": "物理",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -238,7 +255,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-earth-science-basic",
+      "repository": "highschool-science",
       "name": "地学基礎",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -248,7 +265,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-earth-science",
+      "repository": "highschool-science",
       "name": "地学",
       "category": "高校・理科",
       "status": "未作成確認",
@@ -258,7 +275,7 @@
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-geography-general",
+      "repository": "highschool-social-studies",
       "name": "地理総合",
       "category": "高校・社会",
       "status": "未作成確認",
@@ -268,7 +285,7 @@
       "subjectGroup": "社会"
     },
     {
-      "repository": "highschool-geography",
+      "repository": "highschool-social-studies",
       "name": "地理",
       "category": "高校・社会",
       "status": "未作成確認",
@@ -278,7 +295,7 @@
       "subjectGroup": "社会"
     },
     {
-      "repository": "highschool-history-general",
+      "repository": "highschool-social-studies",
       "name": "歴史総合",
       "category": "高校・社会",
       "status": "未作成確認",
@@ -288,7 +305,7 @@
       "subjectGroup": "社会"
     },
     {
-      "repository": "highschool-information-1",
+      "repository": "highschool-information",
       "name": "情報I",
       "category": "高校・情報",
       "status": "未作成確認",
@@ -335,7 +352,8 @@
           "label": "国語",
           "subjects": [
             "highschool-modern-japanese",
-            "highschool-logical-japanese"
+            "highschool-logical-japanese",
+            "highschool-classical-japanese"
           ]
         },
         {
