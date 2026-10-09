@@ -171,7 +171,7 @@ const bank=[
 ,{cat:"calc",label:"計算・展開",q:"比例式 3:5=x:20 の x は？",opts:["12","15","8"],ans:0,why:"3/5=x/20 より5x=60、x=12。比の対応順をそろえる。"}
 ,{cat:"equation",label:"方程式",q:"5x−7=18 の x は？",opts:["5","11/5","25"],ans:0,why:"5x=25 なので x=5。"}
 ,{cat:"equation",label:"方程式",q:"x/3+2=7 の x は？",opts:["9","15","21"],ans:1,why:"x/3=5、両辺に3をかけてx=15。"}
-,{cat:"equation",label:"方程式",q:"2x+3y=12、x=3 のとき y は？",opts:["1","2","3"],ans:0,why:"6+3y=12 → 3y=6 → y=2。"}
+,{cat:"equation",label:"方程式",q:"2x+3y=12、x=3 のとき y は？",opts:["1","2","3"],ans:1,why:"6+3y=12 → 3y=6 → y=2。"}
 ,{cat:"equation",label:"方程式",q:"x+y=11、x−y=3 のとき (x,y) は？",opts:["(7,4)","(4,7)","(8,3)"],ans:0,why:"2式を足して2x=14、x=7。x+y=11よりy=4。"}
 ,{cat:"equation",label:"方程式",q:"2(x+4)=3x−1 の x は？",opts:["7","9","−9"],ans:1,why:"2x+8=3x−1 → x=9。"}
 ,{cat:"equation",label:"方程式",q:"x²−9=0 の実数解は？",opts:["x=3のみ","x=−3のみ","x=±3"],ans:2,why:"(x−3)(x+3)=0 なので x=3 または−3。"}
@@ -194,7 +194,7 @@ const bank=[
 ,{cat:"geometry",label:"図形",q:"平行四辺形の底辺8cm、高さ5cm。面積は？",opts:["13cm²","20cm²","40cm²"],ans:2,why:"底辺×高さ=8×5=40cm²。"}
 ,{cat:"geometry",label:"図形",q:"上底4cm、下底10cm、高さ3cmの台形の面積は？",opts:["21cm²","42cm²","17cm²"],ans:0,why:"(4+10)×3÷2=21cm²。"}
 ,{cat:"geometry",label:"図形",q:"半径4cmの円の円周は？",opts:["4πcm","8πcm","16πcm"],ans:1,why:"2πr=2π×4=8πcm。"}
-,{cat:"geometry",label:"図形",q:"半径2cm、高さ7cmの円柱の体積は？",opts:["14πcm³","28πcm³","56πcm³"],ans:2,why:"底面積π×2²=4π。4π×7=28πcm³。"}
+,{cat:"geometry",label:"図形",q:"半径2cm、高さ7cmの円柱の体積は？",opts:["14πcm³","28πcm³","56πcm³"],ans:1,why:"底面積π×2²=4π。4π×7=28πcm³。"}
 ,{cat:"geometry",label:"図形",q:"半径3cm、高さ4cmの円すいの体積は？",opts:["12πcm³","36πcm³","9πcm³"],ans:0,why:"πr²h÷3=π×9×4÷3=12πcm³。高さは垂直な距離。"}
 ,{cat:"geometry",label:"図形",q:"直角三角形の斜辺が13cm、他の辺が5cm。残る辺は？",opts:["8cm","12cm","18cm"],ans:1,why:"残る辺²=13²−5²=169−25=144なので12cm。斜辺が最長。"}
 ,{cat:"geometry",label:"図形",q:"相似な図形の辺の比が2:3。面積比は？",opts:["2:3","4:9","8:27"],ans:1,why:"面積比は辺の比を2乗して4:9。相似な図形の場合。"}
@@ -231,7 +231,7 @@ if(!stats || typeof stats!=="object" || !Array.isArray(stats.review)) stats={cor
 function save(){try{window.localStorage.setItem("mathSaitamaStats",JSON.stringify(stats));}catch(e){/* 保存不可の環境では画面上だけで学習を続ける */}renderStats()}
 function renderStats(){const el=document.getElementById("dashboardStats");if(el)el.textContent="正解数："+stats.correct+"　/　回答数："+stats.attempts+"　/　復習待ち："+stats.review.length;const p=document.getElementById("homeProgress");if(p)p.style.width=(stats.attempts?Math.round(stats.correct/stats.attempts*100):0)+"%"}
 function page(id,updateHash=true){const target=document.getElementById("page-"+id);if(!target)return;document.querySelectorAll(".page").forEach(x=>x.classList.toggle("hidden",x!==target));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.page===id));if(id==="review")renderReview();if(updateHash && location.hash!=="#"+id)history.pushState(null,"","#"+id);window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-page]").forEach(b=>{b.setAttribute("aria-controls","page-"+b.dataset.page);b.addEventListener("click",()=>page(b.dataset.page));});document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));window.addEventListener("popstate",()=>page((location.hash||"#home").slice(1),false));window.addEventListener("hashchange",()=>page((location.hash||"#home").slice(1),false));
+document.querySelectorAll("[data-page]").forEach(b=>{b.setAttribute("aria-controls","page-"+b.dataset.page);b.addEventListener("click",()=>page(b.dataset.page));});document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>page(b.dataset.go)));const routeFromHash=()=>{const key=(location.hash||"#home").slice(1).replace(/^page-/,"");page(key,false)};window.addEventListener("popstate",routeFromHash);window.addEventListener("hashchange",routeFromHash);
 function renderFormulas(){const filter=document.getElementById("formulaFilter").value;document.getElementById("formulaList").innerHTML=formulas.filter(f=>filter==="all"||f.cat===filter).map(f=>'<div class="formula"><strong>'+f.cat+'｜'+f.name+'</strong><div class="math">'+f.expr+'</div><div class="muted">'+f.note+'</div></div>').join("")}
 document.getElementById("formulaFilter").addEventListener("change",renderFormulas);renderFormulas();renderTricks();
 let subCurrent=null;
