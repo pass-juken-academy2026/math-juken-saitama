@@ -330,8 +330,12 @@ function startPractice(){
  // Repeatedly sample with a transparent topic weighting: research-highlighted units
  // are more likely to appear, while other curriculum areas remain in the pool.
  const seed=seedFor("prefecture-practice-v3|"+p+"|"+new Date().toDateString()+"|"+level);
- const ranked=eligible.map((q,i)=>{const topic=trend.topics.includes(q.topic)?3:1;return {q,score:Math.random()};});
- let arr=shuffled(ranked,seed).sort((a,b)=>{const wa=trend.topics.includes(a.q.topic)?3:1,wb=trend.topics.includes(b.q.topic)?3:1;return (b.score*wb)-(a.score*wa)}).map(x=>x.q).slice(0,Math.min(count,eligible.length));
+ const preferred=eligible.filter(q=>trend.topics.includes(q[0]));
+ const other=eligible.filter(q=>!trend.topics.includes(q[0]));
+ // Put highlighted topics into the seeded draw three times, then de-duplicate.
+ // This increases their selection chance while keeping the order reproducible per day/prefecture.
+ const arr=shuffled([...preferred,...preferred,...preferred,...other],seed)
+   .filter((q,i,a)=>a.indexOf(q)===i).slice(0,Math.min(count,eligible.length));
  makeSession("practice",arr);
  const root=$("#practiceCard");
  if(root.querySelector(".qtop")) root.insertAdjacentHTML("afterbegin",'<div class="notice"><b>'+p+' 専用セット</b>：'+arr.length+'問。調査メモに基づき重点領域の出題率を高めています。確認済みの県でも、問題数・種類には限りがあり実際の入試を完全再現するものではありません。</div>');
