@@ -21,37 +21,22 @@ GitHub連携で一覧できた既存リポジトリは4件。いずれも `pass-
 この監査でGitHub連携から確認できたのは上記4件。ほかのリポジトリが存在しないとは断定しない。今回のGitHub連携にリポジトリ作成操作が公開されていないため、新規リポジトリの作成は未実施。既存リポジトリの内容・URL・設定を調査しながら、作成可能なドキュメントと検証基盤を先に整備する。
 
 ## リポジトリ候補と初期状態
-状態の定義: 「調査中」は存在・内容を確認済みまたは確認作業中、「未作成確認」は連携でまだ確認できていないだけで不存在を意味しない。「公開済み」は実際のURLと動作確認を別途要する。
+状態の定義: 「未作成確認」は連携でまだ確認できていないだけで不存在を意味しない。「公開済み」は実際のURLと動作確認を別途要する。高校の科目は、科目ごとに独立したリポジトリを作らず、教科別リポジトリ内の科目として実装する。
 
-| 分類 | リポジトリ候補 | 状態 | 次の作業 |
+| 分類 | リポジトリ候補 | 含む科目・役割 | 状態 |
 |---|---|---|---|
-| 中学 | junior-japanese | 未作成確認 | 作成権限確認後に骨組み |
-| 中学 | junior-science | 未作成確認 | 作成権限確認後に骨組み |
-| 中学 | junior-social-studies | 未作成確認 | 作成権限確認後に骨組み |
-| 高校 | highschool-modern-japanese | 未作成確認 | 共通テスト型読解・資料問題 |
-| 高校 | highschool-logical-japanese | 未作成確認 | 論理構造・複数資料読解 |
-| 高校 | highschool-math-1 | 未作成確認 | 数学Iの範囲・採点検証 |
-| 高校 | highschool-math-a | 未作成確認 | 数学Aの範囲・採点検証 |
-| 高校 | highschool-math-2 | 未作成確認 | 数学IIの範囲・採点検証 |
-| 高校 | highschool-math-b | 未作成確認 | 数学Bの範囲・採点検証 |
-| 高校 | highschool-math-3 | 未作成確認 | 数学IIIの大学入試型演習 |
-| 高校 | highschool-math-c | 未作成確認 | 数学Cの大学入試型演習 |
-| 高校 | highschool-biology-basic | 未作成確認 | 実験・グラフ・基礎生物 |
-| 高校 | highschool-biology | 未作成確認 | 実験・考察・生物 |
-| 高校 | highschool-chemistry-basic | 未作成確認 | 物質・量的関係・基礎化学 |
-| 高校 | highschool-chemistry | 未作成確認 | 反応・計算・化学 |
-| 高校 | highschool-physics-basic | 未作成確認 | 図・グラフ・基礎物理 |
-| 高校 | highschool-physics | 未作成確認 | 力学・波・電磁気等 |
-| 高校 | highschool-earth-science-basic | 未作成確認 | 観測資料・基礎地学 |
-| 高校 | highschool-earth-science | 未作成確認 | 地球・宇宙資料の考察 |
-| 高校 | highschool-geography-general | 未作成確認 | 地図・統計・地域資料 |
-| 高校 | highschool-geography | 未作成確認 | 系統地理・地誌資料 |
-| 高校 | highschool-history-general | 未作成確認 | 史料・年表・因果関係 |
-| 高校 | highschool-information-1 | 未作成確認 | データ・アルゴリズム・ネットワーク |
-| 共通 | learning-portal | 未作成確認 | 実在URLだけを公開リンクにする |
-| 共通 | learning-feedback | 未作成確認 | 共通フォーム仕様と安全な受信API |
-| 共通 | admin-question-inbox | 未作成確認 | サーバー側認証・認可・非公開DB |
-| 拡張 | highschool-information-2 | 将来候補 | 情報Iの範囲・余力を確認後 |
+| 中学 | junior-japanese | 国語 | 未作成確認 |
+| 中学 | junior-science | 理科 | 未作成確認 |
+| 中学 | junior-social-studies | 社会 | 未作成確認 |
+| 高校 | highschool-japanese | 現代の国語・論理国語・古典（古文・漢文） | 未作成確認 |
+| 高校 | highschool-math | 数学I・A・II・B・III・C | 未作成確認 |
+| 高校 | highschool-science | 生物基礎・生物・化学基礎・化学・物理基礎・物理・地学基礎・地学 | 未作成確認 |
+| 高校 | highschool-social-studies | 地理総合・地理・歴史総合 | 未作成確認 |
+| 高校 | highschool-information | 情報I | 未作成確認 |
+| 共通 | learning-portal | 全科目への入口 | 未作成確認 |
+| 共通 | learning-feedback | 意見・要望の受付 | 未作成確認 |
+| 共通 | admin-question-inbox | 認証付き管理者専用受信箱 | 未作成確認 |
+| 拡張 | highschool-information-2 | 情報II（将来候補・今回必須ではない） | 将来候補 |
 
 ## リポジトリ分割ルール
 - 中学は3リポジトリ（国語・理科・社会）。
