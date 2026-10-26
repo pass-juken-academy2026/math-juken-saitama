@@ -1,6 +1,7 @@
 (() => {
-  const root = document.querySelector('.academy-hub');
-  const legacy = root && root.__MATH_LEGACY;
+  const legacyRoot = document.querySelector('.academy-hub');
+  const legacy = legacyRoot && legacyRoot.__MATH_LEGACY;
+  const root = document.body;
   if (!root || !legacy) return;
 
   const DB = legacy.DB;
