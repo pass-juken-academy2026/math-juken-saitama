@@ -96,8 +96,10 @@
  reset.addEventListener('click',()=>{input.value='';render();input.focus();});
  results.addEventListener('click',event=>{const b=event.target.closest('[data-sws-index]');if(!b)return;const item=matches[Number(b.dataset.swsIndex)];if(!item)return;item.el.scrollIntoView({behavior:'smooth',block:'center'});const old=item.el.style.outline,offset=item.el.style.outlineOffset;item.el.style.outline='3px solid #65c9f1';item.el.style.outlineOffset='4px';setTimeout(()=>{item.el.style.outline=old;item.el.style.outlineOffset=offset;},1600);});
 })();
-</script></body></html>
+</script>
 <style id="mobile-tap-guard">html,body{touch-action:pan-y}button,a,[role="button"],[data-tab],[data-mode],[data-start],[data-weak],[data-export]{pointer-events:auto!important;touch-action:manipulation;position:relative}button:disabled{pointer-events:none}</style>
 <script id="mobile-tap-guard-script">
 (()=>{document.addEventListener('click',function(e){const b=e.target&&e.target.closest&&e.target.closest('button,[role="button"],[data-tab],[data-mode],[data-start],[data-weak],[data-export]');if(!b)return;const root=b.closest('.academy-hub,#unified-study-cards');if(!root)return; if(b.dataset.tab!==undefined){const i=Number(b.dataset.tab);root.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));const panels=root.querySelectorAll('[data-panel]');panels.forEach((p,n)=>p.classList.toggle('active',n===i));const legacy=root.querySelectorAll('.panel');if(!panels.length&&legacy.length)legacy.forEach((p,n)=>p.classList.toggle('active',n===i));}},{capture:true});document.addEventListener('touchend',function(e){const b=e.target&&e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;const root=b.closest('.academy-hub,#unified-study-cards');if(!root)return;if(b.dataset.tab!==undefined){e.preventDefault();b.click()}},{passive:false,capture:true});})();
 </script>
+
+</body></html>
