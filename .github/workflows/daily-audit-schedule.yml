@@ -4,7 +4,9 @@ on:
     - cron: '1 20 * * *'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   daily-audit:
     uses: pass-juken-academy2026/learning-portal/.github/workflows/daily-audit.yml@main
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
