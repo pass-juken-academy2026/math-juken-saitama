@@ -1,26 +1,32 @@
 {
-  "version": "0.5",
-  "updatedAt": "2026-10-09",
-  "purpose": "総合ポータル用の科目カタログ。中学は3教科別リポジトリ、高校理科は生物・化学・物理・地学の4分野別リポジトリに基礎と発展をまとめ、その他の高校科目は国語・数学・社会・情報の教科別リポジトリに配置する。公開URLは確認後にのみ設定する。",
+  "version": "0.6",
+  "updatedAt": "2026-10-27",
+  "purpose": "既存の科目カタログ。対象は既存11リポジトリに限定し、新規リポジトリは作成しない。高校理科の生物・化学・物理・地学は highschool-biology リポジトリ内の各サブディレクトリに配置する。公開URLは確認後にのみ設定する。",
   "policy": {
     "information2": "将来拡張候補。今回の必須対象外。",
     "socialStudies": [
-      "地理総合",
-      "地理",
-      "歴史総合"
+      "地理総合・地理",
+      "日本史（高校社会内トラック）",
+      "世界史（高校社会内トラック）",
+      "歴史総合",
+      "政治・経済",
+      "倫理",
+      "総合"
     ],
     "excludedIndependentSites": [
       "日本史探究",
       "世界史探究"
     ],
     "unverifiedUrlsMustRemainNull": true,
-    "portalStructure": "高校理科は生物基礎＋生物、化学基礎＋化学、物理基礎＋物理、地学基礎＋地学をそれぞれ同じ分野別サイトにまとめ、理科全体で4リポジトリにする。高校国語・数学・社会・情報は教科別リポジトリ内で科目を選択する。中学は国語・理科・社会の3リポジトリ。",
+    "portalStructure": "中学は国語・理科・社会の3リポジトリに加え、math-juken-saitamaを埼玉県高校入試数学の既存資産として扱う。高校英語・国語・数学・理科・社会・情報は既存リポジトリを使用する。高校理科4分野はhighschool-biology内のbiology/chemistry/physics/earth-scienceサブディレクトリにまとめる。learning-portalは既存11リポジトリ内の総合ポータル。新規リポジトリや新規科目は追加しない。",
     "repositoryCounts": {
-      "junior": 3,
-      "highschool": 8,
-      "subjectRepositoriesTotal": 11,
-      "commonSystems": 3,
-      "totalRepositoriesIncludingCommonSystems": 14
+      "junior": 4,
+      "highschool": 6,
+      "contentRepositoriesTotal": 10,
+      "portalRepositoriesInScope": 1,
+      "totalRepositoriesInScope": 11,
+      "catalogedSubjectRepositories": 8,
+      "outOfScopeCommonSystems": 2
     }
   },
   "existingAssets": [
@@ -43,33 +49,33 @@
       "role": "既存世界史資産。高校社会の独立科目として追加しない",
       "repositoryUrl": "https://github.com/pass-juken-academy2026/World-history",
       "publicUrl": null,
-      "status": "index.htmlとREADME確認済み、公開URL未確認"
+      "status": "既存資産だが今回の11リポジトリ監査対象外。高校社会内トラックとして別リポジトリを追加しない"
     },
     {
       "repository": "pass-juken-academy2026/japanese-history-site",
       "role": "既存日本史資産。高校社会の独立科目として追加しない",
       "repositoryUrl": "https://github.com/pass-juken-academy2026/japanese-history-site",
       "publicUrl": null,
-      "status": "index.htmlとREADME確認済み、公開URL未確認"
+      "status": "既存資産だが今回の11リポジトリ監査対象外。高校社会内トラックとして別リポジトリを追加しない"
     }
   ],
   "commonSystems": [
     {
       "repository": "learning-portal",
       "name": "総合ポータル",
-      "status": "未作成確認",
+      "status": "既存11リポジトリ内・確認済み",
       "publicUrl": null
     },
     {
       "repository": "learning-feedback",
       "name": "意見・要望受付と共通仕様",
-      "status": "未作成確認",
+      "status": "対象外（既存11リポジトリに含めず、新規作成しない）",
       "publicUrl": null
     },
     {
       "repository": "admin-question-inbox",
       "name": "管理者専用質問受信サイト",
-      "status": "未作成確認",
+      "status": "対象外（既存11リポジトリに含めず、新規作成しない）",
       "publicUrl": null
     }
   ],
@@ -78,7 +84,7 @@
       "repository": "junior-japanese",
       "name": "中学国語",
       "category": "中学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "junior",
@@ -88,7 +94,7 @@
       "repository": "junior-science",
       "name": "中学理科",
       "category": "中学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "junior",
@@ -98,7 +104,7 @@
       "repository": "highschool-japanese",
       "name": "古典",
       "category": "高校・国語",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "高校国語リポジトリ内の選択科目。古文・漢文を含む教材構成を想定。",
       "schoolLevel": "highschool",
@@ -108,7 +114,7 @@
       "repository": "junior-social-studies",
       "name": "中学社会",
       "category": "中学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "junior",
@@ -118,7 +124,7 @@
       "repository": "highschool-japanese",
       "name": "現代の国語",
       "category": "高校・国語",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -128,7 +134,7 @@
       "repository": "highschool-japanese",
       "name": "論理国語",
       "category": "高校・国語",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -138,7 +144,7 @@
       "repository": "highschool-math",
       "name": "数学I",
       "category": "高校・数学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -148,7 +154,7 @@
       "repository": "highschool-math",
       "name": "数学A",
       "category": "高校・数学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -158,7 +164,7 @@
       "repository": "highschool-math",
       "name": "数学II",
       "category": "高校・数学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -168,7 +174,7 @@
       "repository": "highschool-math",
       "name": "数学B",
       "category": "高校・数学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -178,7 +184,7 @@
       "repository": "highschool-math",
       "name": "数学III",
       "category": "高校・数学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -188,7 +194,7 @@
       "repository": "highschool-math",
       "name": "数学C",
       "category": "高校・数学",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -198,7 +204,7 @@
       "repository": "highschool-biology",
       "name": "生物基礎",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "生物基礎・生物を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
@@ -208,77 +214,83 @@
       "repository": "highschool-biology",
       "name": "生物",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "生物基礎・生物を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
       "subjectGroup": "理科"
     },
     {
-      "repository": "highschool-chemistry",
+      "repository": "highschool-biology",
       "name": "化学基礎",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "化学基礎・化学を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
-      "subjectGroup": "理科"
+      "subjectGroup": "理科",
+      "path": "chemistry/"
     },
     {
-      "repository": "highschool-chemistry",
+      "repository": "highschool-biology",
       "name": "化学",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "化学基礎・化学を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
-      "subjectGroup": "理科"
+      "subjectGroup": "理科",
+      "path": "chemistry/"
     },
     {
-      "repository": "highschool-physics",
+      "repository": "highschool-biology",
       "name": "物理基礎",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "物理基礎・物理を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
-      "subjectGroup": "理科"
+      "subjectGroup": "理科",
+      "path": "physics/"
     },
     {
-      "repository": "highschool-physics",
+      "repository": "highschool-biology",
       "name": "物理",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "物理基礎・物理を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
-      "subjectGroup": "理科"
+      "subjectGroup": "理科",
+      "path": "physics/"
     },
     {
-      "repository": "highschool-earth-science",
+      "repository": "highschool-biology",
       "name": "地学基礎",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "地学基礎・地学を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
-      "subjectGroup": "理科"
+      "subjectGroup": "理科",
+      "path": "earth-science/"
     },
     {
-      "repository": "highschool-earth-science",
+      "repository": "highschool-biology",
       "name": "地学",
       "category": "高校・理科",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "地学基礎・地学を同じサイトに収録。サイト内で基礎・発展を切り替える。リポジトリと公開URLは未確認。",
       "schoolLevel": "highschool",
-      "subjectGroup": "理科"
+      "subjectGroup": "理科",
+      "path": "earth-science/"
     },
     {
       "repository": "highschool-social-studies",
       "name": "地理総合",
       "category": "高校・社会",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -288,7 +300,7 @@
       "repository": "highschool-social-studies",
       "name": "地理",
       "category": "高校・社会",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -298,7 +310,7 @@
       "repository": "highschool-social-studies",
       "name": "歴史総合",
       "category": "高校・社会",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
@@ -308,11 +320,61 @@
       "repository": "highschool-information",
       "name": "情報I",
       "category": "高校・情報",
-      "status": "未作成確認",
+      "status": "既存リポジトリ確認済み（公開URL未確認）",
       "publicUrl": null,
       "notes": "GitHubリポジトリの存在・公開URLは未確認。作成済みと扱わない。",
       "schoolLevel": "highschool",
       "subjectGroup": "情報"
+    },
+    {
+      "id": "highschool-japanese-history",
+      "repository": "highschool-social-studies",
+      "name": "日本史（高校社会内トラック）",
+      "category": "高校・社会",
+      "status": "既存リポジトリ内のトラック確認済み（公開URL未確認）",
+      "publicUrl": null,
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
+    },
+    {
+      "id": "highschool-world-history",
+      "repository": "highschool-social-studies",
+      "name": "世界史（高校社会内トラック）",
+      "category": "高校・社会",
+      "status": "既存リポジトリ内のトラック確認済み（公開URL未確認）",
+      "publicUrl": null,
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
+    },
+    {
+      "id": "highschool-politics-economics",
+      "repository": "highschool-social-studies",
+      "name": "政治・経済",
+      "category": "高校・社会",
+      "status": "既存リポジトリ内のトラック確認済み（公開URL未確認）",
+      "publicUrl": null,
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
+    },
+    {
+      "id": "highschool-ethics",
+      "repository": "highschool-social-studies",
+      "name": "倫理",
+      "category": "高校・社会",
+      "status": "既存リポジトリ内のトラック確認済み（公開URL未確認）",
+      "publicUrl": null,
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
+    },
+    {
+      "id": "highschool-integrated-social-studies",
+      "repository": "highschool-social-studies",
+      "name": "総合",
+      "category": "高校・社会",
+      "status": "既存リポジトリ内のトラック確認済み（公開URL未確認）",
+      "publicUrl": null,
+      "schoolLevel": "highschool",
+      "subjectGroup": "社会"
     }
   ],
   "portalNavigation": [
@@ -388,7 +450,12 @@
           "subjects": [
             "highschool-geography-general",
             "highschool-geography",
-            "highschool-history-general"
+            "highschool-history-general",
+            "highschool-japanese-history",
+            "highschool-world-history",
+            "highschool-politics-economics",
+            "highschool-ethics",
+            "highschool-integrated-social-studies"
           ]
         },
         {
