@@ -51,3 +51,5 @@ jobs:
               print(f'Checked {f}: {len(a.scripts)} inline script(s), {len(a.ids)} IDs')
           if failed: sys.exit(1)
           PY
+      - name: Validate entrance-exam question bank
+        run: node tests/validate-entrance-bank.cjs
