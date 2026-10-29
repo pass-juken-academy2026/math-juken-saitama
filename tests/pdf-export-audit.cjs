@@ -22,5 +22,22 @@ const assert = require('node:assert/strict');
    if(label==='問題＋解答PDF') assert.match(text,/解答・解説/);
    await popup.close();
   }
+
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+  const copyText = async (kind, label) => {
+    await page.getByRole('button', { name: label }).click();
+    await page.waitForFunction(() => (document.querySelector('[data-copy-status]')?.textContent || '').includes('コピーしました'));
+    return page.evaluate(() => navigator.clipboard.readText());
+  };
+  const questionCopy = await copyText('questions', '問題のみテキスト');
+  assert.match(questionCopy, /問題/);
+  assert.doesNotMatch(questionCopy, /正解：|解答・解説/);
+  const answerCopy = await copyText('answers', '解答・解説テキスト');
+  assert.match(answerCopy, /正解：/);
+  assert.match(answerCopy, /解説：/);
+  const combinedCopy = await copyText('combined', '問題＋解答テキスト');
+  assert.match(combinedCopy, /問題/);
+  assert.match(combinedCopy, /解答・解説/);
+  assert.match(combinedCopy, /正解：/);
  } finally { await browser.close(); }
 })().catch(e=>{console.error(e);process.exit(1)});
