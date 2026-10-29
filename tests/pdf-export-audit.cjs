@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
  try {
   const page = await browser.newPage();
   await page.goto('http://127.0.0.1:4173/index.html');
-  await page.click('[data-tab="7"]');
+  await page.click('[data-tab="6"]');
   await page.click('[data-start]');
   await page.waitForSelector('[data-mock] .choices button');
   for (const label of ['問題のみPDF','解答・解説PDF','問題＋解答PDF']) {
