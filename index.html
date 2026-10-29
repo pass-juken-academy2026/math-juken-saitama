@@ -102,4 +102,58 @@
 (()=>{document.addEventListener('click',function(e){const b=e.target&&e.target.closest&&e.target.closest('button,[role="button"],[data-tab],[data-mode],[data-start],[data-weak],[data-export]');if(!b)return;const root=b.closest('.academy-hub,#unified-study-cards');if(!root)return; if(b.dataset.tab!==undefined){const i=Number(b.dataset.tab);root.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));const panels=root.querySelectorAll('[data-panel]');panels.forEach((p,n)=>p.classList.toggle('active',n===i));const legacy=root.querySelectorAll('.panel');if(!panels.length&&legacy.length)legacy.forEach((p,n)=>p.classList.toggle('active',n===i));}},{capture:true});document.addEventListener('touchend',function(e){const b=e.target&&e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;const root=b.closest('.academy-hub,#unified-study-cards');if(!root)return;if(b.dataset.tab!==undefined){e.preventDefault();b.click()}},{passive:false,capture:true});})();
 </script>
 
+<script id="prefecture-entrance-practice-v1">
+(()=> {
+  const select=document.getElementById('prefSelect');
+  const start=document.getElementById('practiceStart');
+  const card=document.getElementById('practiceCard');
+  const note=document.getElementById('prefNote');
+  if(!select||!start||!card)return;
+  const prefectures=['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県','鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県'];
+  if(!select.options.length){
+    select.add(new Option('都道府県を選択',''));
+    prefectures.forEach(p=>select.add(new Option(p,p)));
+  }
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const bank=[
+    {big:'大問1　数と式',items:[
+      {q:'次の計算をしなさい。 2/3 + 1/6',a:['5/6','0.8333333333'],exp:'分母を6にそろえると、4/6 + 1/6 = 5/6 です。'},
+      {q:'方程式 3(2x − 1) = 15 を解きなさい。',a:['3','x=3'],exp:'両辺を3で割ると 2x−1=5。よって 2x=6、x=3 です。'}
+    ]},
+    {big:'大問2　関数',items:[
+      {q:'関数 y = 2x + 1 で、x = 3 のときの y の値を求めなさい。',a:['7','y=7'],exp:'y=2×3+1=7 です。'},
+      {q:'直線 y = 2x + 1 が y 軸と交わる点の y 座標を答えなさい。',a:['1','y=1'],exp:'y軸上では x=0 なので、y=2×0+1=1 です。'}
+    ]},
+    {big:'大問3　図形',items:[
+      {q:'直角をはさむ2辺が 6 cm、8 cm の直角三角形があります。斜辺の長さを求めなさい。',a:['10','10cm','10 cm'],exp:'三平方の定理より、斜辺²=6²+8²=100。長さは10 cmです。'},
+      {q:'同じ直角三角形の面積を求めなさい。',a:['24','24cm2','24 cm²','24平方センチメートル'],exp:'面積は 6×8÷2=24 cm² です。'}
+    ]},
+    {big:'大問4　資料の活用',items:[
+      {q:'データ 2, 4, 4, 6, 9 の中央値を求めなさい。',a:['4'],exp:'小さい順に並んだ5個のデータの中央、3番目の値は4です。'},
+      {q:'データ 2, 4, 4, 6, 9 の平均値を求めなさい。',a:['5'],exp:'合計は25、データは5個なので、平均値は25÷5=5です。'}
+    ]}
+  ];
+  const normalize=s=>String(s).toLowerCase().replace(/[\s　,，.。＝=]/g,'').replace(/cm²|cm2|平方センチメートル/g,'');
+  function render(){
+    const pref=select.value;
+    if(!pref){note.textContent='先に都道府県を選択してください。';card.innerHTML='<div class="empty">都道府県を選択して演習を開始してください。</div>';return;}
+    const level=document.getElementById('practiceLevel')?.value||'all';
+    const count=Number(document.getElementById('practiceCount')?.value||20);
+    const items=bank.flatMap((b,bi)=>b.items.map((q,qi)=>({...q,big:b.big,id:bi+'-'+qi}))).slice(0,Math.min(count,8));
+    note.textContent=pref+'を選択中。以下はオリジナル練習問題です。都道府県ごとの最新の大問構成・配点・出題傾向との照合は、公式資料の確認が済むまで「本番再現」とは表示しません。';
+    card.innerHTML='<div class="notice"><b>'+esc(pref)+'｜高校入試対策・大問形式</b><br>各大問の小問に解答し、「採点する」で結果と解説を確認できます。難易度設定「'+esc(level)+'」は現段階では問題選別に未反映です。</div>'+
+      items.map((q,i)=>'<section class="card" style="margin:14px 0" data-exam-item="'+q.id+'"><h3>'+esc(q.big)+'・小問'+(i+1)+'</h3><p>'+esc(q.q)+'</p><label class="field">解答 <input class="answer-input" data-answer="'+q.id+'" aria-label="解答 '+(i+1)+'" autocomplete="off"></label><div class="small" data-feedback="'+q.id+'" aria-live="polite"></div><details><summary>解答・解説を見る</summary><p><b>正答：</b>'+esc(q.a[0])+'</p><p>'+esc(q.exp)+'</p></details></section>').join('')+
+      '<div class="toolbar"><button class="btn" id="prefGrade">採点する</button><button class="btn outline" id="prefReset">解答を消す</button></div><p id="prefScore" aria-live="polite"></p>';
+    document.getElementById('prefGrade')?.addEventListener('click',()=>{
+      let correct=0;
+      items.forEach(q=>{const input=card.querySelector('[data-answer="'+q.id+'"]');const fb=card.querySelector('[data-feedback="'+q.id+'"]');const ok=q.a.some(a=>normalize(a)===normalize(input.value));if(ok)correct++;fb.textContent=ok?'正解。 '+q.exp:'不正解。解答・解説を確認してください。';fb.style.fontWeight='700';});
+      const score=document.getElementById('prefScore');score.textContent='採点結果：'+correct+' / '+items.length+' 問正解';score.tabIndex=-1;score.focus();
+    });
+    document.getElementById('prefReset')?.addEventListener('click',()=>{card.querySelectorAll('[data-answer]').forEach(x=>x.value='');card.querySelectorAll('[data-feedback]').forEach(x=>x.textContent='');const score=document.getElementById('prefScore');if(score)score.textContent='';});
+  }
+  start.addEventListener('click',render);
+  select.addEventListener('change',()=>{if(note)note.textContent=select.value?select.value+'を選択中。演習開始で問題を表示します。':'都道府県を選択してください。';});
+  if(note)note.textContent='47都道府県から選択できます。県別の正式な出題構成との照合は、公式資料の確認後に行います。';
+})();
+</script>
 </body></html>
