@@ -135,24 +135,24 @@
     next();
   }
 
-  function startQuiz() {
-    const topic = $('#quizTopic') ? $('#quizTopic').value : 'all';
+  function startQuiz() {\n    const topic = $('#quizTopic') ? $('#quizTopic').value : 'all';
+    const level = $('#quizLevel') ? $('#quizLevel').value : 'all';
     const count = Math.max(1, Number($('#quizCount') && $('#quizCount').value) || 10);
-    const filtered = questions.filter(question => topic === 'all' || question.topic === topic);
-    runQuestions($('#quizCard'), filtered.slice(0, count), '一問一答');
-  }
+    const filtered = questions.filter(question => (topic === 'all' || question.topic === topic) && (level === 'all' || question.difficulty === level));
+    if (!filtered.length) { $('#quizCard').textContent = '選択した難易度の問題は現在の問題バンクにありません。別の難易度を選択してください。'; return; }
+    runQuestions($('#quizCard'), filtered.slice(0, count), '一問一答');\n  }
 
-  function startPractice() {
+  function startPractice() {\n    const level = $('#practiceLevel') ? $('#practiceLevel').value : 'all';
     const count = Math.max(1, Number($('#practiceCount') && $('#practiceCount').value) || 10);
-    const items = questions.slice(0, count);
-    runQuestions($('#practiceCard'), items, '共通入試演習');
-  }
+    const pool = questions.filter(question => level === 'all' || question.difficulty === level);
+    if (!pool.length) { $('#practiceCard').textContent = '選択した難易度の問題は現在の問題バンクにありません。別の難易度を選択してください。'; return; }
+    runQuestions($('#practiceCard'), pool.slice(0, count), '共通入試演習');\n  }
 
-  function startMock() {
+  function startMock() {\n    const level = $('#mockLevel') ? $('#mockLevel').value : 'all';
     const count = Math.max(1, Number($('#mockCount') && $('#mockCount').value) || 10);
-    const items = questions.slice().sort(() => Math.random() - 0.5).slice(0, count);
-    runQuestions($('#mockCard'), items, '総合模擬試験');
-  }
+    const pool = questions.filter(question => level === 'all' || question.difficulty === level);
+    if (!pool.length) { $('#mockCard').textContent = '選択した難易度の問題は現在の問題バンクにありません。応用問題は今後追加が必要です。'; return; }
+    runQuestions($('#mockCard'), pool.slice().sort(() => Math.random() - 0.5).slice(0, count), '総合模擬試験');\n  }
 
   function renderReview() {
     const container = $('#reviewList');
