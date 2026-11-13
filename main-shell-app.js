@@ -148,12 +148,36 @@
     if (!pool.length) { $('#practiceCard').textContent = '選択した難易度の問題は現在の問題バンクにありません。別の難易度を選択してください。'; return; }
     runQuestions($('#practiceCard'), pool.slice(0, count), '共通入試演習');\n  }
 
-  function startMock() {\n    const level = $('#mockLevel') ? $('#mockLevel').value : 'all';
+  function startMock() {
+    const level = $('#mockLevel') ? $('#mockLevel').value : 'all';
     const count = Math.max(1, Number($('#mockCount') && $('#mockCount').value) || 10);
-    const pool = questions.filter(question => level === 'all' || question.difficulty === level);
-    if (!pool.length) { $('#mockCard').textContent = '選択した難易度の問題は現在の問題バンクにありません。応用問題は今後追加が必要です。'; return; }
-    runQuestions($('#mockCard'), pool.slice().sort(() => Math.random() - 0.5).slice(0, count), '総合模擬試験');\n  }
-
+    const pool = questions.map((question, index) => ({ question, index }))
+      .filter(item => level === 'all' || item.question.difficulty === level);
+    if (!pool.length) {
+      $('#mockCard').textContent = '選択した難易度の問題は現在の問題バンクにありません。別の難易度を選択してください。';
+      return;
+    }
+    const storageKey = 'mathJukenMockQuestionHistory:' + level;
+    const validIndexes = new Set(pool.map(item => item.index));
+    let history = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      if (Array.isArray(saved)) history = [...new Set(saved.filter(index => Number.isInteger(index) && validIndexes.has(index)))];
+    } catch (error) {}
+    let available = pool.filter(item => !history.includes(item.index));
+    if (available.length < count) {
+      available = pool.slice();
+      history = [];
+    }
+    for (let i = available.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [available[i], available[j]] = [available[j], available[i]];
+    }
+    const selected = available.slice(0, count);
+    history.push(...selected.map(item => item.index));
+    try { localStorage.setItem(storageKey, JSON.stringify(history)); } catch (error) {}
+    runQuestions($('#mockCard'), selected.map(item => item.question), '総合模擬試験');
+  }
   function renderReview() {
     const container = $('#reviewList');
     if (!container) return;
