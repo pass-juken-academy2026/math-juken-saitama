@@ -7,7 +7,7 @@ const assert = require('node:assert/strict');
   await page.goto('http://127.0.0.1:4173/index.html');
   await page.click('[data-tab="6"]');
   await page.click('[data-start]');
-  await page.waitForSelector('[data-mock] .choices button');
+  await page.waitForSelector('[data-mock] .choices button, [data-mock] input[aria-label="空欄の解答"]');
   for (const label of ['問題のみPDF','解答・解説PDF','問題＋解答PDF']) {
    const pending = page.waitForEvent('popup');
    await page.getByRole('button',{name:label}).click();
